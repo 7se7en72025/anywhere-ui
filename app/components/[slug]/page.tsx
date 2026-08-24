@@ -1,10 +1,12 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Nav } from "@/components/site/nav";
-import { registry } from "@/lib/registry";
+import { SiteNav, SiteFooter, PillLink } from "@/components/site/chrome";
+import { registry, categoryColors } from "@/lib/registry";
 import { Badge } from "@/components/ui/badge";
 import { ToolPermission } from "@/components/ui/tool-permission";
 import { StreamingText } from "@/components/ui/streaming-text";
 import { RunControls } from "@/components/ui/run-controls";
+import { NightStars } from "@/components/ui/night-stars";
 
 const previews: Record<string, React.ReactNode> = {
   badge: (
@@ -26,6 +28,7 @@ const previews: Record<string, React.ReactNode> = {
     <StreamingText text="Analyzing the request, then calling the search tool to find recent results..." />
   ),
   "run-controls": <RunControls />,
+  "night-stars": <NightStars />,
 };
 
 export function generateStaticParams() {
@@ -41,19 +44,60 @@ export default async function ComponentPage({
   const entry = registry.find((item) => item.slug === slug);
   if (!entry) notFound();
 
+  const index = registry.findIndex((item) => item.slug === slug);
+  const next = registry[(index + 1) % registry.length];
+
   return (
-    <div className="flex flex-1 flex-col">
-      <Nav />
-      <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-16">
-        <h1 className="font-mono text-2xl font-semibold tracking-tight">
+    <div className="flex flex-1 flex-col bg-background font-sans text-foreground">
+      <SiteNav />
+
+      <main className="mx-auto w-full max-w-[1280px] flex-1 px-6 pb-32 pt-16">
+        <Link href="/components" className="text-[16px] text-muted hover:text-foreground">
+          ← All components
+        </Link>
+
+        <p
+          className="mt-10 text-[19px]"
+          style={{ color: categoryColors[entry.category] }}
+        >
+          {entry.category}
+        </p>
+        <h1
+          className="mt-3 font-semibold"
+          style={{
+            fontSize: "clamp(48px, 9vw, 101px)",
+            lineHeight: 1,
+            letterSpacing: "-0.011em",
+          }}
+        >
           {entry.name}
         </h1>
-        <p className="mt-2 text-muted">{entry.description}</p>
+        <p className="mt-6 max-w-md text-[23px] leading-[1.38] tracking-[-0.23px]">
+          {entry.description}
+        </p>
 
-        <div className="mt-10 flex min-h-64 items-center justify-center rounded-xl border border-border bg-card p-10">
+        <div className="mt-16 h-px w-full bg-border" aria-hidden />
+
+        <div className="flex min-h-80 items-center justify-center py-20">
           {previews[slug]}
         </div>
+
+        <div className="h-px w-full bg-border" aria-hidden />
+
+        <div className="flex flex-col gap-6 pt-20 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-[16px] text-muted">Next</p>
+            <p className="mt-2 text-[34px] font-semibold leading-[1.2] tracking-[-0.34px]">
+              {next.name}
+            </p>
+          </div>
+          <PillLink href={`/components/${next.slug}`}>
+            Explore {next.name}
+          </PillLink>
+        </div>
       </main>
+
+      <SiteFooter />
     </div>
   );
 }

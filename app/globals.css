@@ -1,13 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050507;
-  --foreground: #e4e4e7;
-  --card: #0b0b10;
-  --border: #1f1f27;
-  --muted: #8b8b96;
-  --accent: #6366f1;
-  --accent-foreground: #eef2ff;
+  /* GSAP-style system */
+  --background: #0e100f;
+  --foreground: #fffce1;
+  --card: #191919;
+  --border: #42433d;
+  --muted: #7c7c6f;
+  --accent: #0ae448;
+  --accent-foreground: #0e100f;
+
+  /* category taxonomy */
+  --color-approvals: #ff8709;
+  --color-streaming: #fec5fb;
+  --color-controls: #00bae2;
+  --color-ambient: #9d95ff;
 }
 
 @theme inline {
@@ -18,16 +25,22 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-display);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  background-image:
-    linear-gradient(to right, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px);
-  background-size: 48px 48px;
-  background-attachment: fixed;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: var(--star-opacity, 0.6);
+    transform: scale(1);
+  }
+  50% {
+    opacity: calc(var(--star-opacity, 0.6) * 0.25);
+    transform: scale(0.7);
+  }
 }
