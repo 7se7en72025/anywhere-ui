@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Anywhere UI",
   tagline: "React components that work anywhere.",
   description:
-    "Accessible, translation-ready React components engineered for slow networks and cheap phones. Every component is verified on three axes: performance budget, WCAG conformance, and internationalisation.",
+    "Accessible, translation-ready React components engineered for slow networks, cheap phones, and screen readers. Every component is verified in CI on ten axes: performance, accessibility, internationalisation, privacy, security, resilience, offline support, SSR safety, sensory safety, and supply chain.",
   repo: "https://github.com/7se7en72025/anywhere-ui",
   keywords: [
     "react components",

@@ -1,5 +1,5 @@
 import { Playground } from "@/components/demo/playground";
-import { siteConfig } from "@/lib/site";
+import { getSiteUrl, siteConfig } from "@/lib/site";
 import registry from "@/registry.json";
 
 const PROBLEMS = [
@@ -22,28 +22,57 @@ const PROBLEMS = [
 
 const AXES = [
   {
-    title: "Any device, any network",
-    body: "Zero runtime dependencies. Save-Data and connection quality are respected rather than ignored. Every state reserves its height, so content landing does not shove the page around.",
+    title: "Performance",
+    body: "Every item is bundled, minified, and gzipped with React external in CI, and fails against a declared size budget.",
   },
   {
-    title: "Any ability",
-    body: "Every component is asserted against axe in each of its states, plus the things axe cannot see: focus moves to new errors, live regions are mounted before they are filled, and required is exposed to assistive tech and not only as a red asterisk.",
+    title: "Accessibility",
+    body: "axe runs over every component in every state, plus what axe cannot see: focus moving to new errors, live regions mounted before they are filled.",
   },
   {
-    title: "Any language",
-    body: "Direction, calendar, numbering system, and first day of week are resolved from the locale tag. Every string is a prop. Layout uses logical properties, so RTL is a data change, not a rewrite.",
+    title: "Internationalisation",
+    body: "Direction, calendar, numbering system, and week start are resolved from the locale tag. Every string is a prop. RTL is a data change, not a rewrite.",
+  },
+  {
+    title: "Privacy",
+    body: "A source scan forbids fetch, XHR, sendBeacon, and fingerprinting-adjacent APIs across the whole registry — nothing here phones home.",
+  },
+  {
+    title: "Security",
+    body: "dangerouslySetInnerHTML, eval, and innerHTML assignment are forbidden registry-wide; sanitizeHref strips javascript: and other executable schemes.",
+  },
+  {
+    title: "Resilience",
+    body: "ErrorBoundary contains a render crash to its own subtree with an announced, focusable, recoverable fallback — the page around it keeps working.",
+  },
+  {
+    title: "Offline",
+    body: "A component that makes zero network calls cannot be broken by a dropped connection. ResilientForm goes further: it queues and replays.",
+  },
+  {
+    title: "SSR safety",
+    body: "Every component renders through react-dom/server in a real Node environment in CI — no reaching for window, document, or navigator at render time.",
+  },
+  {
+    title: "Sensory safety",
+    body: "Any animation is required, by the same source scan, to carry a motion-reduce or prefers-reduced-motion guard in its own file.",
+  },
+  {
+    title: "Supply chain",
+    body: "Zero runtime dependencies. react (and its own react-dom) are the only imports allowed anywhere in the registry, enforced in CI.",
   },
 ];
 
 export default function Home() {
   const components = registry.items.filter((item) => item.type === "registry:ui");
   const primitives = registry.items.filter((item) => item.type !== "registry:ui");
+  const siteUrl = getSiteUrl();
 
   return (
     <main id="main" className="mx-auto flex max-w-5xl flex-col gap-20 px-5 py-16">
       <header className="flex flex-col gap-6">
         <p className="text-sm font-medium tracking-wide text-blue-700 uppercase dark:text-blue-400">
-          Open source · MIT
+          Open source · MIT · {components.length} components
         </p>
 
         <h1 className="text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
@@ -51,14 +80,14 @@ export default function Home() {
         </h1>
 
         <p className="max-w-2xl text-lg text-pretty text-neutral-700 dark:text-neutral-300">
-          Any device. Any network. Any language. Any ability. {siteConfig.name} is a small set of
-          components engineered for the conditions most component libraries are never tested
-          against — and verified against all three, in CI.
+          Any device. Any network. Any language. Any ability. {siteConfig.name} is a set of{" "}
+          {components.length} components engineered for the conditions most component libraries are
+          never tested against — and verified against all ten, in CI.
         </p>
 
         <div className="flex flex-col gap-3">
           <code className="w-fit rounded-lg bg-neutral-100 px-4 py-2.5 font-mono text-sm dark:bg-neutral-900">
-            npx shadcn@latest add https://anywhere-ui.dev/r/async-boundary.json
+            npx shadcn@latest add {siteUrl}/r/async-boundary.json
           </code>
           <p className="text-sm text-neutral-600 dark:text-neutral-400">
             Components are copied into your repo. No package to depend on, no version to upgrade,
@@ -98,8 +127,15 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col gap-6">
-        <h2 className="text-2xl font-semibold tracking-tight">Three axes, every component</h2>
-        <div className="grid gap-6 sm:grid-cols-3">
+        <h2 className="text-2xl font-semibold tracking-tight">Ten axes, every component</h2>
+        <p className="max-w-3xl text-neutral-700 dark:text-neutral-300">
+          Each one is a real assertion in the test suite, not a claim in this paragraph — see{" "}
+          <code className="rounded bg-neutral-100 px-1.5 py-0.5 text-sm dark:bg-neutral-900">
+            tests/
+          </code>{" "}
+          in the repository.
+        </p>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {AXES.map((axis) => (
             <div key={axis.title} className="flex flex-col gap-2">
               <h3 className="font-semibold">{axis.title}</h3>
@@ -121,7 +157,7 @@ export default function Home() {
               <h3 className="font-mono text-sm font-semibold">{item.title}</h3>
               <p className="text-sm text-neutral-600 dark:text-neutral-400">{item.description}</p>
               <code className="mt-2 overflow-x-auto rounded-md bg-neutral-100 px-2 py-1 font-mono text-xs dark:bg-neutral-900">
-                npx shadcn@latest add https://anywhere-ui.dev/r/{item.name}.json
+                npx shadcn@latest add {siteUrl}/r/{item.name}.json
               </code>
             </li>
           ))}

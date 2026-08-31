@@ -14,7 +14,24 @@ import { fileURLToPath } from "node:url";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outDir = join(root, "public", "r");
 
-const HOMEPAGE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://anywhere-ui.dev";
+/**
+ * Mirrors lib/site.ts's getSiteUrl(). Duplicated rather than imported: this
+ * script runs as plain Node before Next's compiler exists to resolve a `.ts`
+ * import, and the alternative — deploying a registry whose own install
+ * commands point at a domain nobody is serving — is worse than one small
+ * function kept in sync by hand.
+ */
+function resolveSiteUrl() {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL;
+  if (explicit) return explicit.replace(/\/$/, "");
+
+  const vercel = process.env.VERCEL_PROJECT_PRODUCTION_URL ?? process.env.VERCEL_URL;
+  if (vercel) return `https://${vercel}`;
+
+  return "http://localhost:3000";
+}
+
+const HOMEPAGE = resolveSiteUrl();
 
 /** Where each registry type lands in a consumer's project. */
 const TARGETS = {
