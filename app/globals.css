@@ -1,46 +1,51 @@
 @import "tailwindcss";
 
-:root {
-  /* GSAP-style system */
-  --background: #0e100f;
-  --foreground: #fffce1;
-  --card: #191919;
-  --border: #42433d;
-  --muted: #7c7c6f;
-  --accent: #0ae448;
-  --accent-foreground: #0e100f;
+/*
+  No web fonts, by choice.
 
-  /* category taxonomy */
-  --color-approvals: #ff8709;
-  --color-streaming: #fec5fb;
-  --color-controls: #00bae2;
-  --color-ambient: #9d95ff;
+  A typical variable font is 60–120 KB. On the 2G connections this library
+  exists to serve, that is several seconds of staring at nothing — spent on
+  letterforms rather than on words. The system stack renders instantly, in
+  every script, on every device.
+*/
+@theme inline {
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    "Noto Sans", "Noto Sans Arabic", "Noto Sans Devanagari", sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-border: var(--border);
-  --color-muted: var(--muted);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --font-sans: var(--font-display);
-  --font-mono: var(--font-geist-mono);
+:root {
+  color-scheme: light dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: white;
+  color: #171717;
 }
 
-@keyframes twinkle {
-  0%, 100% {
-    opacity: var(--star-opacity, 0.6);
-    transform: scale(1);
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #0a0a0a;
+    color: #fafafa;
   }
-  50% {
-    opacity: calc(var(--star-opacity, 0.6) * 0.25);
-    transform: scale(0.7);
+}
+
+/* A visible focus ring everywhere, on every theme. Removing focus outlines is
+   the most common single act of accessibility damage on the web. */
+:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

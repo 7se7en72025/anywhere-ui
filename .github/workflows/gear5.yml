@@ -1,19 +1,16 @@
-name: CI
+name: Gear5 UI
 
-# Anywhere UI, at the repository root.
-#
-# The size budgets, axe assertions, and locale coverage the README claims are
-# enforced here — every one of them is an assertion in this test run, and the
-# measured gzipped size of each component is printed in the log.
+# Gear5 UI now lives in gear5/. Root-level workflows are the only ones GitHub
+# runs, so this stays here and reaches into the subdirectory.
 
 on:
   push:
     branches: [main]
-    paths-ignore:
+    paths:
       - "gear5/**"
       - ".github/workflows/gear5.yml"
   pull_request:
-    paths-ignore:
+    paths:
       - "gear5/**"
       - ".github/workflows/gear5.yml"
 
@@ -21,11 +18,14 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    working-directory: gear5
+
 jobs:
   verify:
     name: Typecheck, lint, test, build
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -33,10 +33,12 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
           cache: pnpm
+          cache-dependency-path: gear5/pnpm-lock.yaml
 
-      - run: pnpm install --frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Typecheck
         run: pnpm typecheck

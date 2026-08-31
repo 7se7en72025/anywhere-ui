@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+:root {
+  /* GSAP-style system */
+  --background: #0e100f;
+  --foreground: #fffce1;
+  --card: #191919;
+  --border: #42433d;
+  --muted: #7c7c6f;
+  --accent: #0ae448;
+  --accent-foreground: #0e100f;
+
+  /* category taxonomy */
+  --color-approvals: #ff8709;
+  --color-streaming: #fec5fb;
+  --color-controls: #00bae2;
+  --color-ambient: #9d95ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --font-sans: var(--font-display);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: var(--star-opacity, 0.6);
+    transform: scale(1);
+  }
+  50% {
+    opacity: calc(var(--star-opacity, 0.6) * 0.25);
+    transform: scale(0.7);
+  }
+}

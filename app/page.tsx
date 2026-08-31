@@ -1,111 +1,155 @@
-import { SiteNav, SiteFooter, Bracket, PillLink } from "@/components/site/chrome";
-import { categoryColors } from "@/lib/registry";
-import { ToolPermission } from "@/components/ui/tool-permission";
-import { StreamingText } from "@/components/ui/streaming-text";
-import { RunControls } from "@/components/ui/run-controls";
-import { NightStars } from "@/components/ui/night-stars";
+import { Playground } from "@/components/demo/playground";
+import { siteConfig } from "@/lib/site";
+import registry from "@/registry.json";
 
-const tools = [
+const PROBLEMS = [
   {
-    label: "Approvals" as const,
-    heading: "Gate every tool call",
-    body: "Show the arguments, then let a human approve or deny before the agent touches anything real.",
-    slug: "tool-permission",
-    preview: <ToolPermission tool="send_email" args={{ to: "team@acme.com" }} />,
+    stat: "~2.6 billion",
+    label: "people are offline or intermittently connected",
+    body: "Requests do not fail loudly on a bad connection — they hang. Most UIs show a spinner forever and let the user tap the button again.",
   },
   {
-    label: "Streaming" as const,
-    heading: "Output as it arrives",
-    body: "Render tokens the moment they land, with a cursor that tells the user the model is still thinking.",
-    slug: "streaming-text",
-    preview: <StreamingText text="Calling the search tool..." speedMs={45} />,
+    stat: "~1.3 billion",
+    label: "people live with a significant disability",
+    body: "Focus never moves to the error. The live region is created at the same moment its text appears, so it is never read aloud.",
   },
   {
-    label: "Controls" as const,
-    heading: "Stop a run mid-flight",
-    body: "Run, pause, and stop states with the status always visible, so nobody wonders what the agent is doing.",
-    slug: "run-controls",
-    preview: <RunControls />,
+    stat: "~6.5 billion",
+    label: "people do not speak English as a first language",
+    body: "Layouts assume left-to-right, dates assume the Gregorian calendar, and numbers assume Latin digits.",
+  },
+];
+
+const AXES = [
+  {
+    title: "Any device, any network",
+    body: "Zero runtime dependencies. Save-Data and connection quality are respected rather than ignored. Every state reserves its height, so content landing does not shove the page around.",
   },
   {
-    label: "Ambient" as const,
-    heading: "Backgrounds with motion",
-    body: "A canvas night sky where a trail of stars follows the cursor. Decorative, and entirely self-contained.",
-    slug: "night-stars",
-    preview: <NightStars className="h-44!" dotCount={18} />,
+    title: "Any ability",
+    body: "Every component is asserted against axe in each of its states, plus the things axe cannot see: focus moves to new errors, live regions are mounted before they are filled, and required is exposed to assistive tech and not only as a red asterisk.",
+  },
+  {
+    title: "Any language",
+    body: "Direction, calendar, numbering system, and first day of week are resolved from the locale tag. Every string is a prop. Layout uses logical properties, so RTL is a data change, not a rewrite.",
   },
 ];
 
 export default function Home() {
-  return (
-    <div className="flex flex-1 flex-col bg-background font-sans text-foreground">
-      <SiteNav />
+  const components = registry.items.filter((item) => item.type === "registry:ui");
+  const primitives = registry.items.filter((item) => item.type !== "registry:ui");
 
-      <section className="mx-auto w-full max-w-[1280px] px-6 pb-24 pt-16">
-        <h1
-          className="font-semibold"
-          style={{
-            fontSize: "clamp(64px, 14vw, 224px)",
-            lineHeight: 0.9,
-            letterSpacing: "-0.02em",
-          }}
-        >
-          Animate
-          <br />
-          the agent
+  return (
+    <main id="main" className="mx-auto flex max-w-5xl flex-col gap-20 px-5 py-16">
+      <header className="flex flex-col gap-6">
+        <p className="text-sm font-medium tracking-wide text-blue-700 uppercase dark:text-blue-400">
+          Open source · MIT
+        </p>
+
+        <h1 className="text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
+          React components that work <span className="text-blue-700 dark:text-blue-400">anywhere</span>.
         </h1>
 
-        <div className="mt-12 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <p className="max-w-md text-[23px] leading-[1.38] tracking-[-0.23px]">
-            Components for tool approvals, streaming output, and run control —
-            the surfaces every agent product ends up building twice.
+        <p className="max-w-2xl text-lg text-pretty text-neutral-700 dark:text-neutral-300">
+          Any device. Any network. Any language. Any ability. {siteConfig.name} is a small set of
+          components engineered for the conditions most component libraries are never tested
+          against — and verified against all three, in CI.
+        </p>
+
+        <div className="flex flex-col gap-3">
+          <code className="w-fit rounded-lg bg-neutral-100 px-4 py-2.5 font-mono text-sm dark:bg-neutral-900">
+            npx shadcn@latest add https://anywhere-ui.dev/r/async-boundary.json
+          </code>
+          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+            Components are copied into your repo. No package to depend on, no version to upgrade,
+            nothing to remove if you change your mind.
           </p>
-          <div className="flex flex-wrap items-center gap-3">
-            <PillLink href="/components" gradient>
-              Get Gear5
-            </PillLink>
-            <PillLink href="/components">Explore All</PillLink>
-          </div>
         </div>
+      </header>
+
+      <section className="flex flex-col gap-6">
+        <h2 className="text-2xl font-semibold tracking-tight">The problem</h2>
+        <div className="grid gap-6 sm:grid-cols-3">
+          {PROBLEMS.map((problem) => (
+            <div key={problem.label} className="flex flex-col gap-2">
+              <p className="text-3xl font-semibold tracking-tight">{problem.stat}</p>
+              <p className="text-sm font-medium">{problem.label}</p>
+              <p className="text-sm text-neutral-600 dark:text-neutral-400">{problem.body}</p>
+            </div>
+          ))}
+        </div>
+        <p className="max-w-3xl text-neutral-700 dark:text-neutral-300">
+          None of this is unknown. It is just never the default — so every team rebuilds it badly,
+          under deadline, and ships the version that works on the laptop it was written on.
+        </p>
       </section>
 
-      <section className="mx-auto w-full max-w-[1280px] px-6 pb-32">
-        <Bracket>Gear5® Tools</Bracket>
+      <section className="flex flex-col gap-6">
+        <div>
+          <h2 className="text-2xl font-semibold tracking-tight">Try it</h2>
+          <p className="mt-2 max-w-3xl text-neutral-700 dark:text-neutral-300">
+            Switch the network to <strong>Offline</strong> and submit the form — your answers are
+            kept and sent when the connection returns. Switch the language to{" "}
+            <span lang="ar">العربية</span> and the whole thing mirrors, including the calendar and
+            the digits.
+          </p>
+        </div>
+        <Playground />
+      </section>
 
-        <div className="mt-16 flex flex-col">
-          {tools.map((tool, i) => (
-            <div key={tool.slug}>
-              {i > 0 && <div className="h-px w-full bg-border" aria-hidden />}
-              <div className="grid grid-cols-1 items-center gap-10 py-20 md:grid-cols-2">
-                <div className="flex items-center justify-center">
-                  {tool.preview}
-                </div>
-                <div>
-                  <p
-                    className="text-[19px]"
-                    style={{ color: categoryColors[tool.label] }}
-                  >
-                    {tool.label}
-                  </p>
-                  <h2 className="mt-3 text-[34px] font-semibold leading-[1.2] tracking-[-0.34px] sm:text-[44px] sm:tracking-[-0.44px]">
-                    {tool.heading}
-                  </h2>
-                  <p className="mt-4 max-w-md text-[23px] leading-[1.38] tracking-[-0.23px]">
-                    {tool.body}
-                  </p>
-                  <div className="mt-8">
-                    <PillLink href={`/components/${tool.slug}`}>
-                      Explore {tool.label}
-                    </PillLink>
-                  </div>
-                </div>
-              </div>
+      <section className="flex flex-col gap-6">
+        <h2 className="text-2xl font-semibold tracking-tight">Three axes, every component</h2>
+        <div className="grid gap-6 sm:grid-cols-3">
+          {AXES.map((axis) => (
+            <div key={axis.title} className="flex flex-col gap-2">
+              <h3 className="font-semibold">{axis.title}</h3>
+              <p className="text-sm text-neutral-600 dark:text-neutral-400">{axis.body}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <SiteFooter />
-    </div>
+      <section className="flex flex-col gap-6">
+        <h2 className="text-2xl font-semibold tracking-tight">Components</h2>
+
+        <ul className="grid gap-4 sm:grid-cols-2">
+          {components.map((item) => (
+            <li
+              key={item.name}
+              className="flex flex-col gap-1 rounded-xl border border-neutral-200 p-4 dark:border-neutral-800"
+            >
+              <h3 className="font-mono text-sm font-semibold">{item.title}</h3>
+              <p className="text-sm text-neutral-600 dark:text-neutral-400">{item.description}</p>
+              <code className="mt-2 overflow-x-auto rounded-md bg-neutral-100 px-2 py-1 font-mono text-xs dark:bg-neutral-900">
+                npx shadcn@latest add https://anywhere-ui.dev/r/{item.name}.json
+              </code>
+            </li>
+          ))}
+        </ul>
+
+        <h3 className="mt-4 text-lg font-semibold">Primitives they build on</h3>
+        <ul className="flex flex-wrap gap-2">
+          {primitives.map((item) => (
+            <li
+              key={item.name}
+              className="rounded-full border border-neutral-300 px-3 py-1 font-mono text-xs dark:border-neutral-700"
+            >
+              {item.name}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <footer className="flex flex-col gap-2 border-t border-neutral-200 pt-8 text-sm text-neutral-600 dark:border-neutral-800 dark:text-neutral-400">
+        <p>
+          {siteConfig.name} — MIT licensed.{" "}
+          <a className="underline underline-offset-2" href={siteConfig.repo}>
+            Source and contribution guide on GitHub
+          </a>
+          .
+        </p>
+        <p>This page ships no web fonts and no analytics.</p>
+      </footer>
+    </main>
   );
 }

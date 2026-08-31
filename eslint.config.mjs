@@ -5,16 +5,15 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  // Override default ignores of eslint-config-next.
   globalIgnores([
-    // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",
     "build/**",
+    "public/r/**",
     "next-env.d.ts",
 
     // Nested project with its own toolchain, config, and CI job.
-    "anywhere-ui/**",
+    "gear5/**",
   ]),
 ]);
 
