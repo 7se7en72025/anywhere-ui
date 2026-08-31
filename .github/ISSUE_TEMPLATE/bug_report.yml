@@ -1,0 +1,58 @@
+name: Bug report
+description: Something behaves incorrectly
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The most useful reports for this project name the **condition**, not just
+        the symptom. "Broken on mobile" is hard to act on; "the error summary is
+        not announced by TalkBack on Android 11 in ar-EG" is a fix.
+
+  - type: input
+    id: component
+    attributes:
+      label: Component
+      placeholder: resilient-form
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected, and what happened instead
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce
+      description: A minimal snippet, or a link to a reproduction.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: axis
+    attributes:
+      label: Which axis does this fall under?
+      description: Best guess is fine — it helps route the issue.
+      options:
+        - Performance (size, jank, layout shift)
+        - Accessibility (screen reader, keyboard, focus, contrast)
+        - Internationalisation (direction, calendar, formatting, translation)
+        - Privacy or security
+        - Resilience or offline behaviour
+        - SSR safety (hydration, server render)
+        - Sensory safety (motion, animation)
+        - Not sure
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Locale, assistive technology, connection, device class, browser — whichever are relevant.
+      placeholder: |
+        Locale: ar-EG
+        Screen reader: NVDA 2024.1 on Firefox
+        Connection: throttled 2G

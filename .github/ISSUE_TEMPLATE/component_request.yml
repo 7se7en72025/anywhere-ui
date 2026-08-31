@@ -1,0 +1,33 @@
+name: Component request
+description: Propose a new component
+labels: [component request]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A component belongs here if it is something teams keep rebuilding badly
+        for users on cheap devices, bad networks, other languages, or assistive
+        technology. A prettier button does not qualify; a button that stays
+        usable when the request behind it hangs for forty seconds might.
+
+  - type: input
+    id: name
+    attributes:
+      label: Proposed name
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What does it get wrong today?
+      description: Describe the failure you have actually seen, not the feature you want.
+    validations:
+      required: true
+
+  - type: textarea
+    id: who
+    attributes:
+      label: Who does that failure affect, and under what conditions?
+    validations:
+      required: true

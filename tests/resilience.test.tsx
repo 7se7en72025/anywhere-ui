@@ -3,7 +3,10 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { axe } from "vitest-axe";
 import { ErrorBoundary } from "@/registry/anywhere/ui/error-boundary";
-import { Boom } from "./fixtures";
+/** A child guaranteed to throw during render. */
+function Boom(): never {
+  throw new Error("fixture: deliberate render crash");
+}
 
 /**
  * Axis: resilience.

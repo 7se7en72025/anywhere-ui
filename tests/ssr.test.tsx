@@ -5,7 +5,7 @@
 // a server, where none of those exist.
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import { fixtures } from "./fixtures";
+import { fixtures } from "@/components/demos";
 
 /**
  * Axis: SSR safety.

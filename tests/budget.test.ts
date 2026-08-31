@@ -84,6 +84,14 @@ describe("size budgets", () => {
     }
   });
 
+  it("the docs site quotes the budgets this suite actually enforces", async () => {
+    // lib/registry.ts restates these so component pages can show a budget.
+    // A docs page quoting a ceiling nobody enforces is worse than one quoting
+    // nothing, so the two definitions are pinned together here.
+    const { TIER_BUDGETS: published } = await import("@/lib/registry");
+    expect(published).toEqual(TIER_BUDGETS);
+  });
+
   it.each(items.map((item) => [item.name, item.tier] as const))(
     "%s stays within its %s budget",
     (name, tier) => {

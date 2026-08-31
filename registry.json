@@ -114,7 +114,8 @@
       "name": "async-boundary",
       "type": "registry:ui",
       "title": "AsyncBoundary",
-      "description": "Loading, error, empty, and offline states \u2014 announced, focus-managed, and shift-free.",
+      "description": "Loading, error, empty, and offline states — announced, focus-managed, and shift-free.",
+      "category": "Feedback & status",
       "tier": "lg",
       "registryDependencies": [
         "cn",
@@ -134,6 +135,7 @@
       "type": "registry:ui",
       "title": "ConnectionStatus",
       "description": "A live banner for offline, restored, and constrained connections.",
+      "category": "Feedback & status",
       "tier": "md",
       "registryDependencies": [
         "cn",
@@ -152,6 +154,7 @@
       "type": "registry:ui",
       "title": "AdaptiveImage",
       "description": "An image that defers its own download on Save-Data and 2G-class connections.",
+      "category": "Media & layout",
       "tier": "md",
       "registryDependencies": [
         "cn",
@@ -170,6 +173,7 @@
       "type": "registry:ui",
       "title": "Field",
       "description": "A text field with label, description, and error wired to assistive technology.",
+      "category": "Forms & input",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -186,6 +190,7 @@
       "type": "registry:ui",
       "title": "ResilientForm",
       "description": "A form that keeps drafts, queues offline submits, and gives errors a focusable summary.",
+      "category": "Forms & input",
       "tier": "lg",
       "registryDependencies": [
         "cn",
@@ -206,6 +211,7 @@
       "type": "registry:ui",
       "title": "ErrorBoundary",
       "description": "Contains a render crash to its own subtree instead of the whole page, with a focusable, announced fallback.",
+      "category": "Feedback & status",
       "tier": "md",
       "registryDependencies": [
         "cn",
@@ -223,6 +229,7 @@
       "type": "registry:ui",
       "title": "VisuallyHidden",
       "description": "Content for assistive technology only, removed from the visual layout without leaving the accessibility tree.",
+      "category": "Accessibility & preferences",
       "tier": "xs",
       "files": [
         {
@@ -236,6 +243,7 @@
       "type": "registry:ui",
       "title": "Kbd",
       "description": "A single keyboard key, styled and marked up as one.",
+      "category": "Accessibility & preferences",
       "tier": "xs",
       "registryDependencies": [
         "cn"
@@ -252,6 +260,7 @@
       "type": "registry:ui",
       "title": "Divider",
       "description": "A horizontal or vertical rule, with an optional inline label.",
+      "category": "Media & layout",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -267,7 +276,7 @@
       "name": "use-focus-trap",
       "type": "registry:hook",
       "title": "useFocusTrap",
-      "description": "Traps Tab/Shift+Tab inside a container and restores focus on exit \u2014 what makes a modal actually modal for keyboard users.",
+      "description": "Traps Tab/Shift+Tab inside a container and restores focus on exit — what makes a modal actually modal for keyboard users.",
       "tier": "sm",
       "files": [
         {
@@ -281,6 +290,7 @@
       "type": "registry:ui",
       "title": "Badge",
       "description": "A small status label where color never carries meaning alone.",
+      "category": "Feedback & status",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -297,6 +307,7 @@
       "type": "registry:ui",
       "title": "StatusDot",
       "description": "A coloured status indicator with an always-present text label.",
+      "category": "Feedback & status",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -313,6 +324,7 @@
       "type": "registry:ui",
       "title": "Avatar",
       "description": "A person's picture, or script-aware initials when there is none.",
+      "category": "Data display",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -329,6 +341,7 @@
       "type": "registry:ui",
       "title": "AvatarGroup",
       "description": "An overlapping avatar stack with an accessible overflow indicator.",
+      "category": "Data display",
       "tier": "md",
       "registryDependencies": [
         "cn",
@@ -346,6 +359,7 @@
       "type": "registry:ui",
       "title": "Chip",
       "description": "A dismissible tag with a real accessible name for its remove action.",
+      "category": "Data display",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -362,6 +376,7 @@
       "type": "registry:ui",
       "title": "Card",
       "description": "A bordered content container with header, title, and description parts.",
+      "category": "Data display",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -378,6 +393,7 @@
       "type": "registry:ui",
       "title": "Container",
       "description": "A centred, max-width content column.",
+      "category": "Media & layout",
       "tier": "xs",
       "registryDependencies": [
         "cn"
@@ -394,6 +410,7 @@
       "type": "registry:ui",
       "title": "Alert",
       "description": "A static in-flow message, polite or assertive by tone.",
+      "category": "Feedback & status",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -410,6 +427,7 @@
       "type": "registry:ui",
       "title": "ProgressBar",
       "description": "A determinate or indeterminate progress bar with a real accessible value.",
+      "category": "Feedback & status",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -426,6 +444,7 @@
       "type": "registry:ui",
       "title": "Spinner",
       "description": "A loading indicator announced once via role=status.",
+      "category": "Feedback & status",
       "tier": "sm",
       "registryDependencies": [
         "cn",
@@ -443,6 +462,7 @@
       "type": "registry:ui",
       "title": "Skeleton",
       "description": "A placeholder shape that reserves space for content that has not arrived yet.",
+      "category": "Feedback & status",
       "tier": "xs",
       "registryDependencies": [
         "cn"
@@ -459,6 +479,7 @@
       "type": "registry:ui",
       "title": "RelativeTime",
       "description": "Live, localised relative time (\"3 days ago\") with the exact timestamp always available.",
+      "category": "Internationalisation",
       "tier": "md",
       "registryDependencies": [
         "format",
@@ -477,6 +498,7 @@
       "type": "registry:ui",
       "title": "PluralText",
       "description": "Grammatically correct plural forms via Intl.PluralRules, not an English if/else.",
+      "category": "Internationalisation",
       "tier": "sm",
       "registryDependencies": [
         "use-locale"
@@ -493,6 +515,7 @@
       "type": "registry:ui",
       "title": "ListText",
       "description": "\"A, B, and C\" formatted correctly for the current locale via Intl.ListFormat.",
+      "category": "Internationalisation",
       "tier": "md",
       "registryDependencies": [
         "format",
@@ -510,6 +533,7 @@
       "type": "registry:ui",
       "title": "CurrencyText",
       "description": "Locale- and currency-correct money formatting via Intl.NumberFormat.",
+      "category": "Internationalisation",
       "tier": "md",
       "registryDependencies": [
         "format",
@@ -527,6 +551,7 @@
       "type": "registry:ui",
       "title": "EmptyState",
       "description": "A placeholder for a list, table, or panel with nothing in it yet.",
+      "category": "Feedback & status",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -543,6 +568,7 @@
       "type": "registry:ui",
       "title": "Tooltip",
       "description": "A hover/focus label bound with aria-describedby, keyboard accessible.",
+      "category": "Overlays",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -559,6 +585,7 @@
       "type": "registry:ui",
       "title": "Switch",
       "description": "A binary toggle built on role=switch, not a disguised checkbox.",
+      "category": "Forms & input",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -575,6 +602,7 @@
       "type": "registry:ui",
       "title": "Checkbox",
       "description": "A checkbox with a real, clickable, bound label.",
+      "category": "Forms & input",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -591,6 +619,7 @@
       "type": "registry:ui",
       "title": "RadioGroup",
       "description": "A fieldset/legend group of real radio inputs.",
+      "category": "Forms & input",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -607,6 +636,7 @@
       "type": "registry:ui",
       "title": "Slider",
       "description": "A native range input with an RTL-correct thumb direction.",
+      "category": "Forms & input",
       "tier": "md",
       "registryDependencies": [
         "cn"
@@ -623,6 +653,7 @@
       "type": "registry:ui",
       "title": "Rating",
       "description": "A star rating, read-only or editable, announced as one value.",
+      "category": "Forms & input",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -639,6 +670,7 @@
       "type": "registry:ui",
       "title": "Accordion",
       "description": "Collapsible sections built on the WAI-ARIA Accordion pattern.",
+      "category": "Data display",
       "tier": "md",
       "registryDependencies": [
         "cn"
@@ -655,6 +687,7 @@
       "type": "registry:ui",
       "title": "Tabs",
       "description": "Keyboard-navigable tabs whose arrow-key direction flips correctly under RTL.",
+      "category": "Navigation",
       "tier": "md",
       "registryDependencies": [
         "cn",
@@ -672,6 +705,7 @@
       "type": "registry:ui",
       "title": "Breadcrumb",
       "description": "A landmark trail with the current page marked aria-current.",
+      "category": "Navigation",
       "tier": "sm",
       "registryDependencies": [
         "sanitize",
@@ -689,6 +723,7 @@
       "type": "registry:ui",
       "title": "Pagination",
       "description": "Page controls with locale-correct numerals.",
+      "category": "Navigation",
       "tier": "md",
       "registryDependencies": [
         "cn",
@@ -706,6 +741,7 @@
       "type": "registry:ui",
       "title": "Stepper",
       "description": "A wizard's progress, with each step's status in its accessible name.",
+      "category": "Navigation",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -722,6 +758,7 @@
       "type": "registry:ui",
       "title": "CopyButton",
       "description": "Copies to the clipboard and announces success.",
+      "category": "Media & layout",
       "tier": "sm",
       "registryDependencies": [
         "announce",
@@ -739,6 +776,7 @@
       "type": "registry:ui",
       "title": "ShareButton",
       "description": "Web Share API with a plain-link fallback.",
+      "category": "Media & layout",
       "tier": "sm",
       "registryDependencies": [
         "sanitize",
@@ -756,6 +794,7 @@
       "type": "registry:ui",
       "title": "Portal",
       "description": "Renders children into document.body, deferred to a client-only mount.",
+      "category": "Overlays",
       "tier": "xs",
       "files": [
         {
@@ -772,6 +811,7 @@
       "type": "registry:ui",
       "title": "Dialog",
       "description": "A modal with a focus trap, Escape to close, and focus returned on exit.",
+      "category": "Overlays",
       "tier": "lg",
       "registryDependencies": [
         "use-focus-trap",
@@ -791,6 +831,7 @@
       "type": "registry:ui",
       "title": "Drawer",
       "description": "A modal panel anchored to a screen edge, using logical start/end sides.",
+      "category": "Overlays",
       "tier": "lg",
       "registryDependencies": [
         "use-focus-trap",
@@ -810,6 +851,7 @@
       "type": "registry:ui",
       "title": "ToastProvider / useToast",
       "description": "A toast queue with correctly-timed live regions.",
+      "category": "Feedback & status",
       "tier": "lg",
       "registryDependencies": [
         "cn",
@@ -827,6 +869,7 @@
       "type": "registry:ui",
       "title": "Popover",
       "description": "A disclosure panel that closes on outside click and Escape.",
+      "category": "Overlays",
       "tier": "md",
       "registryDependencies": [
         "cn"
@@ -843,6 +886,7 @@
       "type": "registry:ui",
       "title": "Menu",
       "description": "A dropdown menu following the WAI-ARIA Menu Button pattern.",
+      "category": "Overlays",
       "tier": "md",
       "registryDependencies": [
         "cn"
@@ -859,6 +903,7 @@
       "type": "registry:ui",
       "title": "ThemeToggle",
       "description": "A light/dark/system toggle that persists its choice.",
+      "category": "Accessibility & preferences",
       "tier": "sm",
       "registryDependencies": [
         "cn",
@@ -876,6 +921,7 @@
       "type": "registry:ui",
       "title": "LocaleSwitcher",
       "description": "A native, per-option lang-tagged language switcher.",
+      "category": "Internationalisation",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -892,6 +938,7 @@
       "type": "registry:ui",
       "title": "BackToTop",
       "description": "Appears after scrolling a screenful; honours reduced motion.",
+      "category": "Navigation",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -908,6 +955,7 @@
       "type": "registry:ui",
       "title": "ScrollProgress",
       "description": "A reading-progress bar with a real accessible value.",
+      "category": "Navigation",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -924,6 +972,7 @@
       "type": "registry:ui",
       "title": "Timeline",
       "description": "A vertical event sequence marked up as a real ordered list.",
+      "category": "Data display",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -940,6 +989,7 @@
       "type": "registry:ui",
       "title": "StatCard",
       "description": "A single KPI figure with an optional trend line.",
+      "category": "Data display",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -956,6 +1006,7 @@
       "type": "registry:ui",
       "title": "SearchField",
       "description": "A search input with a clear button that returns focus correctly.",
+      "category": "Forms & input",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -972,6 +1023,7 @@
       "type": "registry:ui",
       "title": "TagInput",
       "description": "A free-text tag list that announces additions and removals.",
+      "category": "Forms & input",
       "tier": "md",
       "registryDependencies": [
         "announce",
@@ -990,6 +1042,7 @@
       "type": "registry:ui",
       "title": "PasswordField",
       "description": "A password field with an accessible visibility toggle and strength meter.",
+      "category": "Forms & input",
       "tier": "md",
       "registryDependencies": [
         "cn"
@@ -1006,6 +1059,7 @@
       "type": "registry:ui",
       "title": "OtpInput",
       "description": "One-time-code entry wired for platform SMS autofill.",
+      "category": "Forms & input",
       "tier": "md",
       "registryDependencies": [
         "cn"
@@ -1022,6 +1076,7 @@
       "type": "registry:ui",
       "title": "NumberField",
       "description": "A numeric field with increment/decrement buttons for motor-impaired users.",
+      "category": "Forms & input",
       "tier": "md",
       "registryDependencies": [
         "cn",
@@ -1039,6 +1094,7 @@
       "type": "registry:ui",
       "title": "HoneypotField",
       "description": "A bot trap invisible to real users without trapping keyboard or screen reader users.",
+      "category": "Forms & input",
       "tier": "sm",
       "registryDependencies": [
         "visually-hidden"
@@ -1055,6 +1111,7 @@
       "type": "registry:ui",
       "title": "ConsentBanner",
       "description": "A cookie banner where decline is exactly as easy to press as accept.",
+      "category": "Accessibility & preferences",
       "tier": "md",
       "registryDependencies": [
         "cn",
@@ -1072,6 +1129,7 @@
       "type": "registry:ui",
       "title": "ReducedMotionToggle",
       "description": "An in-page opt-in to reduced motion, for people who never touch OS settings.",
+      "category": "Accessibility & preferences",
       "tier": "sm",
       "registryDependencies": [
         "switch",
@@ -1089,6 +1147,7 @@
       "type": "registry:ui",
       "title": "DataSaverToggle",
       "description": "A manual override for the library's constrained-connection behaviour.",
+      "category": "Accessibility & preferences",
       "tier": "sm",
       "registryDependencies": [
         "switch",
@@ -1106,6 +1165,7 @@
       "type": "registry:ui",
       "title": "AccessibilityMenu",
       "description": "One panel for larger text and higher contrast.",
+      "category": "Accessibility & preferences",
       "tier": "md",
       "registryDependencies": [
         "popover",
@@ -1124,6 +1184,7 @@
       "type": "registry:ui",
       "title": "TableOfContents",
       "description": "A jump-list that tracks the visible heading via IntersectionObserver.",
+      "category": "Navigation",
       "tier": "sm",
       "registryDependencies": [
         "sanitize",
@@ -1141,6 +1202,7 @@
       "type": "registry:ui",
       "title": "CodeBlock",
       "description": "A code sample, always left-to-right regardless of page direction, with copy.",
+      "category": "Data display",
       "tier": "md",
       "registryDependencies": [
         "copy-button",
@@ -1158,6 +1220,7 @@
       "type": "registry:ui",
       "title": "QuoteBlock",
       "description": "A real blockquote/cite pair, not a styled div.",
+      "category": "Data display",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -1173,7 +1236,8 @@
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
-      "description": "A native select \u2014 fully accessible, in every language, at zero extra bytes.",
+      "description": "A native select — fully accessible, in every language, at zero extra bytes.",
+      "category": "Forms & input",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -1190,6 +1254,7 @@
       "type": "registry:ui",
       "title": "VirtualList",
       "description": "Renders only visible rows plus overscan, for smooth scrolling on low-end devices.",
+      "category": "Data display",
       "tier": "md",
       "registryDependencies": [
         "cn"
@@ -1206,6 +1271,7 @@
       "type": "registry:ui",
       "title": "Table",
       "description": "A real, sortable table screen readers can navigate by row and column.",
+      "category": "Data display",
       "tier": "md",
       "registryDependencies": [
         "cn",
@@ -1223,6 +1289,7 @@
       "type": "registry:ui",
       "title": "KeyboardShortcutsHelp",
       "description": "A shortcut reference dialog inheriting the focus trap every overlay gets.",
+      "category": "Navigation",
       "tier": "md",
       "registryDependencies": [
         "dialog",
@@ -1240,6 +1307,7 @@
       "type": "registry:ui",
       "title": "CommandPalette",
       "description": "A keyboard-first fuzzy launcher following the ARIA combobox pattern.",
+      "category": "Navigation",
       "tier": "lg",
       "registryDependencies": [
         "use-focus-trap",
@@ -1258,6 +1326,7 @@
       "type": "registry:ui",
       "title": "FileUpload",
       "description": "A drag-and-drop zone that is a real keyboard-activatable button first.",
+      "category": "Forms & input",
       "tier": "md",
       "registryDependencies": [
         "announce",
@@ -1275,6 +1344,7 @@
       "type": "registry:ui",
       "title": "InfiniteScroll",
       "description": "Loads more content near the viewport, and refuses to on constrained connections.",
+      "category": "Data display",
       "tier": "md",
       "registryDependencies": [
         "use-network",
@@ -1292,6 +1362,7 @@
       "type": "registry:ui",
       "title": "LazyMount",
       "description": "Defers mounting expensive children until visible, sooner on good connections.",
+      "category": "Media & layout",
       "tier": "sm",
       "registryDependencies": [
         "use-network"
@@ -1308,6 +1379,7 @@
       "type": "registry:ui",
       "title": "ContextMenu",
       "description": "A right-click menu also reachable via the keyboard Menu key.",
+      "category": "Overlays",
       "tier": "md",
       "registryDependencies": [
         "cn"
@@ -1324,6 +1396,7 @@
       "type": "registry:ui",
       "title": "Navbar",
       "description": "A labelled nav landmark with the current page marked aria-current.",
+      "category": "Navigation",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -1340,6 +1413,7 @@
       "type": "registry:ui",
       "title": "Footer",
       "description": "A simple site footer with locale-aware link list.",
+      "category": "Navigation",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -1356,6 +1430,7 @@
       "type": "registry:ui",
       "title": "Sidebar",
       "description": "A landmark navigation column with a logical-side active indicator.",
+      "category": "Navigation",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -1372,6 +1447,7 @@
       "type": "registry:ui",
       "title": "DirectionalIcon",
       "description": "Mirrors a directional icon (arrows, chevrons) under RTL.",
+      "category": "Internationalisation",
       "tier": "xs",
       "registryDependencies": [
         "cn"
@@ -1388,6 +1464,7 @@
       "type": "registry:ui",
       "title": "MasonryGrid",
       "description": "A zero-JS masonry layout via CSS columns.",
+      "category": "Data display",
       "tier": "xs",
       "registryDependencies": [
         "cn"
@@ -1404,6 +1481,7 @@
       "type": "registry:ui",
       "title": "Calendar",
       "description": "A month grid in the reader's own calendar system and week start.",
+      "category": "Forms & input",
       "tier": "lg",
       "registryDependencies": [
         "locale",
@@ -1422,6 +1500,7 @@
       "type": "registry:ui",
       "title": "TimeField",
       "description": "A native time input matching the platform's own 12/24-hour convention.",
+      "category": "Forms & input",
       "tier": "md",
       "registryDependencies": [
         "use-locale"
@@ -1438,6 +1517,7 @@
       "type": "registry:ui",
       "title": "Combobox",
       "description": "A searchable single-select following the ARIA combobox pattern.",
+      "category": "Forms & input",
       "tier": "md",
       "registryDependencies": [
         "cn"
@@ -1454,6 +1534,7 @@
       "type": "registry:ui",
       "title": "MultiSelect",
       "description": "A real multi-select control rendered as removable chips plus toggle buttons.",
+      "category": "Forms & input",
       "tier": "md",
       "registryDependencies": [
         "cn",
@@ -1471,6 +1552,7 @@
       "type": "registry:ui",
       "title": "Disclosure",
       "description": "A single collapsible section.",
+      "category": "Data display",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -1487,6 +1569,7 @@
       "type": "registry:ui",
       "title": "PrintButton",
       "description": "A button that prints the page.",
+      "category": "Media & layout",
       "tier": "sm",
       "registryDependencies": [
         "cn"
@@ -1503,6 +1586,7 @@
       "type": "registry:ui",
       "title": "Countdown",
       "description": "A live countdown with locale-correct digits.",
+      "category": "Feedback & status",
       "tier": "sm",
       "registryDependencies": [
         "use-locale"
@@ -1519,6 +1603,7 @@
       "type": "registry:ui",
       "title": "UnitText",
       "description": "Locale-correct unit formatting (distance, data, temperature) via Intl.NumberFormat.",
+      "category": "Internationalisation",
       "tier": "md",
       "registryDependencies": [
         "format",
@@ -1536,6 +1621,7 @@
       "type": "registry:ui",
       "title": "LiveRegion",
       "description": "A declarative live region for components that track their own message as state.",
+      "category": "Feedback & status",
       "tier": "sm",
       "registryDependencies": [
         "visually-hidden"
@@ -1552,6 +1638,7 @@
       "type": "registry:ui",
       "title": "SkipLink",
       "description": "The page's first focusable element, visible only once focused.",
+      "category": "Navigation",
       "tier": "sm",
       "registryDependencies": [
         "sanitize",
@@ -1581,7 +1668,7 @@
       "name": "use-hydrated",
       "type": "registry:hook",
       "title": "useHydrated",
-      "description": "True once the client has taken over from server-rendered markup \u2014 the useSyncExternalStore replacement for the useEffect 'mounted' idiom.",
+      "description": "True once the client has taken over from server-rendered markup — the useSyncExternalStore replacement for the useEffect 'mounted' idiom.",
       "tier": "xs",
       "files": [
         {

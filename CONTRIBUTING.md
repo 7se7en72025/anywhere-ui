@@ -10,7 +10,7 @@ A component belongs here if it is something teams keep rebuilding badly for user
 
 Every component is held to ten axes (performance, accessibility, internationalisation, privacy, security, resilience, offline behaviour, SSR safety, sensory safety, supply chain — see the README for what each means). Seven of them are enforced automatically the moment your component has a fixture; three need something from you.
 
-**1. A fixture in `tests/fixtures.tsx`.** One minimal, representative render of your component, added to the `fixtures` map under its registry name. This single entry is what makes every generic check below run against your component — no fixture, no coverage.
+**1. A fixture in `components/demos.tsx`.** One minimal, representative render of your component, added to the `fixtures` map under its registry name. This single entry is what makes every generic check below run against your component *and* what the docs site renders as its preview — no fixture, no coverage and no docs page.
 
 **2. A tier in `registry.json`.** Add `"tier": "xs" | "sm" | "md" | "lg"` to your item. `tests/budget.test.ts` bundles, minifies, and gzips your component with React external and fails if it exceeds its tier's budget. Guess a tier by comparing your component to existing ones of similar complexity; the test will tell you if you guessed wrong, with the measured size in the failure message.
 
@@ -45,7 +45,7 @@ Components live in `registry/anywhere/ui/`, shared primitives in `registry/anywh
 
 1. Write it in `registry/anywhere/ui/<name>.tsx`.
 2. Add an entry to `registry.json` with a `tier` and `registryDependencies` listed by name.
-3. Add a fixture for it to `tests/fixtures.tsx`.
+3. Add a fixture for it to `components/demos.tsx`. If it is an overlay that covers the page when open, also add a trigger-based preview to `components/site/overlay-previews.tsx`.
 4. Add it to the playground in `components/demo/playground.tsx` if it's a flagship worth demonstrating live — not required for every component.
 5. Run `pnpm verify` and fix whatever the generic suite flags.
 

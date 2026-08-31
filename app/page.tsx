@@ -1,6 +1,7 @@
+import Link from "next/link";
 import { Playground } from "@/components/demo/playground";
 import { getSiteUrl, siteConfig } from "@/lib/site";
-import registry from "@/registry.json";
+import { components, componentsByCategory } from "@/lib/registry";
 
 const PROBLEMS = [
   {
@@ -64,8 +65,7 @@ const AXES = [
 ];
 
 export default function Home() {
-  const components = registry.items.filter((item) => item.type === "registry:ui");
-  const primitives = registry.items.filter((item) => item.type !== "registry:ui");
+  const categoryCount = componentsByCategory().length;
   const siteUrl = getSiteUrl();
 
   return (
@@ -145,47 +145,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="flex flex-col gap-6">
-        <h2 className="text-heading-sm font-semibold">Components</h2>
-
-        <ul className="grid gap-4 sm:grid-cols-2">
-          {components.map((item) => (
-            <li
-              key={item.name}
-              className="flex flex-col gap-1 rounded-xl border border-neutral-200 p-4 dark:border-neutral-800"
-            >
-              <h3 className="font-mono text-sm font-semibold">{item.title}</h3>
-              <p className="text-sm text-neutral-600 dark:text-neutral-400">{item.description}</p>
-              <code className="mt-2 overflow-x-auto rounded-md bg-neutral-100 px-2 py-1 font-mono text-xs dark:bg-neutral-900">
-                npx shadcn@latest add {siteUrl}/r/{item.name}.json
-              </code>
-            </li>
-          ))}
-        </ul>
-
-        <h3 className="mt-4 text-lg font-semibold">Primitives they build on</h3>
-        <ul className="flex flex-wrap gap-2">
-          {primitives.map((item) => (
-            <li
-              key={item.name}
-              className="rounded-full border border-neutral-300 px-3 py-1 font-mono text-xs dark:border-neutral-700"
-            >
-              {item.name}
-            </li>
-          ))}
-        </ul>
+      <section className="flex flex-col gap-4">
+        <h2 className="text-heading-sm font-semibold">Browse the library</h2>
+        <p className="max-w-3xl text-neutral-700 dark:text-neutral-300">
+          {components.length} components across {categoryCount} categories, each with a live
+          preview that is the same fixture CI renders.
+        </p>
+        <Link
+          href="/components"
+          className="w-fit rounded-md bg-neutral-900 px-4 py-2 text-sm font-medium text-white dark:bg-neutral-100 dark:text-neutral-900"
+        >
+          View all components
+        </Link>
       </section>
 
-      <footer className="flex flex-col gap-2 border-t border-neutral-200 pt-8 text-sm text-neutral-600 dark:border-neutral-800 dark:text-neutral-400">
-        <p>
-          {siteConfig.name} — MIT licensed.{" "}
-          <a className="underline underline-offset-2" href={siteConfig.repo}>
-            Source and contribution guide on GitHub
-          </a>
-          .
-        </p>
-        <p>This page ships no web fonts and no analytics.</p>
-      </footer>
     </main>
   );
 }

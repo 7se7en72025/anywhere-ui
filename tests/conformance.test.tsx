@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
 import { axe } from "vitest-axe";
 import manifest from "@/registry.json";
-import { fixtures } from "./fixtures";
+import { fixtures } from "@/components/demos";
 
 /**
  * Axis: accessibility.
@@ -19,7 +19,7 @@ const uiItems = manifest.items.filter((item) => item.type === "registry:ui");
 describe("conformance: accessibility (axe)", () => {
   it("every registry:ui item has a fixture", () => {
     const missing = uiItems.map((item) => item.name).filter((name) => !fixtures[name]);
-    expect(missing, `no fixture in tests/fixtures.tsx for: ${missing.join(", ")}`).toEqual([]);
+    expect(missing, `no fixture in components/demos.tsx for: ${missing.join(", ")}`).toEqual([]);
   });
 
   it.each(Object.keys(fixtures))("%s has no axe violations", async (name) => {

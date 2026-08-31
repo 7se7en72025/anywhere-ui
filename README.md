@@ -39,7 +39,7 @@ Anywhere UI is what those fixes look like when someone has time to do them prope
 
 ## Components
 
-87 components across feedback, forms, navigation, overlays, and data display — the full list, with copy-paste install commands, is on the docs site the project deploys to (`pnpm dev` and visit `localhost:3000` to browse it locally). A few of the flagships:
+87 components across eight categories. The docs site has a page for every one of them — a live preview, the install command, the full source, and the budget it is held to — plus search and category filters at `/components`. A few of the flagships:
 
 | Component | What it solves |
 |---|---|
@@ -122,7 +122,9 @@ pnpm verify   # typecheck, lint, and the full test suite (633 tests)
 - `tests/resilience.test.tsx` — resilience: `ErrorBoundary` containment, announcement, and recovery.
 - `tests/locale.test.ts`, `tests/components.test.tsx`, `tests/draft-storage.test.ts` — internationalisation and offline behaviour, including that passwords, payment fields, and one-time codes are never written to disk.
 
-`tests/fixtures.tsx` is what makes this scale: one minimal render per component feeds every generic check above, so adding a component costs one fixture entry, not a bespoke test file per axis.
+`components/demos.tsx` is what makes this scale: one minimal render per component feeds every generic check above, so adding a component costs one fixture entry, not a bespoke test file per axis.
+
+That same file is what the docs site renders as its previews. A component whose documented example differs from the example CI verifies is a documentation bug waiting to happen; sharing the file makes that drift structurally impossible. The one deliberate exception is overlays — Dialog, Drawer, CommandPalette and friends are audited *open*, because that is where the focus trap and `aria-modal` live, but the docs put them behind the trigger a real app would use, since six modals opening on page load is not a preview.
 
 ## Development
 
@@ -130,7 +132,7 @@ The registry URLs baked into `public/r/*.json` and shown on the docs site come f
 
 ```bash
 pnpm install
-pnpm dev              # docs site and live playground at localhost:3000
+pnpm dev              # docs site, component browser, and playground at localhost:3000
 pnpm verify           # everything CI runs
 pnpm registry:build   # compile registry.json into public/r/*.json
 ```
@@ -145,7 +147,7 @@ Components live in `registry/anywhere/`. They import each other by relative path
 
 ## Contributing
 
-New components are welcome, and are held to the same bar: a tier in `registry.json`, a fixture in `tests/fixtures.tsx`, every string a prop, and logical properties throughout. See [CONTRIBUTING.md](CONTRIBUTING.md).
+New components are welcome, and are held to the same bar: a tier in `registry.json`, a fixture in `components/demos.tsx`, every string a prop, and logical properties throughout. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 

@@ -96,9 +96,14 @@ function Stateful<T>({ initial, render }: { initial: T; render: (value: T, set: 
 /**
  * One representative, minimally-propped render per `registry:ui` item.
  *
- * This is the single fixture every generic conformance check (axe, SSR,
- * static scans) renders — the cost of adding a new component to the
- * conformance suite is one entry here, not a bespoke test file.
+ * Deliberately shared by two consumers that must never disagree: the
+ * conformance suite (axe, SSR, static scans) renders these, and the docs site
+ * renders these as its live previews. A component whose documented example
+ * differs from the example CI verifies is a documentation bug waiting to
+ * happen; here that drift is structurally impossible.
+ *
+ * The cost of adding a component is one entry, which buys it both a test and
+ * a docs preview.
  */
 export const fixtures: Record<string, () => ReactElement> = {
   "async-boundary": () => (
@@ -281,8 +286,3 @@ export const fixtures: Record<string, () => ReactElement> = {
   "live-region": () => <LiveRegion message="3 results loaded" />,
   "skip-link": () => <SkipLink href="#main">Skip to content</SkipLink>,
 };
-
-/** A child guaranteed to throw during render, for resilience tests. */
-export function Boom(): ReactElement {
-  throw new Error("fixture: deliberate render crash");
-}
