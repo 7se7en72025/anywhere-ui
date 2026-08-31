@@ -1,41 +1,155 @@
 @import "tailwindcss";
 
 /*
-  No web fonts, by choice.
-
-  A typical variable font is 60–120 KB. On the 2G connections this library
-  exists to serve, that is several seconds of staring at nothing — spent on
-  letterforms rather than on words. The system stack renders instantly, in
-  every script, on every device.
+  Tailwind v4 defaults `dark:` to a `prefers-color-scheme` media query, not a
+  class. ThemeToggle explicitly manages a `.dark` class on <html> so a user's
+  in-page choice can override their OS setting — without this, that choice
+  did nothing: every `dark:` utility in the entire registry silently ignored
+  it and followed the OS preference regardless of what ThemeToggle set.
 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Anywhere UI's visual language: a clinical, monochromatic workshop —
+  white paper, warm-gray canvas, hairline borders, large-radius cards —
+  with a single red accent reserved for destructive states and nothing
+  else. Adapted from the shadcn/ui style reference.
+
+  Every component below already used Tailwind's neutral/blue/red palettes
+  as its only chromatic choices, always in the same roles (neutral for
+  surfaces and text, blue for the one interactive accent, red for errors).
+  That means the whole registry retextures correctly by redefining what
+  those tokens resolve to here — no per-component edits needed, and every
+  future component gets the system for free just by using the same classes
+  everything else already does.
+*/
+
+:root {
+  color-scheme: light;
+
+  /* Brand tokens, for anything reaching past a Tailwind utility. */
+  --color-canvas: #f5f5f5;
+  --color-paper: #ffffff;
+  --color-surface-alt: #fafafa;
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #171717;
+  --color-mid-gray: #737373;
+  --color-hairline: #e5e5e5;
+  --color-ember: #e7000b;
+}
+
+:root.dark {
+  color-scheme: dark;
+
+  --color-canvas: #0a0a0a;
+  --color-paper: #171717;
+  --color-surface-alt: #1f1f1f;
+  --color-ink: #fafafa;
+  --color-ink-soft: #e5e5e5;
+  --color-mid-gray: #a3a3a3;
+  --color-hairline: #262626;
+  --color-ember: #ff6467;
+}
+
 @theme inline {
+  /*
+    No web fonts, by choice.
+
+    A typical variable font is 60–120 KB. On the 2G connections this library
+    exists to serve, that is several seconds of staring at nothing — spent on
+    letterforms rather than on words. This system stack is chosen for the
+    same geometric, even-stroked character Geist has — Geist itself would
+    cost bytes this library's own thesis argues against paying.
+  */
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
     "Noto Sans", "Noto Sans Arabic", "Noto Sans Devanagari", sans-serif;
   --font-mono:
     ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
-}
 
-:root {
-  color-scheme: light dark;
+  /* Retexture the one interactive accent used everywhere in the registry —
+     buttons, focus rings, active tabs, links — from blue to ink. Every
+     `bg-blue-600`, `text-blue-700`, `focus-visible:outline-blue-600` in the
+     component source now resolves to the monochromatic system. */
+  --color-blue-50: var(--color-surface-alt);
+  --color-blue-100: var(--color-canvas);
+  --color-blue-200: var(--color-hairline);
+  --color-blue-300: #d4d4d4;
+  --color-blue-400: var(--color-mid-gray);
+  --color-blue-500: var(--color-ink-soft);
+  --color-blue-600: var(--color-ink);
+  --color-blue-700: var(--color-ink-soft);
+  --color-blue-800: var(--color-ink-soft);
+  --color-blue-900: var(--color-ink);
+  --color-blue-950: var(--color-ink);
+
+  /* Anchor the existing destructive-only red scale on Ember rather than
+     Tailwind's default red — same roles (error text, invalid borders, alert
+     backgrounds), same single-hue ramp, different exact hue. */
+  --color-red-50: oklch(97% 0.015 27);
+  --color-red-100: oklch(94% 0.03 27);
+  --color-red-200: oklch(88% 0.06 27);
+  --color-red-300: oklch(80% 0.1 27);
+  --color-red-400: oklch(68% 0.16 27);
+  --color-red-500: oklch(62% 0.21 27);
+  --color-red-600: var(--color-ember);
+  --color-red-700: oklch(48% 0.19 27);
+  --color-red-800: oklch(40% 0.16 27);
+  --color-red-900: oklch(33% 0.13 27);
+  --color-red-950: oklch(20% 0.08 27);
+
+  /* Radius: 18px on everything interactive (buttons, inputs, badges, chips —
+     what the registry already builds on `rounded-md`), 24px on containers
+     (cards, panels, overlays — already `rounded-lg`/`rounded-xl`), 6px
+     elsewhere. Never a value in between. */
+  --radius: 6px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 24px;
+  --radius-2xl: 24px;
+
+  /* Whisper-quiet elevation: a hairline ring plus two barely-visible offset
+     shadows, stacked — the registry's existing `shadow-lg`/`shadow-xl` calls
+     (Dialog, Drawer, Popover, Menu, Toast, CommandPalette) pick this up
+     without any of them changing. */
+  --shadow-lg: 0 0 0 1px rgb(23 23 23 / 5%), 0 4px 10px rgb(0 0 0 / 8%), 0 2px 4px rgb(0 0 0 / 6%);
+  --shadow-xl: 0 0 0 1px rgb(23 23 23 / 5%), 0 8px 24px rgb(0 0 0 / 10%), 0 2px 4px rgb(0 0 0 / 6%);
+
+  /* An additive display scale for marketing/heading voice, alongside — not
+     replacing — Tailwind's own text-xs..text-9xl, which the component
+     registry keeps using unchanged. */
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.33;
+  --text-caption--letter-spacing: 0.05em;
+  --text-body: 0.875rem;
+  --text-body--line-height: 1.43;
+  --text-body-lg: 1rem;
+  --text-body-lg--line-height: 1.5;
+  --text-subheading: 1.125rem;
+  --text-subheading--line-height: 1.56;
+  --text-heading-sm: 1.5rem;
+  --text-heading-sm--line-height: 1.33;
+  --text-heading-sm--letter-spacing: -0.025em;
+  --text-heading: 1.875rem;
+  --text-heading--line-height: 1.2;
+  --text-heading--letter-spacing: -0.025em;
+  --text-heading-lg: 2.25rem;
+  --text-heading-lg--line-height: 1.11;
+  --text-heading-lg--letter-spacing: -0.025em;
+  --text-display: 3rem;
+  --text-display--line-height: 1.1;
+  --text-display--letter-spacing: -0.05em;
 }
 
 body {
-  background: white;
-  color: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #0a0a0a;
-    color: #fafafa;
-  }
+  background: var(--color-canvas);
+  color: var(--color-ink);
 }
 
 /* A visible focus ring everywhere, on every theme. Removing focus outlines is
    the most common single act of accessibility damage on the web. */
 :focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--color-ink);
   outline-offset: 2px;
 }
 

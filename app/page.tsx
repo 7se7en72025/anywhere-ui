@@ -71,15 +71,15 @@ export default function Home() {
   return (
     <main id="main" className="mx-auto flex max-w-5xl flex-col gap-20 px-5 py-16">
       <header className="flex flex-col gap-6">
-        <p className="text-sm font-medium tracking-wide text-blue-700 uppercase dark:text-blue-400">
+        <p className="text-caption font-medium tracking-[0.05em] text-neutral-900 uppercase dark:text-neutral-100">
           Open source · MIT · {components.length} components
         </p>
 
-        <h1 className="text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
+        <h1 className="text-heading-lg font-semibold text-balance sm:text-display">
           React components that work <span className="text-blue-700 dark:text-blue-400">anywhere</span>.
         </h1>
 
-        <p className="max-w-2xl text-lg text-pretty text-neutral-700 dark:text-neutral-300">
+        <p className="max-w-2xl text-body-lg text-pretty text-neutral-700 dark:text-neutral-300">
           Any device. Any network. Any language. Any ability. {siteConfig.name} is a set of{" "}
           {components.length} components engineered for the conditions most component libraries are
           never tested against — and verified against all ten, in CI.
@@ -97,7 +97,7 @@ export default function Home() {
       </header>
 
       <section className="flex flex-col gap-6">
-        <h2 className="text-2xl font-semibold tracking-tight">The problem</h2>
+        <h2 className="text-heading-sm font-semibold">The problem</h2>
         <div className="grid gap-6 sm:grid-cols-3">
           {PROBLEMS.map((problem) => (
             <div key={problem.label} className="flex flex-col gap-2">
@@ -115,7 +115,7 @@ export default function Home() {
 
       <section className="flex flex-col gap-6">
         <div>
-          <h2 className="text-2xl font-semibold tracking-tight">Try it</h2>
+          <h2 className="text-heading-sm font-semibold">Try it</h2>
           <p className="mt-2 max-w-3xl text-neutral-700 dark:text-neutral-300">
             Switch the network to <strong>Offline</strong> and submit the form — your answers are
             kept and sent when the connection returns. Switch the language to{" "}
@@ -127,7 +127,7 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col gap-6">
-        <h2 className="text-2xl font-semibold tracking-tight">Ten axes, every component</h2>
+        <h2 className="text-heading-sm font-semibold">Ten axes, every component</h2>
         <p className="max-w-3xl text-neutral-700 dark:text-neutral-300">
           Each one is a real assertion in the test suite, not a claim in this paragraph — see{" "}
           <code className="rounded bg-neutral-100 px-1.5 py-0.5 text-sm dark:bg-neutral-900">
@@ -146,7 +146,7 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col gap-6">
-        <h2 className="text-2xl font-semibold tracking-tight">Components</h2>
+        <h2 className="text-heading-sm font-semibold">Components</h2>
 
         <ul className="grid gap-4 sm:grid-cols-2">
           {components.map((item) => (
