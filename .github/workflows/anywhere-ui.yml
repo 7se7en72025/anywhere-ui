@@ -1,0 +1,57 @@
+name: Anywhere UI
+
+# The nested project carries its own workflow at anywhere-ui/.github/, which
+# GitHub does not run — only root-level workflows execute. This is that job,
+# scoped to the subdirectory, so the size budgets, axe assertions, and locale
+# coverage the library documents are actually enforced on every change.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "anywhere-ui/**"
+      - ".github/workflows/anywhere-ui.yml"
+  pull_request:
+    paths:
+      - "anywhere-ui/**"
+      - ".github/workflows/anywhere-ui.yml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: anywhere-ui
+
+jobs:
+  verify:
+    name: Typecheck, lint, test, build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: anywhere-ui/pnpm-lock.yaml
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      # Prints the measured gzipped size of every component and fails if any
+      # component exceeds its declared budget.
+      - name: Test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build

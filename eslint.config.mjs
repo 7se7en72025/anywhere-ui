@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+
+    // Nested project with its own toolchain, config, and CI job.
+    "anywhere-ui/**",
   ]),
 ]);
 
