@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+/*
+  No web fonts, by choice.
+
+  A typical variable font is 60–120 KB. On the 2G connections this library
+  exists to serve, that is several seconds of staring at nothing — spent on
+  letterforms rather than on words. The system stack renders instantly, in
+  every script, on every device.
+*/
+@theme inline {
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    "Noto Sans", "Noto Sans Arabic", "Noto Sans Devanagari", sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  background: white;
+  color: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #0a0a0a;
+    color: #fafafa;
+  }
+}
+
+/* A visible focus ring everywhere, on every theme. Removing focus outlines is
+   the most common single act of accessibility damage on the web. */
+:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

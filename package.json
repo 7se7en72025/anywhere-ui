@@ -1,0 +1,42 @@
+{
+  "name": "anywhere-ui",
+  "version": "0.1.0",
+  "private": true,
+  "description": "React components that work anywhere: any device, any network, any language, any ability.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "pnpm registry:build && next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "registry:build": "node scripts/build-registry.mjs",
+    "verify": "pnpm typecheck && pnpm lint && pnpm test"
+  },
+  "dependencies": {
+    "next": "16.3.2",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.3.4",
+    "esbuild": "^0.28.2",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.2",
+    "jsdom": "^25.0.1",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vitest": "^2.1.8",
+    "vitest-axe": "^1.0.0-pre.3"
+  },
+  "packageManager": "pnpm@9.15.4"
+}
