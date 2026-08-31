@@ -25,7 +25,14 @@
 */
 
 :root {
-  color-scheme: light;
+  /* Not declared here on purpose: Lightning CSS (Tailwind v4's transformer)
+     detects a `color-scheme: light` / `color-scheme: dark` pair on matching
+     `:root` / `.dark` selectors and rewrites the custom properties below into
+     a `light-dark()` function — which then follows `prefers-color-scheme`
+     regardless of whether `.dark` is actually present, silently defeating
+     ThemeToggle's explicit class-based override. Set via
+     `element.style.colorScheme` in JS instead (see ThemeToggle), which
+     Lightning CSS never sees at build time. */
 
   /* Brand tokens, for anything reaching past a Tailwind utility. */
   --color-canvas: #f5f5f5;
@@ -39,8 +46,6 @@
 }
 
 :root.dark {
-  color-scheme: dark;
-
   --color-canvas: #0a0a0a;
   --color-paper: #171717;
   --color-surface-alt: #1f1f1f;

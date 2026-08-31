@@ -12,6 +12,12 @@ function apply(theme: Theme) {
   const root = document.documentElement;
   const dark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
   root.classList.toggle("dark", dark);
+  // Set here, not in CSS: a `color-scheme` declaration on both `:root` and
+  // `.dark` gets rewritten by some CSS build tools into a `light-dark()`
+  // function that follows the OS preference regardless of this class. An
+  // inline style bypasses that rewrite and still gets native form controls,
+  // scrollbars, and text-selection colours right for the active theme.
+  root.style.colorScheme = dark ? "dark" : "light";
 }
 
 /**
