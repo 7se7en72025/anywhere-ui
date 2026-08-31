@@ -1,0 +1,97 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "anywhere-ui",
+  "homepage": "https://anywhere-ui.dev",
+  "items": [
+    {
+      "name": "cn",
+      "type": "registry:lib",
+      "title": "cn",
+      "description": "Zero-dependency class name joiner.",
+      "files": [{ "path": "registry/anywhere/lib/cn.ts", "type": "registry:lib" }]
+    },
+    {
+      "name": "use-network",
+      "type": "registry:hook",
+      "title": "useNetwork",
+      "description": "Observe online state, Save-Data, and connection quality without hydration mismatches.",
+      "files": [{ "path": "registry/anywhere/lib/use-network.ts", "type": "registry:hook" }]
+    },
+    {
+      "name": "locale",
+      "type": "registry:lib",
+      "title": "Locale facts",
+      "description": "Writing direction, calendar, numbering system, and first day of week for any BCP 47 tag.",
+      "files": [{ "path": "registry/anywhere/lib/locale.ts", "type": "registry:lib" }]
+    },
+    {
+      "name": "use-locale",
+      "type": "registry:hook",
+      "title": "LocaleProvider / useLocale",
+      "description": "Share resolved locale facts through a subtree.",
+      "registryDependencies": ["locale"],
+      "files": [{ "path": "registry/anywhere/lib/use-locale.tsx", "type": "registry:hook" }]
+    },
+    {
+      "name": "announce",
+      "type": "registry:lib",
+      "title": "announce",
+      "description": "Shared ARIA live regions that screen readers actually read.",
+      "files": [{ "path": "registry/anywhere/lib/announce.ts", "type": "registry:lib" }]
+    },
+    {
+      "name": "format",
+      "type": "registry:lib",
+      "title": "Intl formatters",
+      "description": "Memoised Intl formatters plus relative-time formatting.",
+      "files": [{ "path": "registry/anywhere/lib/format.ts", "type": "registry:lib" }]
+    },
+    {
+      "name": "draft-storage",
+      "type": "registry:lib",
+      "title": "Draft storage",
+      "description": "Persist in-progress form input, excluding credentials and payment fields.",
+      "files": [{ "path": "registry/anywhere/lib/draft-storage.ts", "type": "registry:lib" }]
+    },
+    {
+      "name": "async-boundary",
+      "type": "registry:ui",
+      "title": "AsyncBoundary",
+      "description": "Loading, error, empty, and offline states — announced, focus-managed, and shift-free.",
+      "registryDependencies": ["cn", "announce", "use-network", "use-locale"],
+      "files": [{ "path": "registry/anywhere/ui/async-boundary.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "connection-status",
+      "type": "registry:ui",
+      "title": "ConnectionStatus",
+      "description": "A live banner for offline, restored, and constrained connections.",
+      "registryDependencies": ["cn", "use-network", "use-locale"],
+      "files": [{ "path": "registry/anywhere/ui/connection-status.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "adaptive-image",
+      "type": "registry:ui",
+      "title": "AdaptiveImage",
+      "description": "An image that defers its own download on Save-Data and 2G-class connections.",
+      "registryDependencies": ["cn", "use-network", "use-locale"],
+      "files": [{ "path": "registry/anywhere/ui/adaptive-image.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "A text field with label, description, and error wired to assistive technology.",
+      "registryDependencies": ["cn"],
+      "files": [{ "path": "registry/anywhere/ui/field.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "resilient-form",
+      "type": "registry:ui",
+      "title": "ResilientForm",
+      "description": "A form that keeps drafts, queues offline submits, and gives errors a focusable summary.",
+      "registryDependencies": ["cn", "announce", "draft-storage", "use-network", "use-locale"],
+      "files": [{ "path": "registry/anywhere/ui/resilient-form.tsx", "type": "registry:ui" }]
+    }
+  ]
+}
