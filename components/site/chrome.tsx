@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site";
 import { components } from "@/lib/registry";
+import { ThemeToggle } from "@/registry/anywhere/ui/theme-toggle";
 
 export function SiteHeader() {
   return (
@@ -20,16 +21,28 @@ export function SiteHeader() {
           Components
         </Link>
 
-        <span className="ms-auto hidden text-neutral-500 sm:inline dark:text-neutral-500">
+        <span className="ms-auto hidden text-neutral-500 lg:inline dark:text-neutral-500">
           {components.length} components · 0 dependencies
         </span>
 
         <a
           href={siteConfig.repo}
-          className="text-neutral-600 underline-offset-4 hover:underline dark:text-neutral-400"
+          className="ms-auto text-neutral-600 underline-offset-4 hover:underline lg:ms-0 dark:text-neutral-400"
         >
           GitHub
         </a>
+
+        {/*
+          The library's own ThemeToggle, running the site it documents.
+
+          Not only dogfooding: ThemeToggle's job is to own `.dark` on the
+          document, so the /components page — which previews all 87 components,
+          this one among them — would otherwise have its theme set by a preview
+          while every other page ignored it. Mounting the real toggle in the
+          chrome makes the whole site follow one coherent theme, and makes the
+          preview on that page genuinely the control that drives it.
+        */}
+        <ThemeToggle />
       </nav>
     </header>
   );
