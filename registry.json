@@ -8,90 +8,1587 @@
       "type": "registry:lib",
       "title": "cn",
       "description": "Zero-dependency class name joiner.",
-      "files": [{ "path": "registry/anywhere/lib/cn.ts", "type": "registry:lib" }]
+      "tier": "xs",
+      "files": [
+        {
+          "path": "registry/anywhere/lib/cn.ts",
+          "type": "registry:lib"
+        }
+      ]
     },
     {
       "name": "use-network",
       "type": "registry:hook",
       "title": "useNetwork",
       "description": "Observe online state, Save-Data, and connection quality without hydration mismatches.",
-      "files": [{ "path": "registry/anywhere/lib/use-network.ts", "type": "registry:hook" }]
+      "tier": "sm",
+      "files": [
+        {
+          "path": "registry/anywhere/lib/use-network.ts",
+          "type": "registry:hook"
+        }
+      ]
     },
     {
       "name": "locale",
       "type": "registry:lib",
       "title": "Locale facts",
       "description": "Writing direction, calendar, numbering system, and first day of week for any BCP 47 tag.",
-      "files": [{ "path": "registry/anywhere/lib/locale.ts", "type": "registry:lib" }]
+      "tier": "sm",
+      "files": [
+        {
+          "path": "registry/anywhere/lib/locale.ts",
+          "type": "registry:lib"
+        }
+      ]
     },
     {
       "name": "use-locale",
       "type": "registry:hook",
       "title": "LocaleProvider / useLocale",
       "description": "Share resolved locale facts through a subtree.",
-      "registryDependencies": ["locale"],
-      "files": [{ "path": "registry/anywhere/lib/use-locale.tsx", "type": "registry:hook" }]
+      "tier": "sm",
+      "registryDependencies": [
+        "locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/lib/use-locale.tsx",
+          "type": "registry:hook"
+        }
+      ]
     },
     {
       "name": "announce",
       "type": "registry:lib",
       "title": "announce",
       "description": "Shared ARIA live regions that screen readers actually read.",
-      "files": [{ "path": "registry/anywhere/lib/announce.ts", "type": "registry:lib" }]
+      "tier": "sm",
+      "files": [
+        {
+          "path": "registry/anywhere/lib/announce.ts",
+          "type": "registry:lib"
+        }
+      ]
     },
     {
       "name": "format",
       "type": "registry:lib",
       "title": "Intl formatters",
       "description": "Memoised Intl formatters plus relative-time formatting.",
-      "files": [{ "path": "registry/anywhere/lib/format.ts", "type": "registry:lib" }]
+      "tier": "sm",
+      "files": [
+        {
+          "path": "registry/anywhere/lib/format.ts",
+          "type": "registry:lib"
+        }
+      ]
     },
     {
       "name": "draft-storage",
       "type": "registry:lib",
       "title": "Draft storage",
       "description": "Persist in-progress form input, excluding credentials and payment fields.",
-      "files": [{ "path": "registry/anywhere/lib/draft-storage.ts", "type": "registry:lib" }]
+      "tier": "sm",
+      "files": [
+        {
+          "path": "registry/anywhere/lib/draft-storage.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "sanitize",
+      "type": "registry:lib",
+      "title": "sanitizeHref",
+      "description": "Neutralise javascript: and other executable URL schemes before they reach an href or src.",
+      "tier": "xs",
+      "files": [
+        {
+          "path": "registry/anywhere/lib/sanitize.ts",
+          "type": "registry:lib"
+        }
+      ]
     },
     {
       "name": "async-boundary",
       "type": "registry:ui",
       "title": "AsyncBoundary",
-      "description": "Loading, error, empty, and offline states — announced, focus-managed, and shift-free.",
-      "registryDependencies": ["cn", "announce", "use-network", "use-locale"],
-      "files": [{ "path": "registry/anywhere/ui/async-boundary.tsx", "type": "registry:ui" }]
+      "description": "Loading, error, empty, and offline states \u2014 announced, focus-managed, and shift-free.",
+      "tier": "lg",
+      "registryDependencies": [
+        "cn",
+        "announce",
+        "use-network",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/async-boundary.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "connection-status",
       "type": "registry:ui",
       "title": "ConnectionStatus",
       "description": "A live banner for offline, restored, and constrained connections.",
-      "registryDependencies": ["cn", "use-network", "use-locale"],
-      "files": [{ "path": "registry/anywhere/ui/connection-status.tsx", "type": "registry:ui" }]
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "use-network",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/connection-status.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "adaptive-image",
       "type": "registry:ui",
       "title": "AdaptiveImage",
       "description": "An image that defers its own download on Save-Data and 2G-class connections.",
-      "registryDependencies": ["cn", "use-network", "use-locale"],
-      "files": [{ "path": "registry/anywhere/ui/adaptive-image.tsx", "type": "registry:ui" }]
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "use-network",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/adaptive-image.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "field",
       "type": "registry:ui",
       "title": "Field",
       "description": "A text field with label, description, and error wired to assistive technology.",
-      "registryDependencies": ["cn"],
-      "files": [{ "path": "registry/anywhere/ui/field.tsx", "type": "registry:ui" }]
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "resilient-form",
       "type": "registry:ui",
       "title": "ResilientForm",
       "description": "A form that keeps drafts, queues offline submits, and gives errors a focusable summary.",
-      "registryDependencies": ["cn", "announce", "draft-storage", "use-network", "use-locale"],
-      "files": [{ "path": "registry/anywhere/ui/resilient-form.tsx", "type": "registry:ui" }]
+      "tier": "lg",
+      "registryDependencies": [
+        "cn",
+        "announce",
+        "draft-storage",
+        "use-network",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/resilient-form.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "error-boundary",
+      "type": "registry:ui",
+      "title": "ErrorBoundary",
+      "description": "Contains a render crash to its own subtree instead of the whole page, with a focusable, announced fallback.",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "announce"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/error-boundary.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "visually-hidden",
+      "type": "registry:ui",
+      "title": "VisuallyHidden",
+      "description": "Content for assistive technology only, removed from the visual layout without leaving the accessibility tree.",
+      "tier": "xs",
+      "files": [
+        {
+          "path": "registry/anywhere/ui/visually-hidden.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "A single keyboard key, styled and marked up as one.",
+      "tier": "xs",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "divider",
+      "type": "registry:ui",
+      "title": "Divider",
+      "description": "A horizontal or vertical rule, with an optional inline label.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/divider.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "use-focus-trap",
+      "type": "registry:hook",
+      "title": "useFocusTrap",
+      "description": "Traps Tab/Shift+Tab inside a container and restores focus on exit \u2014 what makes a modal actually modal for keyboard users.",
+      "tier": "sm",
+      "files": [
+        {
+          "path": "registry/anywhere/lib/use-focus-trap.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "A small status label where color never carries meaning alone.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "status-dot",
+      "type": "registry:ui",
+      "title": "StatusDot",
+      "description": "A coloured status indicator with an always-present text label.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/status-dot.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "A person's picture, or script-aware initials when there is none.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar-group",
+      "type": "registry:ui",
+      "title": "AvatarGroup",
+      "description": "An overlapping avatar stack with an accessible overflow indicator.",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/avatar-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chip",
+      "type": "registry:ui",
+      "title": "Chip",
+      "description": "A dismissible tag with a real accessible name for its remove action.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/chip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "A bordered content container with header, title, and description parts.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "container",
+      "type": "registry:ui",
+      "title": "Container",
+      "description": "A centred, max-width content column.",
+      "tier": "xs",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/container.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "A static in-flow message, polite or assertive by tone.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress-bar",
+      "type": "registry:ui",
+      "title": "ProgressBar",
+      "description": "A determinate or indeterminate progress bar with a real accessible value.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/progress-bar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "A loading indicator announced once via role=status.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn",
+        "visually-hidden"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "A placeholder shape that reserves space for content that has not arrived yet.",
+      "tier": "xs",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "relative-time",
+      "type": "registry:ui",
+      "title": "RelativeTime",
+      "description": "Live, localised relative time (\"3 days ago\") with the exact timestamp always available.",
+      "tier": "md",
+      "registryDependencies": [
+        "format",
+        "locale",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/relative-time.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "plural-text",
+      "type": "registry:ui",
+      "title": "PluralText",
+      "description": "Grammatically correct plural forms via Intl.PluralRules, not an English if/else.",
+      "tier": "sm",
+      "registryDependencies": [
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/plural-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "list-text",
+      "type": "registry:ui",
+      "title": "ListText",
+      "description": "\"A, B, and C\" formatted correctly for the current locale via Intl.ListFormat.",
+      "tier": "md",
+      "registryDependencies": [
+        "format",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/list-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "currency-text",
+      "type": "registry:ui",
+      "title": "CurrencyText",
+      "description": "Locale- and currency-correct money formatting via Intl.NumberFormat.",
+      "tier": "md",
+      "registryDependencies": [
+        "format",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/currency-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:ui",
+      "title": "EmptyState",
+      "description": "A placeholder for a list, table, or panel with nothing in it yet.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/empty-state.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A hover/focus label bound with aria-describedby, keyboard accessible.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A binary toggle built on role=switch, not a disguised checkbox.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A checkbox with a real, clickable, bound label.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "RadioGroup",
+      "description": "A fieldset/legend group of real radio inputs.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "A native range input with an RTL-correct thumb direction.",
+      "tier": "md",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "rating",
+      "type": "registry:ui",
+      "title": "Rating",
+      "description": "A star rating, read-only or editable, announced as one value.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/rating.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Collapsible sections built on the WAI-ARIA Accordion pattern.",
+      "tier": "md",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Keyboard-navigable tabs whose arrow-key direction flips correctly under RTL.",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "A landmark trail with the current page marked aria-current.",
+      "tier": "sm",
+      "registryDependencies": [
+        "sanitize",
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Page controls with locale-correct numerals.",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stepper",
+      "type": "registry:ui",
+      "title": "Stepper",
+      "description": "A wizard's progress, with each step's status in its accessible name.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/stepper.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "copy-button",
+      "type": "registry:ui",
+      "title": "CopyButton",
+      "description": "Copies to the clipboard and announces success.",
+      "tier": "sm",
+      "registryDependencies": [
+        "announce",
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/copy-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "share-button",
+      "type": "registry:ui",
+      "title": "ShareButton",
+      "description": "Web Share API with a plain-link fallback.",
+      "tier": "sm",
+      "registryDependencies": [
+        "sanitize",
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/share-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "portal",
+      "type": "registry:ui",
+      "title": "Portal",
+      "description": "Renders children into document.body, deferred to a client-only mount.",
+      "tier": "xs",
+      "files": [
+        {
+          "path": "registry/anywhere/ui/portal.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "use-hydrated"
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A modal with a focus trap, Escape to close, and focus returned on exit.",
+      "tier": "lg",
+      "registryDependencies": [
+        "use-focus-trap",
+        "cn",
+        "use-locale",
+        "portal"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "A modal panel anchored to a screen edge, using logical start/end sides.",
+      "tier": "lg",
+      "registryDependencies": [
+        "use-focus-trap",
+        "cn",
+        "use-locale",
+        "portal"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "ToastProvider / useToast",
+      "description": "A toast queue with correctly-timed live regions.",
+      "tier": "lg",
+      "registryDependencies": [
+        "cn",
+        "portal"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/toast.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "A disclosure panel that closes on outside click and Escape.",
+      "tier": "md",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "menu",
+      "type": "registry:ui",
+      "title": "Menu",
+      "description": "A dropdown menu following the WAI-ARIA Menu Button pattern.",
+      "tier": "md",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "theme-toggle",
+      "type": "registry:ui",
+      "title": "ThemeToggle",
+      "description": "A light/dark/system toggle that persists its choice.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn",
+        "use-stored-value"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/theme-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "locale-switcher",
+      "type": "registry:ui",
+      "title": "LocaleSwitcher",
+      "description": "A native, per-option lang-tagged language switcher.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/locale-switcher.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "back-to-top",
+      "type": "registry:ui",
+      "title": "BackToTop",
+      "description": "Appears after scrolling a screenful; honours reduced motion.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/back-to-top.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-progress",
+      "type": "registry:ui",
+      "title": "ScrollProgress",
+      "description": "A reading-progress bar with a real accessible value.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/scroll-progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "timeline",
+      "type": "registry:ui",
+      "title": "Timeline",
+      "description": "A vertical event sequence marked up as a real ordered list.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/timeline.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stat-card",
+      "type": "registry:ui",
+      "title": "StatCard",
+      "description": "A single KPI figure with an optional trend line.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/stat-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "search-field",
+      "type": "registry:ui",
+      "title": "SearchField",
+      "description": "A search input with a clear button that returns focus correctly.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/search-field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tag-input",
+      "type": "registry:ui",
+      "title": "TagInput",
+      "description": "A free-text tag list that announces additions and removals.",
+      "tier": "md",
+      "registryDependencies": [
+        "announce",
+        "cn",
+        "chip"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/tag-input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "password-field",
+      "type": "registry:ui",
+      "title": "PasswordField",
+      "description": "A password field with an accessible visibility toggle and strength meter.",
+      "tier": "md",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/password-field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "otp-input",
+      "type": "registry:ui",
+      "title": "OtpInput",
+      "description": "One-time-code entry wired for platform SMS autofill.",
+      "tier": "md",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/otp-input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "number-field",
+      "type": "registry:ui",
+      "title": "NumberField",
+      "description": "A numeric field with increment/decrement buttons for motor-impaired users.",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/number-field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "honeypot-field",
+      "type": "registry:ui",
+      "title": "HoneypotField",
+      "description": "A bot trap invisible to real users without trapping keyboard or screen reader users.",
+      "tier": "sm",
+      "registryDependencies": [
+        "visually-hidden"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/honeypot-field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "consent-banner",
+      "type": "registry:ui",
+      "title": "ConsentBanner",
+      "description": "A cookie banner where decline is exactly as easy to press as accept.",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "use-stored-value"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/consent-banner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "reduced-motion-toggle",
+      "type": "registry:ui",
+      "title": "ReducedMotionToggle",
+      "description": "An in-page opt-in to reduced motion, for people who never touch OS settings.",
+      "tier": "sm",
+      "registryDependencies": [
+        "switch",
+        "use-stored-value"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/reduced-motion-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "data-saver-toggle",
+      "type": "registry:ui",
+      "title": "DataSaverToggle",
+      "description": "A manual override for the library's constrained-connection behaviour.",
+      "tier": "sm",
+      "registryDependencies": [
+        "switch",
+        "use-stored-value"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/data-saver-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "accessibility-menu",
+      "type": "registry:ui",
+      "title": "AccessibilityMenu",
+      "description": "One panel for larger text and higher contrast.",
+      "tier": "md",
+      "registryDependencies": [
+        "popover",
+        "switch",
+        "use-stored-value"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/accessibility-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table-of-contents",
+      "type": "registry:ui",
+      "title": "TableOfContents",
+      "description": "A jump-list that tracks the visible heading via IntersectionObserver.",
+      "tier": "sm",
+      "registryDependencies": [
+        "sanitize",
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/table-of-contents.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:ui",
+      "title": "CodeBlock",
+      "description": "A code sample, always left-to-right regardless of page direction, with copy.",
+      "tier": "md",
+      "registryDependencies": [
+        "copy-button",
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/code-block.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "quote-block",
+      "type": "registry:ui",
+      "title": "QuoteBlock",
+      "description": "A real blockquote/cite pair, not a styled div.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/quote-block.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "A native select \u2014 fully accessible, in every language, at zero extra bytes.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "virtual-list",
+      "type": "registry:ui",
+      "title": "VirtualList",
+      "description": "Renders only visible rows plus overscan, for smooth scrolling on low-end devices.",
+      "tier": "md",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/virtual-list.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "A real, sortable table screen readers can navigate by row and column.",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "keyboard-shortcuts-help",
+      "type": "registry:ui",
+      "title": "KeyboardShortcutsHelp",
+      "description": "A shortcut reference dialog inheriting the focus trap every overlay gets.",
+      "tier": "md",
+      "registryDependencies": [
+        "dialog",
+        "kbd"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/keyboard-shortcuts-help.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "command-palette",
+      "type": "registry:ui",
+      "title": "CommandPalette",
+      "description": "A keyboard-first fuzzy launcher following the ARIA combobox pattern.",
+      "tier": "lg",
+      "registryDependencies": [
+        "use-focus-trap",
+        "cn",
+        "portal"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/command-palette.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "file-upload",
+      "type": "registry:ui",
+      "title": "FileUpload",
+      "description": "A drag-and-drop zone that is a real keyboard-activatable button first.",
+      "tier": "md",
+      "registryDependencies": [
+        "announce",
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/file-upload.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "infinite-scroll",
+      "type": "registry:ui",
+      "title": "InfiniteScroll",
+      "description": "Loads more content near the viewport, and refuses to on constrained connections.",
+      "tier": "md",
+      "registryDependencies": [
+        "use-network",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/infinite-scroll.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "lazy-mount",
+      "type": "registry:ui",
+      "title": "LazyMount",
+      "description": "Defers mounting expensive children until visible, sooner on good connections.",
+      "tier": "sm",
+      "registryDependencies": [
+        "use-network"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/lazy-mount.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "ContextMenu",
+      "description": "A right-click menu also reachable via the keyboard Menu key.",
+      "tier": "md",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "navbar",
+      "type": "registry:ui",
+      "title": "Navbar",
+      "description": "A labelled nav landmark with the current page marked aria-current.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/navbar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "footer",
+      "type": "registry:ui",
+      "title": "Footer",
+      "description": "A simple site footer with locale-aware link list.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/footer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "A landmark navigation column with a logical-side active indicator.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "directional-icon",
+      "type": "registry:ui",
+      "title": "DirectionalIcon",
+      "description": "Mirrors a directional icon (arrows, chevrons) under RTL.",
+      "tier": "xs",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/directional-icon.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "masonry-grid",
+      "type": "registry:ui",
+      "title": "MasonryGrid",
+      "description": "A zero-JS masonry layout via CSS columns.",
+      "tier": "xs",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/masonry-grid.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "A month grid in the reader's own calendar system and week start.",
+      "tier": "lg",
+      "registryDependencies": [
+        "locale",
+        "use-locale",
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "time-field",
+      "type": "registry:ui",
+      "title": "TimeField",
+      "description": "A native time input matching the platform's own 12/24-hour convention.",
+      "tier": "md",
+      "registryDependencies": [
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/time-field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "A searchable single-select following the ARIA combobox pattern.",
+      "tier": "md",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "multi-select",
+      "type": "registry:ui",
+      "title": "MultiSelect",
+      "description": "A real multi-select control rendered as removable chips plus toggle buttons.",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "chip"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/multi-select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "disclosure",
+      "type": "registry:ui",
+      "title": "Disclosure",
+      "description": "A single collapsible section.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/disclosure.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "print-button",
+      "type": "registry:ui",
+      "title": "PrintButton",
+      "description": "A button that prints the page.",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/print-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "countdown",
+      "type": "registry:ui",
+      "title": "Countdown",
+      "description": "A live countdown with locale-correct digits.",
+      "tier": "sm",
+      "registryDependencies": [
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/countdown.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "unit-text",
+      "type": "registry:ui",
+      "title": "UnitText",
+      "description": "Locale-correct unit formatting (distance, data, temperature) via Intl.NumberFormat.",
+      "tier": "md",
+      "registryDependencies": [
+        "format",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/unit-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "live-region",
+      "type": "registry:ui",
+      "title": "LiveRegion",
+      "description": "A declarative live region for components that track their own message as state.",
+      "tier": "sm",
+      "registryDependencies": [
+        "visually-hidden"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/live-region.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skip-link",
+      "type": "registry:ui",
+      "title": "SkipLink",
+      "description": "The page's first focusable element, visible only once focused.",
+      "tier": "sm",
+      "registryDependencies": [
+        "sanitize",
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/skip-link.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "use-stored-value",
+      "type": "registry:hook",
+      "title": "useStoredValue",
+      "description": "A localStorage-backed string via useSyncExternalStore, with no wasted render correcting a server-rendered default.",
+      "tier": "sm",
+      "files": [
+        {
+          "path": "registry/anywhere/lib/use-stored-value.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-hydrated",
+      "type": "registry:hook",
+      "title": "useHydrated",
+      "description": "True once the client has taken over from server-rendered markup \u2014 the useSyncExternalStore replacement for the useEffect 'mounted' idiom.",
+      "tier": "xs",
+      "files": [
+        {
+          "path": "registry/anywhere/lib/use-hydrated.ts",
+          "type": "registry:hook"
+        }
+      ]
     }
   ]
 }
