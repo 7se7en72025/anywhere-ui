@@ -2,7 +2,7 @@
 
 **React components that work anywhere.** Any device. Any network. Any language. Any ability.
 
-87 components and 11 shared primitives engineered for the conditions most component libraries are never tested against — and verified against **ten axes**, in CI, not just claimed in this README.
+98 components and 11 shared primitives engineered for the conditions most component libraries are never tested against — and verified against **ten axes**, in CI, not just claimed in this README.
 
 - **Zero runtime dependencies.** `react` (and its own `react-dom`) are the only imports allowed anywhere in the registry — enforced by a test, not a promise.
 - **Every component asserted against axe** in every one of its states, plus the things axe cannot see.
@@ -39,7 +39,7 @@ Anywhere UI is what those fixes look like when someone has time to do them prope
 
 ## Components
 
-87 components across eight categories. The docs site has a page for every one of them — a live preview, the install command, the full source, and the budget it is held to — plus search and category filters at `/components`. A few of the flagships:
+98 components across eight categories. The docs site has a page for every one of them — a live preview, the install command, the full source, and the budget it is held to — plus search and category filters at `/components`. A few of the flagships:
 
 | Component | What it solves |
 |---|---|
@@ -48,6 +48,9 @@ Anywhere UI is what those fixes look like when someone has time to do them prope
 | `ErrorBoundary` | Contains a render crash to its own subtree, with an announced, focusable, recoverable fallback — the rest of the page keeps working. |
 | `AdaptiveImage` | Refuses to spend a user's data on Save-Data and 2G-class connections until they ask. `width`/`height` mandatory, so nothing shifts. |
 | `Calendar` | A month grid in the reader's own calendar system — `islamic-umalqura`, `buddhist`, `persian` — and their own week start. |
+| `AddressFields` | An address form whose field order and required fields follow the country being addressed — Japan asks postal-code-first, largest to smallest. |
+| `CompactNumber` | 1.2M in English, 12.3 लाख in Hindi, ١٫٢ مليون in Arabic. A hardcoded K/M/B ladder is wrong for most of the world. |
+| `SegmentedControl` | A real radiogroup with roving tabindex, so it is one tab stop and arrow keys move within it — and arrows follow writing direction. |
 | `VirtualList` | Renders only visible rows plus overscan, for smooth scrolling on low-end devices. |
 | `CommandPalette` | A keyboard-first fuzzy launcher following the ARIA combobox pattern. |
 | `Field` | A text field with label, description, and error actually wired to assistive technology. |

@@ -1676,6 +1676,211 @@
           "type": "registry:hook"
         }
       ]
+    },
+    {
+      "name": "compact-number",
+      "type": "registry:ui",
+      "title": "CompactNumber",
+      "description": "A large number shortened the way the reader's locale shortens it — 1.2K, 1.2万, 12 lakh.",
+      "category": "Internationalisation",
+      "tier": "md",
+      "registryDependencies": [
+        "format",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/compact-number.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "bytes-text",
+      "type": "registry:ui",
+      "title": "BytesText",
+      "description": "A file size with a translated, locale-positioned unit, in decimal or binary.",
+      "category": "Internationalisation",
+      "tier": "md",
+      "registryDependencies": [
+        "format",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/bytes-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "ordinal-text",
+      "type": "registry:ui",
+      "title": "OrdinalText",
+      "description": "An ordinal via Intl.PluralRules — correct at 11th, and silent where suffixes do not apply.",
+      "category": "Internationalisation",
+      "tier": "sm",
+      "registryDependencies": [
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/ordinal-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "read-time",
+      "type": "registry:ui",
+      "title": "ReadTime",
+      "description": "Estimated reading time, in the locale's own digits and word order.",
+      "category": "Internationalisation",
+      "tier": "sm",
+      "registryDependencies": [
+        "format",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/read-time.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "name-fields",
+      "type": "registry:ui",
+      "title": "NameFields",
+      "description": "Given and family name inputs, ordered the way the reader's locale orders them.",
+      "category": "Forms & input",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "field",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/name-fields.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "address-fields",
+      "type": "registry:ui",
+      "title": "AddressFields",
+      "description": "An address form whose field order and required fields follow the country being addressed.",
+      "category": "Forms & input",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "field",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/address-fields.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "segmented-control",
+      "type": "registry:ui",
+      "title": "SegmentedControl",
+      "description": "A real radiogroup with roving tabindex and direction-aware arrow keys.",
+      "category": "Forms & input",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/segmented-control.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "save-status",
+      "type": "registry:ui",
+      "title": "SaveStatus",
+      "description": "The autosave indicator, announced — and distinguishing 'failed' from 'offline'.",
+      "category": "Feedback & status",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "announce",
+        "use-locale",
+        "use-network"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/save-status.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "retry-button",
+      "type": "registry:ui",
+      "title": "RetryButton",
+      "description": "A retry control with visible exponential backoff that stays disabled while offline.",
+      "category": "Feedback & status",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "announce",
+        "use-locale",
+        "use-network"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/retry-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "text-size-control",
+      "type": "registry:ui",
+      "title": "TextSizeControl",
+      "description": "In-page text scaling for low-vision readers, persisted and announced.",
+      "category": "Accessibility & preferences",
+      "tier": "lg",
+      "registryDependencies": [
+        "cn",
+        "announce",
+        "segmented-control",
+        "use-stored-value"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/text-size-control.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tree-view",
+      "type": "registry:ui",
+      "title": "TreeView",
+      "description": "A disclosure tree following the ARIA tree pattern, with one tab stop and RTL-aware arrows.",
+      "category": "Data display",
+      "tier": "lg",
+      "registryDependencies": [
+        "cn",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/tree-view.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

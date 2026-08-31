@@ -106,6 +106,17 @@ describe("size budgets", () => {
   );
 });
 
+/**
+ * Remove block and line comments so prose is never mistaken for code.
+ *
+ * Not a parser, and does not need to be: it runs over this repo's own source,
+ * where the failure mode it guards against is a doc comment quoting an import
+ * that does not exist, never a string literal containing `//`.
+ */
+function stripComments(source: string): string {
+  return source.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+}
+
 describe("dependencies", () => {
   it("ships zero runtime dependencies", () => {
     // The reason a size budget is possible at all: a single transitive
@@ -123,7 +134,10 @@ describe("dependencies", () => {
 
     for (const item of items) {
       for (const file of item.files) {
-        const source = readFileSync(join(root, file.path), "utf8");
+        // Comments are stripped first: prose can legitimately contain the
+        // words `from "…"`, and matching that as an import made a doc comment
+        // explaining a component look like a forbidden dependency.
+        const source = stripComments(readFileSync(join(root, file.path), "utf8"));
         const specifiers = [...source.matchAll(/from\s+"([^"]+)"/g)].map((m) => m[1]);
 
         for (const specifier of specifiers) {

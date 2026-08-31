@@ -86,6 +86,17 @@ import { Countdown } from "@/registry/anywhere/ui/countdown";
 import { UnitText } from "@/registry/anywhere/ui/unit-text";
 import { LiveRegion } from "@/registry/anywhere/ui/live-region";
 import { SkipLink } from "@/registry/anywhere/ui/skip-link";
+import { CompactNumber } from "@/registry/anywhere/ui/compact-number";
+import { BytesText } from "@/registry/anywhere/ui/bytes-text";
+import { OrdinalText } from "@/registry/anywhere/ui/ordinal-text";
+import { ReadTime } from "@/registry/anywhere/ui/read-time";
+import { NameFields } from "@/registry/anywhere/ui/name-fields";
+import { AddressFields } from "@/registry/anywhere/ui/address-fields";
+import { SegmentedControl } from "@/registry/anywhere/ui/segmented-control";
+import { SaveStatus } from "@/registry/anywhere/ui/save-status";
+import { RetryButton } from "@/registry/anywhere/ui/retry-button";
+import { TextSizeControl } from "@/registry/anywhere/ui/text-size-control";
+import { TreeView } from "@/registry/anywhere/ui/tree-view";
 
 /** Small stateful wrappers so controlled components have somewhere to put their state in a fixture. */
 function Stateful<T>({ initial, render }: { initial: T; render: (value: T, set: (v: T) => void) => ReactElement }) {
@@ -285,4 +296,47 @@ export const fixtures: Record<string, () => ReactElement> = {
   "unit-text": () => <UnitText value={3.2} unit="kilometer" />,
   "live-region": () => <LiveRegion message="3 results loaded" />,
   "skip-link": () => <SkipLink href="#main">Skip to content</SkipLink>,
+  "compact-number": () => <CompactNumber value={1234567} />,
+  "bytes-text": () => <BytesText bytes={5_400_000} />,
+  "ordinal-text": () => <OrdinalText value={23} />,
+  "read-time": () => <ReadTime words={1400} />,
+  "name-fields": () => <NameFields />,
+  "address-fields": () => <AddressFields region="JP" />,
+  "segmented-control": () => (
+    <Stateful
+      initial="week"
+      render={(v, set) => (
+        <SegmentedControl
+          label="Range"
+          value={v}
+          onChange={set}
+          options={[
+            { value: "day", label: "Day" },
+            { value: "week", label: "Week" },
+            { value: "month", label: "Month" },
+          ]}
+        />
+      )}
+    />
+  ),
+  "save-status": () => <SaveStatus state="saved" />,
+  "retry-button": () => <RetryButton onRetry={() => {}} />,
+  "text-size-control": () => <TextSizeControl />,
+  "tree-view": () => (
+    <TreeView
+      label="Project files"
+      defaultExpanded={["src"]}
+      nodes={[
+        {
+          id: "src",
+          label: "src",
+          children: [
+            { id: "index", label: "index.ts" },
+            { id: "ui", label: "ui", children: [{ id: "button", label: "button.tsx" }] },
+          ],
+        },
+        { id: "readme", label: "README.md" },
+      ]}
+    />
+  ),
 };
