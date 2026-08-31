@@ -114,6 +114,9 @@ draft-storage          695 B      — entire library      5469 B
 
 ## Development
 
+The registry URLs above are generated from `NEXT_PUBLIC_SITE_URL`. Set it to the
+deployment's own origin so the `shadcn add` commands on the docs site resolve.
+
 ```bash
 pnpm install
 pnpm dev              # docs site and live playground at localhost:3000
