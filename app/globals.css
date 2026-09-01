@@ -10,192 +10,207 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
-  Anywhere UI's visual language: golden-hour editorial.
+  Anywhere UI's visual language: afterglow on a mixing console.
 
-  Warm parchment canvas rather than white, ink-charcoal text rather than black,
-  hairline warm-gray borders, and colour reserved for deliberate punctuation —
-  a single midnight-wine action fill, royal violet for links alone, lilac for
-  secondary surfaces. Depth comes from layering and hairlines, never from
-  shadow stacks. Adapted from the Superhuman style reference.
+  A near-black matte canvas lit by a single dusk wash, one warm cream carrying
+  every piece of text, and colour reserved as a single-function event — one
+  coral accent and nothing else. Surfaces step by colour rather than by shadow.
+  Adapted from the Suno style reference.
 
-  The whole 87-component registry retextures from this file alone. Every
-  component already uses Tailwind's `neutral` scale for surfaces and text and a
-  single accent hue for interaction, always in those roles — so redefining what
-  those scales resolve to re-skins everything at once, and any component added
-  later inherits the system for free by using the same classes.
+  This is a dark-first system, so the site defaults to dark. Light stays a
+  real, designed mode rather than an inversion: ThemeToggle is a component this
+  library ships, and a reader who needs a light interface is exactly the kind
+  of user the library exists for.
+
+  The whole registry retextures from this file alone. Every component uses
+  Tailwind's `neutral` scale for surfaces and text and a single accent hue for
+  interaction, always in those roles, so redefining what those scales resolve
+  to re-skins all 110 at once — and anything added later inherits the system
+  for free by using the same classes.
 */
 
+/* Light mode — a daylit reading of the same palette, not an inversion. */
 :root {
-  /* Brand tokens, for anything reaching past a Tailwind utility. */
-  --color-warm-parchment: #f2f0eb;
-  --color-paper-white: #ffffff;
-  --color-ink-charcoal: #292827;
-  --color-stone-gray: #666666;
-  --color-soft-mist: #e3e3e2;
-  --color-midnight-wine: #421d24;
-  --color-royal-violet: #714cb6;
-  --color-lilac-mist: #d4c7ff;
-  --color-deep-lagoon: #0c4243;
+  --color-studio-black: #faf8f5;
+  --color-deep-anvil: #ffffff;
+  --color-warm-cream: #17171a;
+  --smoke: #5c5c60;
+  --hairline: #e6e2db;
+  --color-ember-coral: #c8256f;
 
-  --canvas: var(--color-warm-parchment);
-  --ink: var(--color-ink-charcoal);
+  --canvas: var(--color-studio-black);
+  --ink: var(--color-warm-cream);
+
+  /* Foreground for the coral fill, which stays a deep chroma in both themes. */
+  --on-accent: #ffffff;
 }
 
-/*
-  The reference is a light system, but ThemeToggle is a component this library
-  ships and this site dogfoods, so dark has to be a real, designed mode rather
-  than an inversion. It keeps the warmth: lagoon-derived grounds, parchment
-  ink, lilac lifted to carry the accent that wine cannot at low luminance.
-*/
+/* Dark mode — the reference system, and the site's default. */
 :root.dark {
-  --color-warm-parchment: #14100f;
-  --color-paper-white: #1e1a19;
-  --color-ink-charcoal: #f2f0eb;
-  --color-stone-gray: #a8a29c;
-  --color-soft-mist: #332d2b;
-  --color-midnight-wine: #d4c7ff;
-  --color-royal-violet: #c3b0f0;
-  --color-lilac-mist: #3a2f4d;
-  --color-deep-lagoon: #0c4243;
+  --color-studio-black: #101012;
+  --color-deep-anvil: #17171a;
+  --color-warm-cream: #f7f4ef;
+  --smoke: #c2c2c1;
+  --hairline: rgb(255 255 255 / 12%);
+  --color-ember-coral: #fd429c;
+
+  /* Near-black, not white. The reference puts white on this coral, which
+     measures 3.26:1 — below WCAG AA for normal text. The same coral with the
+     canvas colour on top reads at 5.82:1, so the accent is kept exactly as
+     specified and only its foreground changes. */
+  --on-accent: #101012;
 }
 
 @theme inline {
   /*
     No web fonts, by choice.
 
-    The reference specifies a variable face at weight 460 — a light cut used at
-    display sizes, which is the system's whole voice. A typical variable font
-    is 60–120 KB, several seconds on the 2G connections this library exists to
-    serve. The system stack carries the same geometric, even-stroked character,
-    and `font-variation-settings` below asks for 460 from any installed face
-    that has the axis, degrading to the nearest static weight where it does not.
+    The reference pairs Neue Montreal with an Editorial New display italic. A
+    variable face is 60–120 KB — several seconds on the 2G connections this
+    library exists to serve — and the display serif would be a second file on
+    top. The system stack carries the same compact grotesk character, and the
+    editorial voice below uses serif faces already on the reader's machine.
   */
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
     "Noto Sans", "Noto Sans Arabic", "Noto Sans Devanagari", sans-serif;
   --font-mono:
     ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --font-editorial: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Noto Serif", serif;
 
   /*
-    Surfaces and text. Tailwind's `neutral` scale is cool grey; every component
-    in the registry uses it, so warming it here is what turns the whole library
-    editorial. Light and dark both resolve through the brand tokens above.
+    Surfaces and text. The registry's `neutral` scale is remapped so the whole
+    library sits on the studio canvas: 50 is the page, 100–300 are card wells
+    and hairlines, 900 is the warm cream foreground.
   */
-  --color-neutral-50: var(--color-warm-parchment);
-  --color-neutral-100: color-mix(in oklab, var(--color-soft-mist) 55%, var(--color-warm-parchment));
-  --color-neutral-200: var(--color-soft-mist);
-  --color-neutral-300: color-mix(in oklab, var(--color-soft-mist) 70%, var(--color-stone-gray));
-  --color-neutral-400: color-mix(in oklab, var(--color-stone-gray) 70%, var(--color-soft-mist));
-  --color-neutral-500: var(--color-stone-gray);
-  --color-neutral-600: var(--color-stone-gray);
-  --color-neutral-700: color-mix(in oklab, var(--color-ink-charcoal) 75%, var(--color-stone-gray));
-  --color-neutral-800: color-mix(in oklab, var(--color-ink-charcoal) 88%, var(--color-stone-gray));
-  --color-neutral-900: var(--color-ink-charcoal);
-  --color-neutral-950: var(--color-ink-charcoal);
+  --color-neutral-50: var(--color-studio-black);
+  --color-neutral-100: var(--color-deep-anvil);
+  --color-neutral-200: var(--hairline);
+  --color-neutral-300: var(--hairline);
+  --color-neutral-400: var(--smoke);
+  --color-neutral-500: var(--smoke);
+  --color-neutral-600: var(--smoke);
+  --color-neutral-700: color-mix(in oklab, var(--color-warm-cream) 70%, var(--smoke));
+  --color-neutral-800: var(--color-deep-anvil);
+  --color-neutral-900: var(--color-warm-cream);
+  --color-neutral-950: var(--color-studio-black);
 
   /*
-    The single interactive accent. Every `bg-blue-600`, `text-blue-700`, and
-    `focus-visible:outline-blue-600` in the registry resolves to midnight wine —
-    the reference's one chromatic action fill.
+    The single accent. Every `bg-blue-600`, `text-blue-700`, and
+    `focus-visible:outline-blue-600` in the registry resolves to ember coral.
+
+    One deliberate departure from the reference, which reserves coral for
+    exactly one element per screen: a component library needs one consistent
+    focus colour, and a focus ring in any other hue would mean the system has
+    two accents. Coral therefore carries focus and primary actions — and
+    nothing else in the library is chromatic at all.
   */
-  --color-blue-50: color-mix(in oklab, var(--color-lilac-mist) 40%, var(--color-warm-parchment));
-  --color-blue-100: var(--color-lilac-mist);
-  --color-blue-200: color-mix(in oklab, var(--color-lilac-mist) 80%, var(--color-midnight-wine));
-  --color-blue-300: color-mix(in oklab, var(--color-lilac-mist) 55%, var(--color-midnight-wine));
-  --color-blue-400: var(--color-royal-violet);
-  --color-blue-500: var(--color-royal-violet);
-  --color-blue-600: var(--color-midnight-wine);
-  --color-blue-700: var(--color-midnight-wine);
-  --color-blue-800: var(--color-midnight-wine);
-  --color-blue-900: var(--color-midnight-wine);
-  --color-blue-950: var(--color-midnight-wine);
+  --color-blue-50: color-mix(in oklab, var(--color-ember-coral) 12%, var(--color-studio-black));
+  --color-blue-100: color-mix(in oklab, var(--color-ember-coral) 20%, var(--color-studio-black));
+  --color-blue-200: color-mix(in oklab, var(--color-ember-coral) 35%, var(--color-studio-black));
+  --color-blue-300: color-mix(in oklab, var(--color-ember-coral) 55%, var(--color-studio-black));
+  --color-blue-400: color-mix(in oklab, var(--color-ember-coral) 75%, var(--color-studio-black));
+  --color-blue-500: var(--color-ember-coral);
+  --color-blue-600: var(--color-ember-coral);
+  --color-blue-700: var(--color-ember-coral);
+  --color-blue-800: var(--color-ember-coral);
+  --color-blue-900: var(--color-ember-coral);
+  --color-blue-950: var(--color-ember-coral);
 
-  /* Brand colours as utilities, for the site's own editorial chrome. */
-  --color-wine: var(--color-midnight-wine);
-  --color-violet-link: var(--color-royal-violet);
-  --color-lilac: var(--color-lilac-mist);
-  --color-lagoon: var(--color-deep-lagoon);
-  --color-parchment: var(--color-warm-parchment);
-  --color-paper: var(--color-paper-white);
-  --color-ink: var(--color-ink-charcoal);
-  --color-stone: var(--color-stone-gray);
-  --color-mist: var(--color-soft-mist);
+  /* Brand colours as utilities, for the site's own chrome. */
+  --color-canvas: var(--color-studio-black);
+  --color-anvil: var(--color-deep-anvil);
+  --color-cream: var(--color-warm-cream);
+  --color-hairline: var(--hairline);
+  --color-smoke: var(--smoke);
+  --color-coral: var(--color-ember-coral);
+  --color-on-accent: var(--on-accent);
 
   /*
-    Radius: 16px on cards and buttons, 8px on tabs and small controls, pills
-    fully round. The registry already uses `rounded-md` for small controls and
-    `rounded-lg`/`rounded-xl` for containers, so those two tiers carry it.
+    The radius vocabulary is exactly four values: 6px for controls, 12px for
+    cards and inputs, 20px for image tiles, 24px for hero-scale artwork. The
+    registry already uses `rounded-md` for controls and `rounded-lg`/`-xl` for
+    surfaces, so those tiers carry it with nothing to change per component.
   */
   --radius: 4px;
   --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
-  --radius-xl: 16px;
-  --radius-2xl: 16px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+  --radius-xl: 12px;
+  --radius-2xl: 20px;
   --radius-3xl: 24px;
 
   /*
-    Depth comes from layering and hairlines, not elevation stacks. The
-    registry's overlays still need to read as lifted off the page, so these
-    stay deliberately faint — a hairline ring plus a soft, warm-tinted spread.
+    Matte and low-elevation: surfaces step by colour, not by shadow. The one
+    ambient drop shadow is reserved for genuinely floating tiles, which is what
+    the registry's overlays are.
   */
-  --shadow-sm: 0 1px 2px rgb(41 40 39 / 5%);
-  --shadow-lg: 0 0 0 1px rgb(41 40 39 / 6%), 0 8px 24px rgb(41 40 39 / 8%);
-  --shadow-xl: 0 0 0 1px rgb(41 40 39 / 6%), 0 16px 48px rgb(41 40 39 / 12%);
+  --shadow-sm: none;
+  --shadow-lg: 0 0 0 1px rgb(255 255 255 / 6%), 0 12px 32px rgb(0 0 0 / 20%);
+  --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 25%);
 
   /*
-    The editorial type scale. Display sizes track tight and sit at weight 460 —
-    the reference's signature: a light cut at 48–64px reads as confidence
-    rather than thinness, because the parchment canvas gives it enough contrast.
+    A compact type scale living in a narrow middle band, with display sizes
+    tracking hard — the reference's signature move, where large text behaves as
+    architectural mass rather than as copy.
   */
   --text-caption: 0.75rem;
   --text-caption--line-height: 1.5;
   --text-body-sm: 0.875rem;
-  --text-body-sm--line-height: 1.5;
+  --text-body-sm--line-height: 1.55;
   --text-body: 1rem;
   --text-body--line-height: 1.5;
-  --text-body-lg: 1.1875rem;
+  --text-body-lg: 1.125rem;
   --text-body-lg--line-height: 1.5;
-  --text-subheading: 1.625rem;
-  --text-subheading--line-height: 1.3;
-  --text-subheading--letter-spacing: -0.014em;
-  --text-heading-sm: 1.75rem;
-  --text-heading-sm--line-height: 1.14;
-  --text-heading-sm--letter-spacing: -0.022em;
-  --text-heading: 2.25rem;
-  --text-heading--line-height: 1.1;
-  --text-heading--letter-spacing: -0.025em;
-  --text-heading-lg: 3.0625rem;
-  --text-heading-lg--line-height: 1.2;
-  --text-heading-lg--letter-spacing: -0.027em;
-  --text-display: 4rem;
-  --text-display--line-height: 0.96;
-  --text-display--letter-spacing: -0.028em;
+  --text-subheading: 1.25rem;
+  --text-subheading--line-height: 1.4;
+  --text-subheading--letter-spacing: -0.013em;
+  --text-heading-sm: 1.5rem;
+  --text-heading-sm--line-height: 1.33;
+  --text-heading-sm--letter-spacing: -0.013em;
+  --text-heading: 2.5rem;
+  --text-heading--line-height: 1.14;
+  --text-heading--letter-spacing: -0.026em;
+  --text-heading-lg: 4.5rem;
+  --text-heading-lg--line-height: 1;
+  --text-heading-lg--letter-spacing: -0.026em;
+  --text-display: 7rem;
+  --text-display--line-height: 0.87;
+  --text-display--letter-spacing: -0.026em;
 }
 
 body {
   background: var(--canvas);
   color: var(--ink);
-  /* Ask for the reference's 460 cut from any installed variable face; static
-     faces ignore the axis and fall back to their nearest weight. */
-  font-variation-settings: "wght" 460;
+  /* The reference's default is a light cut; 340 where the face has the axis. */
+  font-variation-settings: "wght" 340;
 }
 
-/*
-  Display type speaks at 460, not 700 — the system's signature voice. Applied
-  by element so every heading inherits it without each page restating it.
-*/
 h1,
 h2,
 h3 {
-  font-variation-settings: "wght" 460;
-  font-weight: 460;
+  font-variation-settings: "wght" 340;
+  font-weight: 340;
+}
+
+/*
+  The one gradient in the system: a warm dusk wash, reserved for the hero and
+  at most one atmospheric interstitial. Never on a card, a button, or any UI
+  surface.
+*/
+.dusk-wash {
+  background-image: radial-gradient(
+    ellipse at 30% 20%,
+    #d4622a 0%,
+    #8a2a3a 45%,
+    #1a0a0e 100%
+  );
 }
 
 /* A visible focus ring everywhere, on every theme. Removing focus outlines is
    the most common single act of accessibility damage on the web. */
 :focus-visible {
-  outline: 2px solid var(--color-royal-violet);
+  outline: 2px solid var(--color-ember-coral);
   outline-offset: 2px;
 }
 

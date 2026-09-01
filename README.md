@@ -119,7 +119,7 @@ Resolve the locale on the server. Reading `navigator.language` during render cau
 Claims in this README are assertions in the test suite, not aspirations.
 
 ```bash
-pnpm verify   # typecheck, lint, and the full test suite (633 tests)
+pnpm verify   # typecheck, lint, and the full test suite (856 tests)
 ```
 
 - `tests/budget.test.ts` — performance and supply chain: bundles and gzips every item with React external against its tier budget, and scans imports.
@@ -128,7 +128,7 @@ pnpm verify   # typecheck, lint, and the full test suite (633 tests)
 - `tests/static-scan.test.ts` — privacy, security, and sensory safety: source-level scans plus `sanitizeHref` unit tests.
 - `tests/resilience.test.tsx` — resilience: `ErrorBoundary` containment, announcement, and recovery.
 - `tests/locale.test.ts` — internationalisation: direction, calendar, week start, and a formatting smoke test across all 20 locales the docs offer, spanning RTL scripts, non-Gregorian calendars, non-Latin digits, and lakh and ten-thousand grouping.
-- `tests/locale-forms.test.tsx` — the two components whose correctness lives in a hand-maintained table rather than in `Intl`: `AddressFields` (43 countries) and `NameFields` (name order).
+- `tests/locale-forms.test.tsx` — the components whose correctness lives in a hand-maintained table rather than in `Intl`: `AddressFields` (43 countries), `NameFields` (name order), and `ErrorSummary`'s pluralisation.
 - `tests/components.test.tsx`, `tests/draft-storage.test.ts` — component behaviour and offline handling, including that passwords, payment fields, and one-time codes are never written to disk.
 
 `components/demos.tsx` is what makes this scale: one minimal render per component feeds every generic check above, so adding a component costs one fixture entry, not a bespoke test file per axis.

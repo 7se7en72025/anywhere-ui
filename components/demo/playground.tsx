@@ -342,8 +342,8 @@ export function Playground() {
             note="On Save-Data or 2G it refuses to spend the user's data until they ask."
           >
             <AdaptiveImage
-              src="/demo/photo.svg"
-              alt="A wide landscape illustration"
+              src="/demo/voyage.svg"
+              alt="A small ship sailing toward the horizon at sunset"
               width={640}
               height={360}
               loadLabel="Load image"

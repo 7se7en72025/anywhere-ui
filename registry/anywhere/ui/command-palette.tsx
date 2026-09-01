@@ -101,7 +101,7 @@ export function CommandPalette({ open, onClose, commands, label = "Command palet
                 onClick={() => run(command)}
                 className={cn(
                   "cursor-pointer rounded-md px-3 py-2 text-sm",
-                  index === activeIndex ? "bg-blue-600 text-white" : "hover:bg-neutral-100 dark:hover:bg-neutral-800",
+                  index === activeIndex ? "bg-blue-600 text-on-accent" : "hover:bg-neutral-100 dark:hover:bg-neutral-800",
                 )}
               >
                 {command.label}

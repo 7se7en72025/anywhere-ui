@@ -29,7 +29,7 @@ export function Stepper({ steps, current, className }: StepperProps) {
                 aria-hidden="true"
                 className={cn(
                   "flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-medium",
-                  status === "complete" && "bg-blue-600 text-white",
+                  status === "complete" && "bg-blue-600 text-on-accent",
                   status === "current" && "border-2 border-blue-600 text-blue-700 dark:text-blue-400",
                   status === "upcoming" && "border-2 border-neutral-300 text-neutral-400 dark:border-neutral-700",
                 )}

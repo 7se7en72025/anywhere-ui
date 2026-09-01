@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { AddressFields } from "@/registry/anywhere/ui/address-fields";
+import { ErrorSummary } from "@/registry/anywhere/ui/error-summary";
 import { NameFields } from "@/registry/anywhere/ui/name-fields";
 import { LocaleProvider } from "@/registry/anywhere/lib/use-locale";
 
@@ -136,5 +137,45 @@ describe("NameFields", () => {
     const inputs = [...container.querySelectorAll("input")];
     expect(inputs[0].getAttribute("name")).toBe("familyName");
     expect(inputs[0].getAttribute("autocomplete")).toBe("family-name");
+  });
+});
+
+describe("ErrorSummary", () => {
+  // Regression: the default heading was a template string with `{count}` in
+  // it, which produced "There are 1 problems with this form" — the exact
+  // hardcoded-plural failure this library exists to stop shipping.
+  it("uses the singular for one error", () => {
+    render(<ErrorSummary errors={[{ field: "email", message: "Enter a valid email address" }]} />);
+
+    expect(screen.getByRole("heading").textContent).toBe("There is 1 problem with this form");
+  });
+
+  it("uses the plural for several", () => {
+    render(
+      <ErrorSummary
+        errors={[
+          { field: "email", message: "Enter a valid email address" },
+          { field: "name", message: "Enter your name" },
+        ]}
+      />,
+    );
+
+    expect(screen.getByRole("heading").textContent).toBe("There are 2 problems with this form");
+  });
+
+  it("renders nothing when there are no errors", () => {
+    const { container } = render(<ErrorSummary errors={[]} />);
+    expect(container.innerHTML).toBe("");
+  });
+
+  it("lets a caller supply a heading in their own language", () => {
+    render(
+      <ErrorSummary
+        errors={[{ field: "email", message: "..." }]}
+        title={(count) => `${count} त्रुटि`}
+      />,
+    );
+
+    expect(screen.getByRole("heading").textContent).toBe("1 त्रुटि");
   });
 });

@@ -136,7 +136,7 @@ export const fixtures: Record<string, () => ReactElement> = {
   ),
   "connection-status": () => <ConnectionStatus />,
   "adaptive-image": () => (
-    <AdaptiveImage src="/demo/photo.svg" alt="A wide landscape illustration" width={640} height={360} />
+    <AdaptiveImage src="/demo/voyage.svg" alt="A small ship sailing toward the horizon at sunset" width={640} height={360} />
   ),
   field: () => <Field name="email" label="Email" />,
   "resilient-form": () => (

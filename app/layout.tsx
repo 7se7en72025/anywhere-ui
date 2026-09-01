@@ -30,12 +30,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" dir="ltr" className="h-full">
+    // `dark` on the server because this is a dark-first design; ThemeToggle
+    // removes it if the reader chooses otherwise. Without it the first paint
+    // is light and then flips.
+    <html lang="en" dir="ltr" className="dark h-full">
       <body className="min-h-full font-sans antialiased">
         {/* The first thing a keyboard user reaches on every page. */}
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-blue-600 focus:px-4 focus:py-2 focus:text-white"
+          className="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-blue-600 focus:px-4 focus:py-2 focus:text-on-accent"
         >
           Skip to content
         </a>

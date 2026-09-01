@@ -101,7 +101,7 @@ export function Calendar({ value, onChange, className }: CalendarProps) {
                   className={cn(
                     "aspect-square rounded-md text-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600",
                     !inMonth && "text-neutral-300 dark:text-neutral-700",
-                    isSelected && "bg-blue-600 text-white",
+                    isSelected && "bg-blue-600 text-on-accent",
                     inMonth && !isSelected && "hover:bg-neutral-100 dark:hover:bg-neutral-800",
                   )}
                 >

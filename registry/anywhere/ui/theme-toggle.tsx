@@ -20,6 +20,16 @@ function apply(theme: Theme) {
   root.style.colorScheme = dark ? "dark" : "light";
 }
 
+export interface ThemeToggleProps {
+  className?: string;
+  /**
+   * What to use before the reader has chosen. Defaults to "system"; a product
+   * whose design is dark-first should say so here rather than inheriting an
+   * OS preference that contradicts it.
+   */
+  defaultTheme?: Theme;
+}
+
 /**
  * A light/dark/system toggle. Its stored choice is read via
  * `useSyncExternalStore` (see `useStoredValue`), so the server and the
@@ -28,9 +38,9 @@ function apply(theme: Theme) {
  * zero-flash dark mode add the one-line inline script Next.js's own docs
  * describe, reading the same `anywhere-ui:theme` key.
  */
-export function ThemeToggle({ className }: { className?: string }) {
-  const [stored, setStored] = useStoredValue(STORAGE_KEY, "system");
-  const theme = (stored as Theme | null) ?? "system";
+export function ThemeToggle({ className, defaultTheme = "system" }: ThemeToggleProps) {
+  const [stored, setStored] = useStoredValue(STORAGE_KEY, defaultTheme);
+  const theme = (stored as Theme | null) ?? defaultTheme;
 
   // Applying the theme to the document is a real side effect on an external
   // system (the DOM outside this component) — the case useEffect exists for,

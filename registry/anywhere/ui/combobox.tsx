@@ -84,7 +84,7 @@ export function Combobox({ options, value, onChange, label, className }: Combobo
                 onChange(option.value);
                 setOpen(false);
               }}
-              className={cn("cursor-pointer rounded-md px-3 py-1.5 text-sm", index === activeIndex ? "bg-blue-600 text-white" : "hover:bg-neutral-100 dark:hover:bg-neutral-800")}
+              className={cn("cursor-pointer rounded-md px-3 py-1.5 text-sm", index === activeIndex ? "bg-blue-600 text-on-accent" : "hover:bg-neutral-100 dark:hover:bg-neutral-800")}
             >
               {option.label}
             </li>

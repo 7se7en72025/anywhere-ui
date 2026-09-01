@@ -72,7 +72,7 @@ export function MultiSelect({ options, value, onChange, label, className }: Mult
               onClick={() => toggle(option.value)}
               className={cn(
                 "rounded-full border px-2.5 py-1 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600",
-                selected ? "border-blue-600 bg-blue-600 text-white" : "border-neutral-300 dark:border-neutral-700",
+                selected ? "border-blue-600 bg-blue-600 text-on-accent" : "border-neutral-300 dark:border-neutral-700",
               )}
             >
               {option.label}

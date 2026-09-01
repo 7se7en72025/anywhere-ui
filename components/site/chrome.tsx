@@ -36,26 +36,26 @@ export function SiteHeader() {
     // a scroll listener on every page, and a listener that exists only to fade
     // a 1px line is not worth the main-thread work on the devices this library
     // is built for.
-    <header className="sticky top-0 z-40 border-b border-mist bg-parchment/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-hairline bg-canvas/80 backdrop-blur-xl">
       <nav
         aria-label="Main"
         className="mx-auto flex max-w-[1200px] items-center gap-8 px-6 py-4 text-body"
       >
-        <Link href="/" className="tracking-tight text-ink">
+        <Link href="/" className="tracking-[0.16em] text-cream uppercase">
           {siteConfig.name}
         </Link>
 
-        <Link href="/components" className="text-ink underline-offset-4 hover:underline">
+        <Link href="/components" className="text-cream underline-offset-4 hover:underline">
           Components
         </Link>
 
-        <span className="ms-auto hidden text-body-sm text-stone lg:inline">
+        <span className="ms-auto hidden text-body-sm text-smoke lg:inline">
           {components.length} components · 0 dependencies
         </span>
 
         <a
           href={siteConfig.repo}
-          className="ms-auto text-ink underline-offset-4 hover:underline lg:ms-0"
+          className="ms-auto text-cream underline-offset-4 hover:underline lg:ms-0"
         >
           GitHub
         </a>
@@ -70,7 +70,7 @@ export function SiteHeader() {
           chrome makes the whole site follow one coherent theme, and makes the
           preview on that page genuinely the control that drives it.
         */}
-        <ThemeToggle />
+        <ThemeToggle defaultTheme="dark" />
       </nav>
     </header>
   );
@@ -78,10 +78,9 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    // Full-bleed wine ground. Fixed light text rather than theme-aware: this
-    // band is the same deep colour in both themes, so its foreground is a
-    // property of the band, not of the page.
-    <footer className="mt-24 bg-wine text-paper-white dark:text-ink">
+    // Surfaces step by colour rather than by shadow, so the footer is the
+    // elevated anvil tone above the canvas with a hairline to separate them.
+    <footer className="mt-24 border-t border-hairline bg-anvil text-cream">
       <div className="mx-auto flex max-w-[1200px] flex-col gap-12 px-6 py-16">
         <div className="grid gap-10 sm:grid-cols-3">
           {FOOTER_COLUMNS.map((column) => (
@@ -93,7 +92,7 @@ export function SiteFooter() {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-body-sm opacity-70 underline-offset-4 transition-opacity hover:opacity-100 hover:underline"
+                      className="text-body-sm text-smoke underline-offset-4 transition-colors hover:text-cream hover:underline"
                     >
                       {link.label}
                     </a>
@@ -104,7 +103,7 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="flex flex-col gap-1 border-t border-current/15 pt-8 text-body-sm opacity-70">
+        <div className="flex flex-col gap-1 border-t border-hairline pt-8 text-body-sm text-smoke">
           <p>{siteConfig.name} — MIT licensed.</p>
           <p>This site ships no web fonts, no analytics, and no third-party requests.</p>
         </div>

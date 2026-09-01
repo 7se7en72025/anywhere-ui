@@ -12,8 +12,15 @@ export interface FormError {
 
 export interface ErrorSummaryProps {
   errors: FormError[];
-  /** Heading text. `{count}` is replaced with the number of errors. */
-  title?: string;
+  /**
+   * Heading text, given the number of errors.
+   *
+   * A function rather than a template string with `{count}` in it: a template
+   * cannot be pluralised, and "There are 1 problems with this form" is the
+   * exact failure this library exists to stop shipping. Matches the
+   * `errorSummary` label on `ResilientForm`.
+   */
+  title?: (count: number) => string;
   /** Called with a field name when its entry is activated. */
   onNavigate?: (field: string) => void;
   className?: string;
@@ -31,9 +38,23 @@ export interface ErrorSummaryProps {
  * Extracted from `ResilientForm` so it can be used with any form library —
  * react-hook-form, a server action's returned state, or plain state.
  */
+/**
+ * The English default, pluralised through `Intl.PluralRules` rather than a
+ * hardcoded `count === 1` ternary — English has two plural categories, but the
+ * same call is correct in locales with three, four, or six, so a translator
+ * replacing this function does not also have to replace its logic.
+ */
+function defaultTitle(count: number): string {
+  const category = new Intl.PluralRules("en-US").select(count);
+  const noun = category === "one" ? "problem" : "problems";
+  const verb = category === "one" ? "is" : "are";
+
+  return `There ${verb} ${count} ${noun} with this form`;
+}
+
 export function ErrorSummary({
   errors,
-  title = "There are {count} problems with this form",
+  title = defaultTitle,
   onNavigate,
   className,
 }: ErrorSummaryProps) {
@@ -66,7 +87,7 @@ export function ErrorSummary({
       )}
     >
       <h2 id={id} className="text-sm font-semibold text-red-900 dark:text-red-100">
-        {title.replace("{count}", String(errors.length))}
+        {title(errors.length)}
       </h2>
 
       <ul className="mt-2 flex list-disc flex-col gap-1 ps-5 text-sm">

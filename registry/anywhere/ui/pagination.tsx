@@ -55,7 +55,7 @@ export function Pagination({ page, pageCount, onChange, labels: labelOverrides, 
               className={cn(
                 "size-8 rounded-md text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600",
                 n === page
-                  ? "bg-blue-600 text-white"
+                  ? "bg-blue-600 text-on-accent"
                   : "hover:bg-neutral-100 dark:hover:bg-neutral-800",
               )}
             >
