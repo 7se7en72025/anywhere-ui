@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Copyable } from "@/components/site/copyable";
+import { ComponentComparison } from "@/components/site/component-comparison";
 import { Preview } from "@/components/site/preview";
 import {
   TIER_BUDGETS,
@@ -102,6 +103,8 @@ export default async function ComponentPage({ params }: { params: Promise<{ name
           the component mirror and reformat.
         </p>
       </section>
+
+      <ComponentComparison name={item.name} />
 
       <section className="flex flex-col gap-3">
         <h2 className="text-lg font-semibold tracking-tight">Install</h2>

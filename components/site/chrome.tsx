@@ -2,6 +2,7 @@ import Link from "next/link";
 import { siteConfig } from "@/lib/site";
 import { components } from "@/lib/registry";
 import { ThemeToggle } from "@/registry/anywhere/ui/theme-toggle";
+import { SiteCommandPalette } from "./site-command-palette";
 
 const FOOTER_COLUMNS = [
   {
@@ -49,13 +50,19 @@ export function SiteHeader() {
           Components
         </Link>
 
-        <span className="ms-auto hidden text-body-sm text-smoke lg:inline">
-          {components.length} components · 0 dependencies
-        </span>
+        <div className="ms-auto">
+          <SiteCommandPalette
+            items={components.map((item) => ({
+              name: item.name,
+              title: item.title,
+              category: item.category ?? "Components",
+            }))}
+          />
+        </div>
 
         <a
           href={siteConfig.repo}
-          className="ms-auto text-cream underline-offset-4 hover:underline lg:ms-0"
+          className="text-cream underline-offset-4 hover:underline"
         >
           GitHub
         </a>
