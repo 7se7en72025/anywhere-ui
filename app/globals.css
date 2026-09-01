@@ -79,21 +79,29 @@
   --font-editorial: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Noto Serif", serif;
 
   /*
-    Surfaces and text. The registry's `neutral` scale is remapped so the whole
-    library sits on the studio canvas: 50 is the page, 100–300 are card wells
-    and hairlines, 900 is the warm cream foreground.
+    Surfaces and text.
+
+    Deliberately an *absolute* warm ramp — 50 is the lightest tone in both
+    themes, 950 the darkest — because that is the contract every component in
+    the registry is written against: `text-neutral-900 dark:text-neutral-100`,
+    `bg-white dark:bg-neutral-950`. The components' own `dark:` variants do the
+    theme flipping; the scale must not also flip, or `dark:text-neutral-100`
+    resolves to a dark tone and every label rendered with it disappears.
+
+    The brand's canvas and card colours live in the separate tokens below, for
+    the site's own chrome.
   */
-  --color-neutral-50: var(--color-studio-black);
-  --color-neutral-100: var(--color-deep-anvil);
-  --color-neutral-200: var(--hairline);
-  --color-neutral-300: var(--hairline);
-  --color-neutral-400: var(--smoke);
-  --color-neutral-500: var(--smoke);
-  --color-neutral-600: var(--smoke);
-  --color-neutral-700: color-mix(in oklab, var(--color-warm-cream) 70%, var(--smoke));
-  --color-neutral-800: var(--color-deep-anvil);
-  --color-neutral-900: var(--color-warm-cream);
-  --color-neutral-950: var(--color-studio-black);
+  --color-neutral-50: #faf8f5;
+  --color-neutral-100: #f2efe9;
+  --color-neutral-200: #e6e2db;
+  --color-neutral-300: #d2ccc2;
+  --color-neutral-400: #a8a29a;
+  --color-neutral-500: #7c766e;
+  --color-neutral-600: #5c5750;
+  --color-neutral-700: #3d3935;
+  --color-neutral-800: #232326;
+  --color-neutral-900: #17171a;
+  --color-neutral-950: #101012;
 
   /*
     The single accent. Every `bg-blue-600`, `text-blue-700`, and

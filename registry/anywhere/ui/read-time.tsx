@@ -16,6 +16,20 @@ export interface ReadTimeProps {
   template?: string;
 }
 
+/*
+ * Rendered inside a `suppressHydrationWarning` span.
+ *
+ * `Intl` output is not byte-identical across ICU versions, and Node's ICU is
+ * not the browser's. This exact call produces "Jan 1 <U+2009>–<U+2009> 5, 2026"
+ * on Node and "Jan 1 <U+0020>–<U+0020> 5, 2026" in Chrome — visually
+ * identical, different bytes — so every server-rendered use would throw a
+ * hydration error in a consumer's app through no fault of theirs.
+ *
+ * This is the case React documents the escape hatch for. The suppression is
+ * scoped to this one text node, so a genuine structural mismatch anywhere else
+ * still reports normally.
+ */
+
 /**
  * Estimated reading time, formatted for the reader's locale.
  *
@@ -30,5 +44,5 @@ export function ReadTime({ words, wordsPerMinute = 238, template = "{minutes} mi
   const minutes = Math.max(1, Math.round(words / wordsPerMinute));
   const formatted = numberFormat(locale).format(minutes);
 
-  return <>{template.replace("{minutes}", formatted)}</>;
+  return <span suppressHydrationWarning>{template.replace("{minutes}", formatted)}</span>;
 }

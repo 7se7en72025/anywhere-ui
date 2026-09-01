@@ -2,64 +2,76 @@
 
 **React components that work anywhere.** Any device. Any network. Any language. Any ability.
 
-110 components and 11 shared primitives engineered for the conditions most component libraries are never tested against — and verified against **ten axes**, in CI, not just claimed in this README.
+110 components built for the conditions most component libraries never get tested against, and checked against ten different axes in CI rather than just claimed here.
 
-- **Zero runtime dependencies.** `react` (and its own `react-dom`) are the only imports allowed anywhere in the registry — enforced by a test, not a promise.
-- **Every component asserted against axe** in every one of its states, plus the things axe cannot see.
-- **A source scan forbids** `fetch`, telemetry, `dangerouslySetInnerHTML`, and `eval` across the whole registry — nothing here phones home or renders unsanitised input.
-- **Every component renders through `react-dom/server`** in CI — no reaching for `window` during render.
+![A recording of the docs site: the wrong/right showcase, the command palette, the locale switcher, and a form surviving going offline](docs/demo.gif)
 
 ```bash
 npx shadcn@latest add https://your-deployment.example.com/r/async-boundary.json
 ```
 
-Components are copied into your repo. There is no package to depend on, no version to upgrade, and nothing to uninstall if you change your mind. (The real URL is whatever this project is deployed at — see [Development](#development).)
+The components get copied into your repo. There is no package to depend on, no version to upgrade, and nothing to uninstall if you change your mind. (Use whatever URL this project is deployed at. See [Development](#development).)
 
 ---
 
-## Why
+## The problem
 
 Three facts about the people who use software:
 
 | | |
 |---|---|
-| ~2.6 billion | are offline or intermittently connected |
+| ~2.6 billion | are offline or on a connection that keeps dropping |
 | ~1.3 billion | live with a significant disability |
 | ~6.5 billion | do not speak English as a first language |
 
 None of this is news. It is just never the default. So every team rebuilds the same handling badly, under deadline, and ships the version that worked on the laptop it was written on:
 
-- Requests do not fail loudly on a bad connection — they hang. The spinner spins forever and the user taps the button again, and now there are two orders.
-- The live region is created in the same tick its text appears, so no screen reader ever announces it. The code looks accessible. It is silent.
+- Requests do not fail loudly on a bad connection. They hang. The spinner spins forever, the user taps the button again, and now there are two orders.
+- The live region gets created in the same tick its text appears, so no screen reader ever announces it. The code looks accessible. It is silent.
 - Focus never moves to the error, so a keyboard user has to go hunting for what went wrong.
-- Layout assumes left-to-right, dates assume the Gregorian calendar, numbers assume Latin digits.
-- A form loses twenty minutes of typing because the tab was backgrounded and the OS reclaimed it.
+- Layout assumes left to right, dates assume the Gregorian calendar, numbers assume Latin digits.
+- A form loses twenty minutes of typing because the tab got backgrounded and the OS reclaimed it.
 
-Anywhere UI is what those fixes look like when someone has time to do them properly, written once, in the open.
+Anywhere UI is what those fixes look like when someone has the time to do them properly, written once, in the open.
+
+## The bugs you cannot see
+
+These are the ones worth looking at first. Each is a real thing people ship, next to what this library does instead. All of it is computed live on the docs site, so you can check it in devtools:
+
+| | What most apps ship | Anywhere UI |
+|---|---|---|
+| `CompactNumber` | `1.2M` | `12.3 लाख` |
+| `BidiText` | `42 - إيان replies` | `إيان - 42 replies` |
+| `OrdinalText` | `11st · 12nd · 13rd` | `11th · 12th · 13th` |
+| `CurrencyField` | `€1.23` | `1.234,56 €` |
+| `PluralText` | `3 файлы` | `3 файла` |
+| `SortableTable` | `Zebra · apple · Ångström` | `Ångström · apple · Zebra` |
+| `CharacterCounter` | `31 of 40` | `21 of 40` |
+| `BytesText` | `5.4 MB` | `5,4 Mo` |
+
+Every one of those has the same shape. The naive version is fine in English on a fast laptop and quietly wrong for a large chunk of the world. `parseFloat("1.234,56")` returns `1.234`, so a German customer typing twelve hundred euros gets charged one euro twenty three. An Arabic name next to a number pulls the number to the wrong side of it, so the sentence reads backwards, and only for users whose names trigger it.
 
 ## Components
 
-110 components across eight categories. The docs site has a page for every one of them — a live preview, the install command, the full source, and the budget it is held to — plus search and category filters at `/components`. A few of the flagships:
+110 components across eight categories. The docs site gives each one its own page with a live preview, the install command, the full source, and the size budget it is held to. There is search and category filtering at `/components`, and Ctrl+K opens a palette that searches all of them.
+
+A few of the flagships:
 
 | Component | What it solves |
 |---|---|
-| `AsyncBoundary` | The four states every fetch really has — loading, error, empty, offline — announced, focus-managed, and height-reserved so nothing jumps. |
-| `ResilientForm` | Drafts persisted as the user types, offline submits queued and retried, errors given a focusable summary, double submits blocked. |
-| `ErrorBoundary` | Contains a render crash to its own subtree, with an announced, focusable, recoverable fallback — the rest of the page keeps working. |
-| `AdaptiveImage` | Refuses to spend a user's data on Save-Data and 2G-class connections until they ask. `width`/`height` mandatory, so nothing shifts. |
-| `Calendar` | A month grid in the reader's own calendar system — `islamic-umalqura`, `buddhist`, `persian` — and their own week start. |
-| `AddressFields` | An address form whose field order and required fields follow the country being addressed — Japan asks postal-code-first, largest to smallest. |
-| `CompactNumber` | 1.2M in English, 12.3 लाख in Hindi, ١٫٢ مليون in Arabic. A hardcoded K/M/B ladder is wrong for most of the world. |
-| `SegmentedControl` | A real radiogroup with roving tabindex, so it is one tab stop and arrow keys move within it — and arrows follow writing direction. |
-| `BidiText` | Isolates a user-supplied name so an Arabic word in an English sentence stops reordering the punctuation around it. |
-| `SortableTable` | Sorts through `Intl.Collator`, so "Ångström" files under A rather than after Z. |
-| `CurrencyField` | Parses the locale's own separators — `parseFloat("1.234,56")` returns 1.234, and charges a German user one euro instead of twelve hundred. |
-| `Heading` | Headings that know their own level from context, so a reusable card never breaks the page outline screen reader users navigate by. |
-| `VirtualList` | Renders only visible rows plus overscan, for smooth scrolling on low-end devices. |
-| `CommandPalette` | A keyboard-first fuzzy launcher following the ARIA combobox pattern. |
-| `Field` | A text field with label, description, and error actually wired to assistive technology. |
+| `AsyncBoundary` | The four states every fetch really has: loading, error, empty, offline. Announced, focus managed, and height reserved so nothing jumps. |
+| `ResilientForm` | Drafts saved as the user types, offline submits queued and retried, errors given a focusable summary, double submits blocked. |
+| `ErrorBoundary` | Keeps a render crash inside its own subtree, with a fallback that is announced, focusable, and recoverable. The rest of the page keeps working. |
+| `AdaptiveImage` | Will not spend a user's data on Save-Data and 2G connections until they ask for it. `width` and `height` are mandatory, so nothing shifts. |
+| `Calendar` | A month grid in the reader's own calendar system (`islamic-umalqura`, `buddhist`, `persian`) and their own week start. |
+| `AddressFields` | Field order and required fields follow the country being addressed. Japan asks for the postal code first, largest to smallest. 43 countries covered. |
+| `SegmentedControl` | A real radiogroup with roving tabindex, so it is one tab stop and the arrow keys move within it. Arrows follow writing direction. |
+| `Heading` | Headings that take their level from context, so a reusable card never breaks the page outline that screen reader users navigate by. |
+| `VirtualList` | Renders only the visible rows plus overscan, so long lists stay smooth on cheap phones. |
+| `CommandPalette` | A keyboard first launcher following the ARIA combobox pattern. |
+| `Field` | A text field with its label, description, and error actually wired to assistive technology. |
 
-Built on 11 shared primitives you can also take on their own: `useNetwork`, `LocaleProvider`/`useLocale`, `announce`, `getDirection`/`getCalendar`, memoised `Intl` formatters, `sanitizeHref`, `useFocusTrap`, `useHydrated`, `useStoredValue`, and draft storage that refuses to write passwords to disk.
+They are built on 11 shared primitives you can also take on their own: `useNetwork`, `LocaleProvider` and `useLocale`, `announce`, `getDirection` and `getCalendar`, memoised `Intl` formatters, `sanitizeHref`, `useFocusTrap`, `useHydrated`, `useStoredValue`, and draft storage that refuses to write passwords to disk.
 
 ## Usage
 
@@ -82,7 +94,7 @@ function Orders() {
 }
 ```
 
-Wrap your app once to make everything below it locale-aware:
+Wrap your app once to make everything below it locale aware:
 
 ```tsx
 import { LocaleProvider } from "@/hooks/anywhere/use-locale";
@@ -94,50 +106,50 @@ Resolve the locale on the server. Reading `navigator.language` during render cau
 
 ## The ten axes
 
-**Performance.** Zero runtime dependencies. Every item is bundled, minified, and gzipped with React external, and fails against a size budget for its declared tier (`xs`/`sm`/`md`/`lg`) — a tier a reviewer can sanity-check by reading the component once, rather than a hundred hand-picked byte counts nobody reviews.
+**Performance.** No runtime dependencies. Every item gets bundled, minified, and gzipped with React external, then checked against the budget for its declared tier (`xs`, `sm`, `md`, `lg`). A tier is something a reviewer can sanity check by reading the component once, which a hundred hand picked byte counts is not.
 
-**Accessibility.** Every component is asserted against axe in each of its states, plus what axe cannot check: focus moves to new errors, live regions are mounted before they are filled, required state is exposed to assistive tech and not only as a red asterisk, and focus outlines are never removed.
+**Accessibility.** Every component gets run through axe in each of its states, plus the parts axe cannot check: focus moves to new errors, live regions are mounted before they are filled, required state is exposed to assistive tech and not only as a red asterisk, and focus outlines are never removed.
 
-**Internationalisation.** Anything that goes through `Intl` — numbers, dates, ranges, collation, plurals, units — works for every locale the runtime knows, which is hundreds; the docs let you check 20 of them by hand. Where a behaviour is cultural convention that no API exposes, it is a hand-maintained table instead: address field order covers 43 countries, name order covers the languages that write the family name first. Every user-facing string is a prop with an English default. Layout uses CSS logical properties, so right-to-left is a data change rather than a rewrite. Dates go through the locale's own calendar — `buddhist` for `th-TH`, `islamic-umalqura` for `ar-SA`, `persian` for `fa-IR`.
+**Internationalisation.** Anything going through `Intl` (numbers, dates, ranges, collation, plurals, units) works for every locale the runtime knows, which is hundreds. The docs let you check 20 of them by hand. Where the behaviour is cultural convention that no API exposes, it is a hand maintained table instead: address field order covers 43 countries, name order covers the languages that put the family name first. Every user facing string is a prop with an English default. Layout uses CSS logical properties, so right to left is a data change rather than a rewrite.
 
-**Privacy.** A static scan across every source file forbids `fetch`, `XMLHttpRequest`, `sendBeacon`, `WebSocket`, and fingerprinting-adjacent APIs (`navigator.geolocation`, `getBattery`, `hardwareConcurrency`). A copy-paste UI library has no legitimate reason to talk to a network on its own.
+**Privacy.** A static scan across every source file forbids `fetch`, `XMLHttpRequest`, `sendBeacon`, `WebSocket`, and fingerprinting adjacent APIs like `navigator.geolocation` and `getBattery`. A copy paste UI library has no business talking to a network on its own.
 
-**Security.** The same scan forbids `dangerouslySetInnerHTML`, `eval`, `Function(...)`, `.innerHTML =`, and `document.write`. `sanitizeHref` strips `javascript:` and other executable URL schemes from every `href`/`src` rendered from caller-supplied data.
+**Security.** The same scan forbids `dangerouslySetInnerHTML`, `eval`, `Function(...)`, `.innerHTML =`, and `document.write`. `sanitizeHref` strips `javascript:` and other executable URL schemes out of anything rendered from caller supplied data.
 
-**Resilience.** `ErrorBoundary` contains a render crash to its own subtree instead of the whole page, with an announced, focusable, recoverable fallback.
+**Resilience.** `ErrorBoundary` keeps a render crash inside its own subtree instead of taking the page down, with a fallback that is announced, focusable, and recoverable.
 
-**Offline.** A component that makes zero network calls cannot be broken by a dropped connection — this falls out of the privacy axis for most components. `ResilientForm` and `AsyncBoundary` go further, with explicit offline-queueing and offline-vs-broken messaging.
+**Offline.** A component that makes no network calls cannot be broken by a dropped connection, which mostly falls out of the privacy rule. `ResilientForm` and `AsyncBoundary` go further, with real offline queueing and messaging that tells "offline" apart from "broken".
 
-**SSR safety.** Every component renders through `react-dom/server` in a real Node environment in CI, asserting it never reaches for `window`, `document`, or `navigator` during the render pass that actually happens on a server.
+**SSR safety.** Every component gets rendered through `react-dom/server` in a real Node environment in CI, which catches anything reaching for `window`, `document`, or `navigator` during the render that actually happens on a server.
 
-**Sensory safety.** Any file that animates is required, by the same static scan, to also reference `motion-reduce:` or `prefers-reduced-motion` — making "we forgot" visible in a diff instead of only visible with the OS setting flipped.
+**Sensory safety.** Any file that animates has to also reference `motion-reduce:` or `prefers-reduced-motion`, checked by the same static scan. That makes "we forgot" visible in a diff instead of only visible with the OS setting flipped.
 
-**Supply chain.** Zero runtime dependencies, checked by scanning every import in the registry: only `react` and `react-dom` are allowed, registry-wide.
+**Supply chain.** No runtime dependencies, checked by scanning every import in the registry. Only `react` and `react-dom` are allowed anywhere in it.
 
 ## Verification
 
-Claims in this README are assertions in the test suite, not aspirations.
+The claims above are assertions in the test suite, not aspirations.
 
 ```bash
-pnpm verify   # typecheck, lint, and the full test suite (856 tests)
+pnpm verify   # typecheck, lint, and the full suite (866 tests)
 ```
 
-- `tests/budget.test.ts` — performance and supply chain: bundles and gzips every item with React external against its tier budget, and scans imports.
-- `tests/conformance.test.tsx` — accessibility: axe over every component's fixture.
-- `tests/ssr.test.tsx` — SSR safety: every fixture through `react-dom/server`.
-- `tests/static-scan.test.ts` — privacy, security, and sensory safety: source-level scans plus `sanitizeHref` unit tests.
-- `tests/resilience.test.tsx` — resilience: `ErrorBoundary` containment, announcement, and recovery.
-- `tests/locale.test.ts` — internationalisation: direction, calendar, week start, and a formatting smoke test across all 20 locales the docs offer, spanning RTL scripts, non-Gregorian calendars, non-Latin digits, and lakh and ten-thousand grouping.
-- `tests/locale-forms.test.tsx` — the components whose correctness lives in a hand-maintained table rather than in `Intl`: `AddressFields` (43 countries), `NameFields` (name order), and `ErrorSummary`'s pluralisation.
-- `tests/components.test.tsx`, `tests/draft-storage.test.ts` — component behaviour and offline handling, including that passwords, payment fields, and one-time codes are never written to disk.
+- `tests/budget.test.ts` covers performance and supply chain. It bundles and gzips every item with React external against its tier budget, and scans imports.
+- `tests/conformance.test.tsx` covers accessibility, running axe over every component's fixture.
+- `tests/ssr.test.tsx` covers SSR safety, putting every fixture through `react-dom/server`.
+- `tests/static-scan.test.ts` covers privacy, security, and sensory safety, plus `sanitizeHref` unit tests.
+- `tests/resilience.test.tsx` covers `ErrorBoundary` containment, announcement, and recovery.
+- `tests/locale.test.ts` covers internationalisation: direction, calendar, week start, and a formatting smoke test across all 20 locales the docs offer, spanning RTL scripts, non-Gregorian calendars, non-Latin digits, and lakh and ten thousand grouping.
+- `tests/locale-forms.test.tsx` covers the components whose correctness lives in a hand maintained table rather than in `Intl`: `AddressFields` across 43 countries, `NameFields` for name order, and `ErrorSummary` for pluralisation.
+- `tests/components.test.tsx` and `tests/draft-storage.test.ts` cover component behaviour and offline handling, including the rule that passwords, payment fields, and one time codes never get written to disk.
 
-`components/demos.tsx` is what makes this scale: one minimal render per component feeds every generic check above, so adding a component costs one fixture entry, not a bespoke test file per axis.
+`components/demos.tsx` is what makes this scale. One minimal render per component feeds every generic check above, so adding a component costs one fixture entry rather than a bespoke test file per axis.
 
-That same file is what the docs site renders as its previews. A component whose documented example differs from the example CI verifies is a documentation bug waiting to happen; sharing the file makes that drift structurally impossible. The one deliberate exception is overlays — Dialog, Drawer, CommandPalette and friends are audited *open*, because that is where the focus trap and `aria-modal` live, but the docs put them behind the trigger a real app would use, since six modals opening on page load is not a preview.
+That same file is what the docs site renders as its previews. A component whose documented example differs from the one CI verifies is a documentation bug waiting to happen, and sharing the file makes that drift impossible. The one deliberate exception is overlays. Dialog, Drawer, CommandPalette and friends get audited *open*, because that is where the focus trap and `aria-modal` live, but the docs put them behind the trigger a real app would use. Six modals opening on page load is not a preview.
 
 ## Development
 
-The registry URLs baked into `public/r/*.json` and shown on the docs site come from `NEXT_PUBLIC_SITE_URL` if set, falling back to Vercel's own `VERCEL_PROJECT_PRODUCTION_URL`/`VERCEL_URL` env vars, then to `localhost:3000`. Most deployments need no manual configuration at all.
+The registry URLs baked into `public/r/*.json` and shown on the docs site come from `NEXT_PUBLIC_SITE_URL` if it is set, then Vercel's own `VERCEL_PROJECT_PRODUCTION_URL` or `VERCEL_URL`, then `localhost:3000`. Most deployments need no configuration at all.
 
 ```bash
 pnpm install
@@ -146,9 +158,9 @@ pnpm verify           # everything CI runs
 pnpm registry:build   # compile registry.json into public/r/*.json
 ```
 
-`next.config.ts` also runs the registry build itself at config-load time — so `next dev` and `next build` regenerate `public/r/` even if something upstream (a hosting platform's own build-command override, a cached CI step) skips the `pnpm registry:build` step in `package.json`.
+`next.config.ts` also runs the registry build itself at config load time, so `next dev` and `next build` regenerate `public/r/` even when something upstream skips the `pnpm registry:build` step. A hosting platform's build command override or a cached CI step will both do that, and the failure is silent: a deployed site whose own install commands 404.
 
-Components live in `registry/anywhere/`. They import each other by relative path so the repo typechecks against real modules; `scripts/build-registry.mjs` rewrites those to `@/` aliases when compiling the distributable registry.
+Components live in `registry/anywhere/`. They import each other by relative path so the repo typechecks against real modules, and `scripts/build-registry.mjs` rewrites those to `@/` aliases when it compiles the distributable registry.
 
 ## Also in this repository
 
@@ -156,7 +168,7 @@ Components live in `registry/anywhere/`. They import each other by relative path
 
 ## Contributing
 
-New components are welcome, and are held to the same bar: a tier in `registry.json`, a fixture in `components/demos.tsx`, every string a prop, and logical properties throughout. See [CONTRIBUTING.md](CONTRIBUTING.md).
+New components are welcome, held to the same bar: a tier in `registry.json`, a fixture in `components/demos.tsx`, every string a prop, and logical properties throughout. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 

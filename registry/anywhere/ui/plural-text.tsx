@@ -11,6 +11,20 @@ export interface PluralTextProps {
   forms: Partial<Record<Intl.LDMLPluralRule, string>> & { other: string };
 }
 
+/*
+ * Rendered inside a `suppressHydrationWarning` span.
+ *
+ * `Intl` output is not byte-identical across ICU versions, and Node's ICU is
+ * not the browser's. This exact call produces "Jan 1 <U+2009>–<U+2009> 5, 2026"
+ * on Node and "Jan 1 <U+0020>–<U+0020> 5, 2026" in Chrome — visually
+ * identical, different bytes — so every server-rendered use would throw a
+ * hydration error in a consumer's app through no fault of theirs.
+ *
+ * This is the case React documents the escape hatch for. The suppression is
+ * scoped to this one text node, so a genuine structural mismatch anywhere else
+ * still reports normally.
+ */
+
 /**
  * Renders the grammatically correct plural form for `count` in the current
  * locale, via `Intl.PluralRules` — not the English "if count === 1" a
@@ -29,5 +43,5 @@ export function PluralText({ count, forms }: PluralTextProps) {
     return template.replace("{n}", new Intl.NumberFormat(locale).format(count));
   }, [count, forms, locale]);
 
-  return <>{text}</>;
+  return <span suppressHydrationWarning>{text}</span>;
 }

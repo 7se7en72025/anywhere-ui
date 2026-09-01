@@ -31,7 +31,7 @@ export function RelativeTime({ value, updateInterval = 60_000, className }: Rela
   );
 
   return (
-    <time dateTime={date.toISOString()} title={exact} className={className}>
+    <time dateTime={date.toISOString()} title={exact} className={className} suppressHydrationWarning>
       {formatRelative(date, locale)}
     </time>
   );
