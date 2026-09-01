@@ -1881,6 +1881,222 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "bidi-text",
+      "type": "registry:ui",
+      "title": "BidiText",
+      "description": "Isolates user-controlled text so a mixed-direction sentence does not reorder around it.",
+      "category": "Internationalisation",
+      "tier": "xs",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/bidi-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "truncate-text",
+      "type": "registry:ui",
+      "title": "TruncateText",
+      "description": "Truncation that counts user-perceived characters, so emoji and Devanagari clusters are never split.",
+      "category": "Internationalisation",
+      "tier": "sm",
+      "registryDependencies": [
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/truncate-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "date-range-text",
+      "type": "registry:ui",
+      "title": "DateRangeText",
+      "description": "A date range formatted as one range, collapsing shared parts in the locale's own calendar.",
+      "category": "Internationalisation",
+      "tier": "sm",
+      "registryDependencies": [
+        "locale",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/date-range-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "character-counter",
+      "type": "registry:ui",
+      "title": "CharacterCounter",
+      "description": "A character counter that counts graphemes, so one emoji costs one, not eleven.",
+      "category": "Forms & input",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "format",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/character-counter.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "currency-field",
+      "type": "registry:ui",
+      "title": "CurrencyField",
+      "description": "A money input that parses the locale's own separators, so \"1.234,56\" means what a German user meant.",
+      "category": "Forms & input",
+      "tier": "lg",
+      "registryDependencies": [
+        "cn",
+        "format",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/currency-field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "unit-field",
+      "type": "registry:ui",
+      "title": "UnitField",
+      "description": "A measurement input shown in the reader's units and always stored in metric.",
+      "category": "Forms & input",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/unit-field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "timezone-select",
+      "type": "registry:ui",
+      "title": "TimezoneSelect",
+      "description": "A timezone picker labelled in the reader's language and ordered by current offset.",
+      "category": "Forms & input",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/timezone-select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "heading-level",
+      "type": "registry:ui",
+      "title": "Heading",
+      "description": "Headings that know their own level, so a reusable component never breaks the page outline.",
+      "category": "Accessibility & preferences",
+      "tier": "sm",
+      "registryDependencies": [
+        "cn"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/heading-level.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "landmark-nav",
+      "type": "registry:ui",
+      "title": "LandmarkNav",
+      "description": "Skip links for every landmark, giving sighted keyboard users the rotor screen readers already have.",
+      "category": "Navigation",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/landmark-nav.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "error-summary",
+      "type": "registry:ui",
+      "title": "ErrorSummary",
+      "description": "The focusable list of what went wrong, at the top of a form — usable with any form library.",
+      "category": "Forms & input",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/error-summary.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sortable-table",
+      "type": "registry:ui",
+      "title": "SortableTable",
+      "description": "A table that sorts text with Intl.Collator, so accents and non-Latin scripts file correctly.",
+      "category": "Data display",
+      "tier": "lg",
+      "registryDependencies": [
+        "cn",
+        "announce",
+        "use-locale"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/sortable-table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stale-data-notice",
+      "type": "registry:ui",
+      "title": "StaleDataNotice",
+      "description": "Tells the reader how old the data is, and says it differently when offline explains why.",
+      "category": "Feedback & status",
+      "tier": "md",
+      "registryDependencies": [
+        "cn",
+        "format",
+        "use-locale",
+        "use-network"
+      ],
+      "files": [
+        {
+          "path": "registry/anywhere/ui/stale-data-notice.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

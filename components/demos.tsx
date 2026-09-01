@@ -97,6 +97,18 @@ import { SaveStatus } from "@/registry/anywhere/ui/save-status";
 import { RetryButton } from "@/registry/anywhere/ui/retry-button";
 import { TextSizeControl } from "@/registry/anywhere/ui/text-size-control";
 import { TreeView } from "@/registry/anywhere/ui/tree-view";
+import { BidiText } from "@/registry/anywhere/ui/bidi-text";
+import { TruncateText } from "@/registry/anywhere/ui/truncate-text";
+import { DateRangeText } from "@/registry/anywhere/ui/date-range-text";
+import { CharacterCounter } from "@/registry/anywhere/ui/character-counter";
+import { CurrencyField } from "@/registry/anywhere/ui/currency-field";
+import { UnitField, DISTANCE } from "@/registry/anywhere/ui/unit-field";
+import { TimezoneSelect } from "@/registry/anywhere/ui/timezone-select";
+import { Heading, HeadingSection } from "@/registry/anywhere/ui/heading-level";
+import { LandmarkNav } from "@/registry/anywhere/ui/landmark-nav";
+import { ErrorSummary } from "@/registry/anywhere/ui/error-summary";
+import { SortableTable } from "@/registry/anywhere/ui/sortable-table";
+import { StaleDataNotice } from "@/registry/anywhere/ui/stale-data-notice";
 
 /** Small stateful wrappers so controlled components have somewhere to put their state in a fixture. */
 function Stateful<T>({ initial, render }: { initial: T; render: (value: T, set: (v: T) => void) => ReactElement }) {
@@ -339,4 +351,73 @@ export const fixtures: Record<string, () => ReactElement> = {
       ]}
     />
   ),
+  "bidi-text": () => (
+    <p>
+      Reply from <BidiText>محمد</BidiText> (3 replies)
+    </p>
+  ),
+  "truncate-text": () => <TruncateText text="A headline long enough to need shortening 👨‍👩‍👧‍👦" limit={24} />,
+  "date-range-text": () => (
+    <DateRangeText start={new Date("2026-01-01")} end={new Date("2026-01-05")} />
+  ),
+  "character-counter": () => <CharacterCounter value="Hello 👋" limit={20} />,
+  "currency-field": () => (
+    <Stateful
+      initial={1299.5 as number | null}
+      render={(v, set) => (
+        <CurrencyField label="Amount" name="amount" currency="EUR" value={v} onChange={set} />
+      )}
+    />
+  ),
+  "unit-field": () => (
+    <Stateful
+      initial={12 as number | null}
+      render={(v, set) => (
+        <UnitField label="Distance" name="distance" pair={DISTANCE} value={v} onChange={set} />
+      )}
+    />
+  ),
+  "timezone-select": () => (
+    <Stateful
+      initial="Europe/Berlin"
+      render={(v, set) => (
+        <TimezoneSelect
+          label="Timezone"
+          value={v}
+          onChange={set}
+          zones={["Europe/Berlin", "Asia/Kolkata", "America/New_York", "UTC"]}
+        />
+      )}
+    />
+  ),
+  "heading-level": () => (
+    <div>
+      <Heading>Page title</Heading>
+      <HeadingSection>
+        <Heading>Section inside it</Heading>
+      </HeadingSection>
+    </div>
+  ),
+  "landmark-nav": () => (
+    <LandmarkNav landmarks={[{ id: "main", label: "Main content" }, { id: "nav", label: "Navigation" }]} />
+  ),
+  "error-summary": () => (
+    <ErrorSummary errors={[{ field: "email", message: "Enter a valid email address" }]} />
+  ),
+  "sortable-table": () => (
+    <SortableTable
+      caption="Contributors"
+      rowKey={(row) => row.name}
+      columns={[
+        { key: "name", header: "Name", value: (row) => row.name },
+        { key: "commits", header: "Commits", value: (row) => row.commits },
+      ]}
+      rows={[
+        { name: "Ångström", commits: 12 },
+        { name: "Élodie", commits: 30 },
+        { name: "Zhang", commits: 7 },
+      ]}
+    />
+  ),
+  "stale-data-notice": () => <StaleDataNotice updatedAt={Date.now() - 15 * 60 * 1000} />,
 };

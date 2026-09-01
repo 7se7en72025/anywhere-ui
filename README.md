@@ -2,7 +2,7 @@
 
 **React components that work anywhere.** Any device. Any network. Any language. Any ability.
 
-98 components and 11 shared primitives engineered for the conditions most component libraries are never tested against — and verified against **ten axes**, in CI, not just claimed in this README.
+110 components and 11 shared primitives engineered for the conditions most component libraries are never tested against — and verified against **ten axes**, in CI, not just claimed in this README.
 
 - **Zero runtime dependencies.** `react` (and its own `react-dom`) are the only imports allowed anywhere in the registry — enforced by a test, not a promise.
 - **Every component asserted against axe** in every one of its states, plus the things axe cannot see.
@@ -39,7 +39,7 @@ Anywhere UI is what those fixes look like when someone has time to do them prope
 
 ## Components
 
-98 components across eight categories. The docs site has a page for every one of them — a live preview, the install command, the full source, and the budget it is held to — plus search and category filters at `/components`. A few of the flagships:
+110 components across eight categories. The docs site has a page for every one of them — a live preview, the install command, the full source, and the budget it is held to — plus search and category filters at `/components`. A few of the flagships:
 
 | Component | What it solves |
 |---|---|
@@ -51,6 +51,10 @@ Anywhere UI is what those fixes look like when someone has time to do them prope
 | `AddressFields` | An address form whose field order and required fields follow the country being addressed — Japan asks postal-code-first, largest to smallest. |
 | `CompactNumber` | 1.2M in English, 12.3 लाख in Hindi, ١٫٢ مليون in Arabic. A hardcoded K/M/B ladder is wrong for most of the world. |
 | `SegmentedControl` | A real radiogroup with roving tabindex, so it is one tab stop and arrow keys move within it — and arrows follow writing direction. |
+| `BidiText` | Isolates a user-supplied name so an Arabic word in an English sentence stops reordering the punctuation around it. |
+| `SortableTable` | Sorts through `Intl.Collator`, so "Ångström" files under A rather than after Z. |
+| `CurrencyField` | Parses the locale's own separators — `parseFloat("1.234,56")` returns 1.234, and charges a German user one euro instead of twelve hundred. |
+| `Heading` | Headings that know their own level from context, so a reusable card never breaks the page outline screen reader users navigate by. |
 | `VirtualList` | Renders only visible rows plus overscan, for smooth scrolling on low-end devices. |
 | `CommandPalette` | A keyboard-first fuzzy launcher following the ARIA combobox pattern. |
 | `Field` | A text field with label, description, and error actually wired to assistive technology. |
