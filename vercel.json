@@ -3,5 +3,5 @@
   "outputDirectory": ".next",
   "framework": "nextjs",
   "installCommand": "pnpm install",
-  "rootDirectory": null
+  "rootDirectory": "."
 }
