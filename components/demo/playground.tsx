@@ -1,15 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { AdaptiveImage } from "@/registry/anywhere/ui/adaptive-image";
-import { AsyncBoundary, type AsyncStatus } from "@/registry/anywhere/ui/async-boundary";
-import { ConnectionStatus } from "@/registry/anywhere/ui/connection-status";
-import { Field } from "@/registry/anywhere/ui/field";
-import { ResilientForm } from "@/registry/anywhere/ui/resilient-form";
-import { LocaleProvider } from "@/registry/anywhere/lib/use-locale";
-import { formatRelative } from "@/registry/anywhere/lib/format";
-import { dateTimeFormat, numberFormat } from "@/registry/anywhere/lib/format";
-import { getCalendar } from "@/registry/anywhere/lib/locale";
+import { AdaptiveImage } from "@/registry/gear5/ui/adaptive-image";
+import { AsyncBoundary, type AsyncStatus } from "@/registry/gear5/ui/async-boundary";
+import { ConnectionStatus } from "@/registry/gear5/ui/connection-status";
+import { Field } from "@/registry/gear5/ui/field";
+import { ResilientForm } from "@/registry/gear5/ui/resilient-form";
+import { LocaleProvider } from "@/registry/gear5/lib/use-locale";
+import { formatRelative } from "@/registry/gear5/lib/format";
+import { dateTimeFormat, numberFormat } from "@/registry/gear5/lib/format";
+import { getCalendar } from "@/registry/gear5/lib/locale";
 import { simulateNetwork, type SimulatedNetwork } from "./simulator";
 
 const LOCALES = [

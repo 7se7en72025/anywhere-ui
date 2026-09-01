@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import manifest from "@/registry.json";
-import { sanitizeHref } from "@/registry/anywhere/lib/sanitize";
+import { sanitizeHref } from "@/registry/gear5/lib/sanitize";
 
 const root = process.cwd();
 

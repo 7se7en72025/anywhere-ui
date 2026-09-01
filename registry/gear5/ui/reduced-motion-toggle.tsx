@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useStoredValue } from "../lib/use-stored-value";
 import { Switch } from "./switch";
 
-const STORAGE_KEY = "anywhere-ui:reduce-motion";
+const STORAGE_KEY = "gear5-ui:reduce-motion";
 
 /**
  * Lets someone opt into reduced motion from inside the page, for the many

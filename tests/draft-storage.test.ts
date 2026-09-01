@@ -6,7 +6,7 @@ import {
   loadDraft,
   readForm,
   saveDraft,
-} from "@/registry/anywhere/lib/draft-storage";
+} from "@/registry/gear5/lib/draft-storage";
 
 function buildForm(html: string): HTMLFormElement {
   const form = document.createElement("form");
@@ -100,13 +100,13 @@ describe("saveDraft / loadDraft", () => {
   });
 
   it("returns null for corrupt stored JSON instead of throwing", () => {
-    localStorage.setItem("anywhere-ui:draft:broken", "{not json");
+    localStorage.setItem("gear5-ui:draft:broken", "{not json");
     expect(loadDraft("broken")).toBeNull();
   });
 
   it("drops non-string values from stored data", () => {
     localStorage.setItem(
-      "anywhere-ui:draft:mixed",
+      "gear5-ui:draft:mixed",
       JSON.stringify({ email: "a@b.com", count: 3 }),
     );
     expect(loadDraft("mixed")).toEqual({ email: "a@b.com" });

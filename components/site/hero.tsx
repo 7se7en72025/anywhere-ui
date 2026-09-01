@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { AdaptiveImage } from "@/registry/anywhere/ui/adaptive-image";
-import { CompactNumber } from "@/registry/anywhere/ui/compact-number";
-import { DateRangeText } from "@/registry/anywhere/ui/date-range-text";
-import { LocaleProvider } from "@/registry/anywhere/lib/use-locale";
+import { AdaptiveImage } from "@/registry/gear5/ui/adaptive-image";
+import { CompactNumber } from "@/registry/gear5/ui/compact-number";
+import { DateRangeText } from "@/registry/gear5/ui/date-range-text";
+import { LocaleProvider } from "@/registry/gear5/lib/use-locale";
 
 const SAMPLE_LOCALES = [
   { tag: "en-US", name: "English" },
@@ -83,7 +83,7 @@ export function Hero() {
             </Link>
 
             <a
-              href="https://github.com/7se7en72025/anywhere-ui"
+              href="https://github.com/7se7en72025/gear5-ui"
               className="rounded-md border border-hairline px-5 py-2.5 text-body-sm text-cream transition-all hover:bg-cream/10 hover:border-cream/30"
             >
               Source on GitHub

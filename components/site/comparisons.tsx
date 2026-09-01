@@ -1,16 +1,16 @@
 "use client";
 
 import type { Comparison } from "./comparison";
-import { BidiText } from "@/registry/anywhere/ui/bidi-text";
-import { BytesText } from "@/registry/anywhere/ui/bytes-text";
-import { CharacterCounter } from "@/registry/anywhere/ui/character-counter";
-import { CompactNumber } from "@/registry/anywhere/ui/compact-number";
-import { CurrencyText } from "@/registry/anywhere/ui/currency-text";
-import { DateRangeText } from "@/registry/anywhere/ui/date-range-text";
-import { OrdinalText } from "@/registry/anywhere/ui/ordinal-text";
-import { PluralText } from "@/registry/anywhere/ui/plural-text";
-import { RelativeTime } from "@/registry/anywhere/ui/relative-time";
-import { TruncateText } from "@/registry/anywhere/ui/truncate-text";
+import { BidiText } from "@/registry/gear5/ui/bidi-text";
+import { BytesText } from "@/registry/gear5/ui/bytes-text";
+import { CharacterCounter } from "@/registry/gear5/ui/character-counter";
+import { CompactNumber } from "@/registry/gear5/ui/compact-number";
+import { CurrencyText } from "@/registry/gear5/ui/currency-text";
+import { DateRangeText } from "@/registry/gear5/ui/date-range-text";
+import { OrdinalText } from "@/registry/gear5/ui/ordinal-text";
+import { PluralText } from "@/registry/gear5/ui/plural-text";
+import { RelativeTime } from "@/registry/gear5/ui/relative-time";
+import { TruncateText } from "@/registry/gear5/ui/truncate-text";
 
 /*
   Every `naive` below is a real implementation of what is genuinely shipped,

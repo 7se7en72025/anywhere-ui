@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { getCalendar, getDirection, getFirstDayOfWeek } from "@/registry/anywhere/lib/locale";
-import { formatRelative } from "@/registry/anywhere/lib/format";
+import { getCalendar, getDirection, getFirstDayOfWeek } from "@/registry/gear5/lib/locale";
+import { formatRelative } from "@/registry/gear5/lib/format";
 
 describe("getDirection", () => {
   it.each([

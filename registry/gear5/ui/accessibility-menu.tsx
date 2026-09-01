@@ -5,8 +5,8 @@ import { useStoredValue } from "../lib/use-stored-value";
 import { Popover } from "./popover";
 import { Switch } from "./switch";
 
-const FONT_KEY = "anywhere-ui:font-scale";
-const CONTRAST_KEY = "anywhere-ui:high-contrast";
+const FONT_KEY = "gear5-ui:font-scale";
+const CONTRAST_KEY = "gear5-ui:high-contrast";
 
 /**
  * One panel for the display adjustments people actually reach for on a page

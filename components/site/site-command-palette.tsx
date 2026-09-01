@@ -2,8 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { CommandPalette } from "@/registry/anywhere/ui/command-palette";
-import { Kbd } from "@/registry/anywhere/ui/kbd";
+import { CommandPalette } from "@/registry/gear5/ui/command-palette";
+import { Kbd } from "@/registry/gear5/ui/kbd";
 
 export interface PaletteItem {
   name: string;

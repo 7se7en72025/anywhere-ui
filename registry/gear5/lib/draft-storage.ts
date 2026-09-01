@@ -6,7 +6,7 @@
  * work. It is not a cache and not a queue of secrets.
  */
 
-const PREFIX = "anywhere-ui:draft:";
+const PREFIX = "gear5-ui:draft:";
 
 /**
  * Field types whose values are never written to disk, regardless of what the

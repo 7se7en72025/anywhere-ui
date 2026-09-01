@@ -2,11 +2,11 @@ import { describe, expect, it, vi } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { axe } from "vitest-axe";
-import { AsyncBoundary, statusOf } from "@/registry/anywhere/ui/async-boundary";
-import { Field } from "@/registry/anywhere/ui/field";
-import { ResilientForm } from "@/registry/anywhere/ui/resilient-form";
-import { LocaleProvider } from "@/registry/anywhere/lib/use-locale";
-import { resetAnnouncer } from "@/registry/anywhere/lib/announce";
+import { AsyncBoundary, statusOf } from "@/registry/gear5/ui/async-boundary";
+import { Field } from "@/registry/gear5/ui/field";
+import { ResilientForm } from "@/registry/gear5/ui/resilient-form";
+import { LocaleProvider } from "@/registry/gear5/lib/use-locale";
+import { resetAnnouncer } from "@/registry/gear5/lib/announce";
 
 describe("statusOf", () => {
   it("ranks error above every other state", () => {
@@ -220,7 +220,7 @@ describe("ResilientForm", () => {
 
     await user.type(screen.getByLabelText("Email"), "a@b.com");
     await waitFor(() => {
-      expect(localStorage.getItem("anywhere-ui:draft:signup")).toContain("a@b.com");
+      expect(localStorage.getItem("gear5-ui:draft:signup")).toContain("a@b.com");
     });
 
     unmount();
@@ -250,9 +250,9 @@ describe("ResilientForm", () => {
     await user.type(screen.getByLabelText("Password"), "hunter2");
 
     await waitFor(() => {
-      expect(localStorage.getItem("anywhere-ui:draft:login")).toContain("a@b.com");
+      expect(localStorage.getItem("gear5-ui:draft:login")).toContain("a@b.com");
     });
-    expect(localStorage.getItem("anywhere-ui:draft:login")).not.toContain("hunter2");
+    expect(localStorage.getItem("gear5-ui:draft:login")).not.toContain("hunter2");
   });
 
   it("clears the draft after a successful submit", async () => {
@@ -271,7 +271,7 @@ describe("ResilientForm", () => {
 
     await waitFor(() => expect(onSubmit).toHaveBeenCalledTimes(1));
     await waitFor(() => {
-      expect(localStorage.getItem("anywhere-ui:draft:signup")).toBeNull();
+      expect(localStorage.getItem("gear5-ui:draft:signup")).toBeNull();
     });
   });
 
@@ -303,6 +303,6 @@ describe("ResilientForm", () => {
     );
 
     await user.type(screen.getByLabelText("Email"), "a@b.com");
-    expect(localStorage.getItem("anywhere-ui:draft:private")).toBeNull();
+    expect(localStorage.getItem("gear5-ui:draft:private")).toBeNull();
   });
 });

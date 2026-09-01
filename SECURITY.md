@@ -3,7 +3,7 @@
 ## Reporting a vulnerability
 
 Report privately through GitHub's [security advisory
-form](https://github.com/7se7en72025/anywhere-ui/security/advisories/new)
+form](https://github.com/7se7en72025/gear5-ui/security/advisories/new)
 rather than a public issue. You should get an initial response within a week.
 
 Please include the component, a proof of concept, and what an attacker gains.

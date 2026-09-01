@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, type ReactElement } from "react";
-import { Dialog } from "@/registry/anywhere/ui/dialog";
-import { Drawer } from "@/registry/anywhere/ui/drawer";
-import { CommandPalette } from "@/registry/anywhere/ui/command-palette";
-import { KeyboardShortcutsHelp } from "@/registry/anywhere/ui/keyboard-shortcuts-help";
-import { ConsentBanner } from "@/registry/anywhere/ui/consent-banner";
-import { ToastProvider, useToast } from "@/registry/anywhere/ui/toast";
+import { Dialog } from "@/registry/gear5/ui/dialog";
+import { Drawer } from "@/registry/gear5/ui/drawer";
+import { CommandPalette } from "@/registry/gear5/ui/command-palette";
+import { KeyboardShortcutsHelp } from "@/registry/gear5/ui/keyboard-shortcuts-help";
+import { ConsentBanner } from "@/registry/gear5/ui/consent-banner";
+import { ToastProvider, useToast } from "@/registry/gear5/ui/toast";
 
 /**
  * Docs-only previews for components that cover the page when open.

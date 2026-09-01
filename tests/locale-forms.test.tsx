@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { AddressFields } from "@/registry/anywhere/ui/address-fields";
-import { ErrorSummary } from "@/registry/anywhere/ui/error-summary";
-import { NameFields } from "@/registry/anywhere/ui/name-fields";
-import { LocaleProvider } from "@/registry/anywhere/lib/use-locale";
+import { AddressFields } from "@/registry/gear5/ui/address-fields";
+import { ErrorSummary } from "@/registry/gear5/ui/error-summary";
+import { NameFields } from "@/registry/gear5/ui/name-fields";
+import { LocaleProvider } from "@/registry/gear5/lib/use-locale";
 
 /**
  * The two components whose correctness lives in a hand-maintained table rather

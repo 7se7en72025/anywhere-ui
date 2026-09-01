@@ -3,7 +3,7 @@
 import { useStoredValue } from "../lib/use-stored-value";
 import { Switch } from "./switch";
 
-const STORAGE_KEY = "anywhere-ui:force-data-saver";
+const STORAGE_KEY = "gear5-ui:force-data-saver";
 
 /**
  * Lets someone opt into the library's constrained-connection behaviour

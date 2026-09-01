@@ -32,7 +32,7 @@ A fast-paced, visually striking demo that shows real problems and how Anywhere U
 ### Scene 4: The Tech (35-50s)
 **Visual:** Terminal showing install command
 ```bash
-npx shadcn@latest add anywhere-ui/r/async-boundary.json
+npx shadcn@latest add gear5-ui/r/async-boundary.json
 ```
 Then quick cuts of:
 - Test suite running (866 tests passing)
@@ -48,8 +48,8 @@ Then quick cuts of:
 
 ### Scene 6: CTA (60-70s)
 **Visual:** Clean terminal with install command
-**Text:** "Try it now: anywhere-ui.dev"
-**Voiceover:** "anywhere-ui.dev"
+**Text:** "Try it now: gear5-ui.dev"
+**Voiceover:** "gear5-ui.dev"
 
 ---
 
@@ -130,7 +130,7 @@ I've been working on Anywhere UI for the past 6 months. It's a React component l
 
 Every component is copy-paste distributed via shadcn CLI. No npm package, no version lock.
 
-Check it out: https://anywhere-ui.dev
+Check it out: https://gear5-ui.dev
 
 I'd love feedback on the components and the verification approach. What axes would you add?
 ```
@@ -157,8 +157,8 @@ I built Anywhere UI with a different approach: 87 components, each verified agai
 
 The results: 866 tests, all passing, every commit.
 
-Live demo: https://anywhere-ui.dev
-GitHub: https://github.com/7se7en72025/anywhere-ui
+Live demo: https://gear5-ui.dev
+GitHub: https://github.com/7se7en72025/gear5-ui
 ```
 
 ### Twitter/X Thread Concept
@@ -200,10 +200,10 @@ Zero dependencies. Zero web fonts. Zero analytics. Zero third-party requests.
 
 Copy-paste distribution via shadcn CLI:
 
-npx shadcn@latest add anywhere-ui/r/async-boundary.json
+npx shadcn@latest add gear5-ui/r/async-boundary.json
 
 Tweet 5:
-Try it yourself: https://anywhere-ui.dev
+Try it yourself: https://gear5-ui.dev
 
 Switch to Arabic and watch the whole UI mirror.
 Go offline and submit a form.

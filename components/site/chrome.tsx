@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site";
 import { components } from "@/lib/registry";
-import { ThemeToggle } from "@/registry/anywhere/ui/theme-toggle";
+import { ThemeToggle } from "@/registry/gear5/ui/theme-toggle";
 import { SiteCommandPalette } from "./site-command-palette";
 
 const FOOTER_COLUMNS = [

@@ -16,7 +16,7 @@ import { useCallback, useSyncExternalStore } from "react";
 export function useStoredValue(key: string, serverValue: string | null = null): [string | null, (value: string | null) => void] {
   const subscribe = useCallback(
     (onChange: () => void) => {
-      const event = `anywhere-ui:storage:${key}`;
+      const event = `gear5-ui:storage:${key}`;
       window.addEventListener("storage", onChange);
       window.addEventListener(event, onChange);
       return () => {
@@ -38,7 +38,7 @@ export function useStoredValue(key: string, serverValue: string | null = null): 
       else localStorage.setItem(key, next);
       // localStorage's own "storage" event never fires in the tab that made
       // the write, so this tab needs its own signal to re-read.
-      window.dispatchEvent(new Event(`anywhere-ui:storage:${key}`));
+      window.dispatchEvent(new Event(`gear5-ui:storage:${key}`));
     },
     [key],
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { announce } from "@/registry/anywhere/lib/announce";
+import { announce } from "@/registry/gear5/lib/announce";
 
 export interface CopyableProps {
   /** The exact text placed on the clipboard. */

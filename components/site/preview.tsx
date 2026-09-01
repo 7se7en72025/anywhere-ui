@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { fixtures } from "@/components/demos";
 import { overlayPreviews } from "./overlay-previews";
-import { LocaleProvider } from "@/registry/anywhere/lib/use-locale";
+import { LocaleProvider } from "@/registry/gear5/lib/use-locale";
 
 /**
  * A deliberately wide spread rather than a token few: right-to-left scripts,

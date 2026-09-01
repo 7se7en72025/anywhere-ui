@@ -49,7 +49,7 @@ describe("Intl output is hydration-safe", () => {
 
   it.each(INTL_COMPONENTS)("%s suppresses hydration warnings on its text", (name) => {
     const source = readFileSync(
-      join(process.cwd(), "registry/anywhere/ui", `${name}.tsx`),
+      join(process.cwd(), "registry/gear5/ui", `${name}.tsx`),
       "utf8",
     );
 

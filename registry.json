@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "anywhere-ui",
-  "homepage": "https://anywhere-ui.dev",
+  "name": "gear5-ui",
+  "homepage": "https://gear5-ui.dev",
   "items": [
     {
       "name": "cn",
@@ -11,7 +11,7 @@
       "tier": "xs",
       "files": [
         {
-          "path": "registry/anywhere/lib/cn.ts",
+          "path": "registry/gear5/lib/cn.ts",
           "type": "registry:lib"
         }
       ]
@@ -24,7 +24,7 @@
       "tier": "sm",
       "files": [
         {
-          "path": "registry/anywhere/lib/use-network.ts",
+          "path": "registry/gear5/lib/use-network.ts",
           "type": "registry:hook"
         }
       ]
@@ -37,7 +37,7 @@
       "tier": "sm",
       "files": [
         {
-          "path": "registry/anywhere/lib/locale.ts",
+          "path": "registry/gear5/lib/locale.ts",
           "type": "registry:lib"
         }
       ]
@@ -53,7 +53,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/lib/use-locale.tsx",
+          "path": "registry/gear5/lib/use-locale.tsx",
           "type": "registry:hook"
         }
       ]
@@ -66,7 +66,7 @@
       "tier": "sm",
       "files": [
         {
-          "path": "registry/anywhere/lib/announce.ts",
+          "path": "registry/gear5/lib/announce.ts",
           "type": "registry:lib"
         }
       ]
@@ -79,7 +79,7 @@
       "tier": "sm",
       "files": [
         {
-          "path": "registry/anywhere/lib/format.ts",
+          "path": "registry/gear5/lib/format.ts",
           "type": "registry:lib"
         }
       ]
@@ -92,7 +92,7 @@
       "tier": "sm",
       "files": [
         {
-          "path": "registry/anywhere/lib/draft-storage.ts",
+          "path": "registry/gear5/lib/draft-storage.ts",
           "type": "registry:lib"
         }
       ]
@@ -105,7 +105,7 @@
       "tier": "xs",
       "files": [
         {
-          "path": "registry/anywhere/lib/sanitize.ts",
+          "path": "registry/gear5/lib/sanitize.ts",
           "type": "registry:lib"
         }
       ]
@@ -125,7 +125,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/async-boundary.tsx",
+          "path": "registry/gear5/ui/async-boundary.tsx",
           "type": "registry:ui"
         }
       ]
@@ -144,7 +144,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/connection-status.tsx",
+          "path": "registry/gear5/ui/connection-status.tsx",
           "type": "registry:ui"
         }
       ]
@@ -163,7 +163,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/adaptive-image.tsx",
+          "path": "registry/gear5/ui/adaptive-image.tsx",
           "type": "registry:ui"
         }
       ]
@@ -180,7 +180,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/field.tsx",
+          "path": "registry/gear5/ui/field.tsx",
           "type": "registry:ui"
         }
       ]
@@ -201,7 +201,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/resilient-form.tsx",
+          "path": "registry/gear5/ui/resilient-form.tsx",
           "type": "registry:ui"
         }
       ]
@@ -219,7 +219,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/error-boundary.tsx",
+          "path": "registry/gear5/ui/error-boundary.tsx",
           "type": "registry:ui"
         }
       ]
@@ -233,7 +233,7 @@
       "tier": "xs",
       "files": [
         {
-          "path": "registry/anywhere/ui/visually-hidden.tsx",
+          "path": "registry/gear5/ui/visually-hidden.tsx",
           "type": "registry:ui"
         }
       ]
@@ -250,7 +250,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/kbd.tsx",
+          "path": "registry/gear5/ui/kbd.tsx",
           "type": "registry:ui"
         }
       ]
@@ -267,7 +267,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/divider.tsx",
+          "path": "registry/gear5/ui/divider.tsx",
           "type": "registry:ui"
         }
       ]
@@ -280,7 +280,7 @@
       "tier": "sm",
       "files": [
         {
-          "path": "registry/anywhere/lib/use-focus-trap.ts",
+          "path": "registry/gear5/lib/use-focus-trap.ts",
           "type": "registry:hook"
         }
       ]
@@ -297,7 +297,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/badge.tsx",
+          "path": "registry/gear5/ui/badge.tsx",
           "type": "registry:ui"
         }
       ]
@@ -314,7 +314,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/status-dot.tsx",
+          "path": "registry/gear5/ui/status-dot.tsx",
           "type": "registry:ui"
         }
       ]
@@ -331,7 +331,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/avatar.tsx",
+          "path": "registry/gear5/ui/avatar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -349,7 +349,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/avatar-group.tsx",
+          "path": "registry/gear5/ui/avatar-group.tsx",
           "type": "registry:ui"
         }
       ]
@@ -366,7 +366,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/chip.tsx",
+          "path": "registry/gear5/ui/chip.tsx",
           "type": "registry:ui"
         }
       ]
@@ -383,7 +383,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/card.tsx",
+          "path": "registry/gear5/ui/card.tsx",
           "type": "registry:ui"
         }
       ]
@@ -400,7 +400,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/container.tsx",
+          "path": "registry/gear5/ui/container.tsx",
           "type": "registry:ui"
         }
       ]
@@ -417,7 +417,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/alert.tsx",
+          "path": "registry/gear5/ui/alert.tsx",
           "type": "registry:ui"
         }
       ]
@@ -434,7 +434,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/progress-bar.tsx",
+          "path": "registry/gear5/ui/progress-bar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -452,7 +452,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/spinner.tsx",
+          "path": "registry/gear5/ui/spinner.tsx",
           "type": "registry:ui"
         }
       ]
@@ -469,7 +469,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/skeleton.tsx",
+          "path": "registry/gear5/ui/skeleton.tsx",
           "type": "registry:ui"
         }
       ]
@@ -488,7 +488,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/relative-time.tsx",
+          "path": "registry/gear5/ui/relative-time.tsx",
           "type": "registry:ui"
         }
       ]
@@ -505,7 +505,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/plural-text.tsx",
+          "path": "registry/gear5/ui/plural-text.tsx",
           "type": "registry:ui"
         }
       ]
@@ -523,7 +523,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/list-text.tsx",
+          "path": "registry/gear5/ui/list-text.tsx",
           "type": "registry:ui"
         }
       ]
@@ -541,7 +541,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/currency-text.tsx",
+          "path": "registry/gear5/ui/currency-text.tsx",
           "type": "registry:ui"
         }
       ]
@@ -558,7 +558,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/empty-state.tsx",
+          "path": "registry/gear5/ui/empty-state.tsx",
           "type": "registry:ui"
         }
       ]
@@ -575,7 +575,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/tooltip.tsx",
+          "path": "registry/gear5/ui/tooltip.tsx",
           "type": "registry:ui"
         }
       ]
@@ -592,7 +592,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/switch.tsx",
+          "path": "registry/gear5/ui/switch.tsx",
           "type": "registry:ui"
         }
       ]
@@ -609,7 +609,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/checkbox.tsx",
+          "path": "registry/gear5/ui/checkbox.tsx",
           "type": "registry:ui"
         }
       ]
@@ -626,7 +626,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/radio-group.tsx",
+          "path": "registry/gear5/ui/radio-group.tsx",
           "type": "registry:ui"
         }
       ]
@@ -643,7 +643,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/slider.tsx",
+          "path": "registry/gear5/ui/slider.tsx",
           "type": "registry:ui"
         }
       ]
@@ -660,7 +660,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/rating.tsx",
+          "path": "registry/gear5/ui/rating.tsx",
           "type": "registry:ui"
         }
       ]
@@ -677,7 +677,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/accordion.tsx",
+          "path": "registry/gear5/ui/accordion.tsx",
           "type": "registry:ui"
         }
       ]
@@ -695,7 +695,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/tabs.tsx",
+          "path": "registry/gear5/ui/tabs.tsx",
           "type": "registry:ui"
         }
       ]
@@ -713,7 +713,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/breadcrumb.tsx",
+          "path": "registry/gear5/ui/breadcrumb.tsx",
           "type": "registry:ui"
         }
       ]
@@ -731,7 +731,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/pagination.tsx",
+          "path": "registry/gear5/ui/pagination.tsx",
           "type": "registry:ui"
         }
       ]
@@ -748,7 +748,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/stepper.tsx",
+          "path": "registry/gear5/ui/stepper.tsx",
           "type": "registry:ui"
         }
       ]
@@ -766,7 +766,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/copy-button.tsx",
+          "path": "registry/gear5/ui/copy-button.tsx",
           "type": "registry:ui"
         }
       ]
@@ -784,7 +784,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/share-button.tsx",
+          "path": "registry/gear5/ui/share-button.tsx",
           "type": "registry:ui"
         }
       ]
@@ -798,7 +798,7 @@
       "tier": "xs",
       "files": [
         {
-          "path": "registry/anywhere/ui/portal.tsx",
+          "path": "registry/gear5/ui/portal.tsx",
           "type": "registry:ui"
         }
       ],
@@ -821,7 +821,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/dialog.tsx",
+          "path": "registry/gear5/ui/dialog.tsx",
           "type": "registry:ui"
         }
       ]
@@ -841,7 +841,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/drawer.tsx",
+          "path": "registry/gear5/ui/drawer.tsx",
           "type": "registry:ui"
         }
       ]
@@ -859,7 +859,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/toast.tsx",
+          "path": "registry/gear5/ui/toast.tsx",
           "type": "registry:ui"
         }
       ]
@@ -876,7 +876,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/popover.tsx",
+          "path": "registry/gear5/ui/popover.tsx",
           "type": "registry:ui"
         }
       ]
@@ -893,7 +893,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/menu.tsx",
+          "path": "registry/gear5/ui/menu.tsx",
           "type": "registry:ui"
         }
       ]
@@ -911,7 +911,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/theme-toggle.tsx",
+          "path": "registry/gear5/ui/theme-toggle.tsx",
           "type": "registry:ui"
         }
       ]
@@ -928,7 +928,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/locale-switcher.tsx",
+          "path": "registry/gear5/ui/locale-switcher.tsx",
           "type": "registry:ui"
         }
       ]
@@ -945,7 +945,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/back-to-top.tsx",
+          "path": "registry/gear5/ui/back-to-top.tsx",
           "type": "registry:ui"
         }
       ]
@@ -962,7 +962,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/scroll-progress.tsx",
+          "path": "registry/gear5/ui/scroll-progress.tsx",
           "type": "registry:ui"
         }
       ]
@@ -979,7 +979,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/timeline.tsx",
+          "path": "registry/gear5/ui/timeline.tsx",
           "type": "registry:ui"
         }
       ]
@@ -996,7 +996,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/stat-card.tsx",
+          "path": "registry/gear5/ui/stat-card.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1013,7 +1013,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/search-field.tsx",
+          "path": "registry/gear5/ui/search-field.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1032,7 +1032,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/tag-input.tsx",
+          "path": "registry/gear5/ui/tag-input.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1049,7 +1049,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/password-field.tsx",
+          "path": "registry/gear5/ui/password-field.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1066,7 +1066,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/otp-input.tsx",
+          "path": "registry/gear5/ui/otp-input.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1084,7 +1084,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/number-field.tsx",
+          "path": "registry/gear5/ui/number-field.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1101,7 +1101,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/honeypot-field.tsx",
+          "path": "registry/gear5/ui/honeypot-field.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1119,7 +1119,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/consent-banner.tsx",
+          "path": "registry/gear5/ui/consent-banner.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1137,7 +1137,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/reduced-motion-toggle.tsx",
+          "path": "registry/gear5/ui/reduced-motion-toggle.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1155,7 +1155,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/data-saver-toggle.tsx",
+          "path": "registry/gear5/ui/data-saver-toggle.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1174,7 +1174,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/accessibility-menu.tsx",
+          "path": "registry/gear5/ui/accessibility-menu.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1192,7 +1192,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/table-of-contents.tsx",
+          "path": "registry/gear5/ui/table-of-contents.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1210,7 +1210,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/code-block.tsx",
+          "path": "registry/gear5/ui/code-block.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1227,7 +1227,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/quote-block.tsx",
+          "path": "registry/gear5/ui/quote-block.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1244,7 +1244,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/select.tsx",
+          "path": "registry/gear5/ui/select.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1261,7 +1261,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/virtual-list.tsx",
+          "path": "registry/gear5/ui/virtual-list.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1279,7 +1279,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/table.tsx",
+          "path": "registry/gear5/ui/table.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1297,7 +1297,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/keyboard-shortcuts-help.tsx",
+          "path": "registry/gear5/ui/keyboard-shortcuts-help.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1316,7 +1316,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/command-palette.tsx",
+          "path": "registry/gear5/ui/command-palette.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1334,7 +1334,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/file-upload.tsx",
+          "path": "registry/gear5/ui/file-upload.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1352,7 +1352,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/infinite-scroll.tsx",
+          "path": "registry/gear5/ui/infinite-scroll.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1369,7 +1369,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/lazy-mount.tsx",
+          "path": "registry/gear5/ui/lazy-mount.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1386,7 +1386,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/context-menu.tsx",
+          "path": "registry/gear5/ui/context-menu.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1403,7 +1403,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/navbar.tsx",
+          "path": "registry/gear5/ui/navbar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1420,7 +1420,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/footer.tsx",
+          "path": "registry/gear5/ui/footer.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1437,7 +1437,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/sidebar.tsx",
+          "path": "registry/gear5/ui/sidebar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1454,7 +1454,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/directional-icon.tsx",
+          "path": "registry/gear5/ui/directional-icon.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1471,7 +1471,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/masonry-grid.tsx",
+          "path": "registry/gear5/ui/masonry-grid.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1490,7 +1490,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/calendar.tsx",
+          "path": "registry/gear5/ui/calendar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1507,7 +1507,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/time-field.tsx",
+          "path": "registry/gear5/ui/time-field.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1524,7 +1524,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/combobox.tsx",
+          "path": "registry/gear5/ui/combobox.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1542,7 +1542,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/multi-select.tsx",
+          "path": "registry/gear5/ui/multi-select.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1559,7 +1559,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/disclosure.tsx",
+          "path": "registry/gear5/ui/disclosure.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1576,7 +1576,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/print-button.tsx",
+          "path": "registry/gear5/ui/print-button.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1593,7 +1593,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/countdown.tsx",
+          "path": "registry/gear5/ui/countdown.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1611,7 +1611,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/unit-text.tsx",
+          "path": "registry/gear5/ui/unit-text.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1628,7 +1628,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/live-region.tsx",
+          "path": "registry/gear5/ui/live-region.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1646,7 +1646,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/skip-link.tsx",
+          "path": "registry/gear5/ui/skip-link.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1659,7 +1659,7 @@
       "tier": "sm",
       "files": [
         {
-          "path": "registry/anywhere/lib/use-stored-value.ts",
+          "path": "registry/gear5/lib/use-stored-value.ts",
           "type": "registry:hook"
         }
       ]
@@ -1672,7 +1672,7 @@
       "tier": "xs",
       "files": [
         {
-          "path": "registry/anywhere/lib/use-hydrated.ts",
+          "path": "registry/gear5/lib/use-hydrated.ts",
           "type": "registry:hook"
         }
       ]
@@ -1690,7 +1690,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/compact-number.tsx",
+          "path": "registry/gear5/ui/compact-number.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1708,7 +1708,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/bytes-text.tsx",
+          "path": "registry/gear5/ui/bytes-text.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1725,7 +1725,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/ordinal-text.tsx",
+          "path": "registry/gear5/ui/ordinal-text.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1743,7 +1743,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/read-time.tsx",
+          "path": "registry/gear5/ui/read-time.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1762,7 +1762,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/name-fields.tsx",
+          "path": "registry/gear5/ui/name-fields.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1781,7 +1781,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/address-fields.tsx",
+          "path": "registry/gear5/ui/address-fields.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1799,7 +1799,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/segmented-control.tsx",
+          "path": "registry/gear5/ui/segmented-control.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1819,7 +1819,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/save-status.tsx",
+          "path": "registry/gear5/ui/save-status.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1839,7 +1839,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/retry-button.tsx",
+          "path": "registry/gear5/ui/retry-button.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1859,7 +1859,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/text-size-control.tsx",
+          "path": "registry/gear5/ui/text-size-control.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1877,7 +1877,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/tree-view.tsx",
+          "path": "registry/gear5/ui/tree-view.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1892,7 +1892,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/anywhere/ui/bidi-text.tsx",
+          "path": "registry/gear5/ui/bidi-text.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1909,7 +1909,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/truncate-text.tsx",
+          "path": "registry/gear5/ui/truncate-text.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1927,7 +1927,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/date-range-text.tsx",
+          "path": "registry/gear5/ui/date-range-text.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1946,7 +1946,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/character-counter.tsx",
+          "path": "registry/gear5/ui/character-counter.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1965,7 +1965,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/currency-field.tsx",
+          "path": "registry/gear5/ui/currency-field.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1983,7 +1983,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/unit-field.tsx",
+          "path": "registry/gear5/ui/unit-field.tsx",
           "type": "registry:ui"
         }
       ]
@@ -2001,7 +2001,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/timezone-select.tsx",
+          "path": "registry/gear5/ui/timezone-select.tsx",
           "type": "registry:ui"
         }
       ]
@@ -2018,7 +2018,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/heading-level.tsx",
+          "path": "registry/gear5/ui/heading-level.tsx",
           "type": "registry:ui"
         }
       ]
@@ -2036,7 +2036,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/landmark-nav.tsx",
+          "path": "registry/gear5/ui/landmark-nav.tsx",
           "type": "registry:ui"
         }
       ]
@@ -2054,7 +2054,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/error-summary.tsx",
+          "path": "registry/gear5/ui/error-summary.tsx",
           "type": "registry:ui"
         }
       ]
@@ -2073,7 +2073,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/sortable-table.tsx",
+          "path": "registry/gear5/ui/sortable-table.tsx",
           "type": "registry:ui"
         }
       ]
@@ -2093,7 +2093,7 @@
       ],
       "files": [
         {
-          "path": "registry/anywhere/ui/stale-data-notice.tsx",
+          "path": "registry/gear5/ui/stale-data-notice.tsx",
           "type": "registry:ui"
         }
       ]

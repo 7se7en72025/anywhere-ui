@@ -35,14 +35,14 @@ const HOMEPAGE = resolveSiteUrl();
 
 /** Where each registry type lands in a consumer's project. */
 const TARGETS = {
-  "registry:ui": "components/anywhere",
-  "registry:lib": "lib/anywhere",
-  "registry:hook": "hooks/anywhere",
+  "registry:ui": "components/gear5",
+  "registry:lib": "lib/gear5",
+  "registry:hook": "hooks/gear5",
 };
 
 /**
  * Map a source module path to the alias a consumer will import it by.
- * `registry/anywhere/lib/cn.ts` -> `@/lib/anywhere/cn`
+ * `registry/gear5/lib/cn.ts` -> `@/lib/gear5/cn`
  */
 function aliasFor(sourcePath, typeByBasename) {
   const basename = sourcePath.split("/").pop().replace(/\.tsx?$/, "");
@@ -51,7 +51,7 @@ function aliasFor(sourcePath, typeByBasename) {
 }
 
 function rewriteImports(content, typeByBasename) {
-  // Only relative specifiers pointing inside registry/anywhere are rewritten;
+  // Only relative specifiers pointing inside registry/gear5 are rewritten;
   // anything else (react, next, …) is left exactly as the author wrote it.
   return content.replace(
     /from\s+"(\.\.?\/[^"]+)"/g,

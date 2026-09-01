@@ -6,7 +6,7 @@ import { useStoredValue } from "../lib/use-stored-value";
 
 export type Theme = "light" | "dark" | "system";
 
-const STORAGE_KEY = "anywhere-ui:theme";
+const STORAGE_KEY = "gear5-ui:theme";
 
 function apply(theme: Theme) {
   const root = document.documentElement;
@@ -36,7 +36,7 @@ export interface ThemeToggleProps {
  * client's first render agree — this is why the library ships no inline
  * `<script>` snippet of its own for FOUC prevention; consumers who need
  * zero-flash dark mode add the one-line inline script Next.js's own docs
- * describe, reading the same `anywhere-ui:theme` key.
+ * describe, reading the same `gear5-ui:theme` key.
  */
 export function ThemeToggle({ className, defaultTheme = "system" }: ThemeToggleProps) {
   const [stored, setStored] = useStoredValue(STORAGE_KEY, defaultTheme);

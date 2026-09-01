@@ -188,7 +188,7 @@ export default function Home() {
             Browse all {components.length} components
           </Link>
           <a
-            href="https://github.com/7se7en72025/anywhere-ui"
+            href="https://github.com/7se7en72025/gear5-ui"
             className="inline-block rounded-md border border-hairline px-5 py-2.5 text-body-sm text-cream transition-all hover:bg-cream/10 hover:border-cream/30"
           >
             View on GitHub

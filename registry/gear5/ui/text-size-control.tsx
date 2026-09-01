@@ -6,7 +6,7 @@ import { cn } from "../lib/cn";
 import { useStoredValue } from "../lib/use-stored-value";
 import { SegmentedControl } from "./segmented-control";
 
-const STORAGE_KEY = "anywhere-ui:text-size";
+const STORAGE_KEY = "gear5-ui:text-size";
 
 export interface TextSizeControlLabels {
   legend: string;

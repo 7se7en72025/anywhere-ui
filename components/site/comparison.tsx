@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, type ReactNode } from "react";
-import { LocaleProvider } from "@/registry/anywhere/lib/use-locale";
+import { LocaleProvider } from "@/registry/gear5/lib/use-locale";
 
 export interface Comparison {
   name: string;

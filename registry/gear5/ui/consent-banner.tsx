@@ -28,7 +28,7 @@ export interface ConsentBannerProps {
  * placement difference — and the choice is asked once, stored locally, and
  * never re-asked while it stands.
  */
-export function ConsentBanner({ storageKey = "anywhere-ui:consent", labels: labelOverrides, onDecide, className }: ConsentBannerProps) {
+export function ConsentBanner({ storageKey = "gear5-ui:consent", labels: labelOverrides, onDecide, className }: ConsentBannerProps) {
   const labels = { ...DEFAULT_LABELS, ...labelOverrides };
   const [decision, setDecision] = useStoredValue(storageKey);
 

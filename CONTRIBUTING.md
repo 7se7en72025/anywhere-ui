@@ -39,11 +39,11 @@ pnpm dev       # docs site and playground
 pnpm verify    # typecheck, lint, tests — everything CI runs
 ```
 
-Components live in `registry/anywhere/ui/`, shared primitives in `registry/anywhere/lib/`. Import between them by relative path; the registry build rewrites those to `@/` aliases for consumers.
+Components live in `registry/gear5/ui/`, shared primitives in `registry/gear5/lib/`. Import between them by relative path; the registry build rewrites those to `@/` aliases for consumers.
 
 ## Adding a component to the registry
 
-1. Write it in `registry/anywhere/ui/<name>.tsx`.
+1. Write it in `registry/gear5/ui/<name>.tsx`.
 2. Add an entry to `registry.json` with a `tier` and `registryDependencies` listed by name.
 3. Add a fixture for it to `components/demos.tsx`. If it is an overlay that covers the page when open, also add a trigger-based preview to `components/site/overlay-previews.tsx`.
 4. Add it to the playground in `components/demo/playground.tsx` if it's a flagship worth demonstrating live — not required for every component.

@@ -1,16 +1,16 @@
 # Anywhere UI
 
-[![CI](https://github.com/7se7en72025/anywhere-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/7se7en72025/anywhere-ui/actions/workflows/ci.yml)
+[![CI](https://github.com/7se7en72025/gear5-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/7se7en72025/gear5-ui/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![866 Tests Passing](https://img.shields.io/badge/tests-866%20passing-brightgreen)](https://github.com/7se7en72025/anywhere-ui)
-[![Zero Dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen)](https://github.com/7se7en72025/anywhere-ui)
-[![Live Demo](https://img.shields.io/badge/demo-live-blue)](https://anywhere-ui.dev)
+[![866 Tests Passing](https://img.shields.io/badge/tests-866%20passing-brightgreen)](https://github.com/7se7en72025/gear5-ui)
+[![Zero Dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen)](https://github.com/7se7en72025/gear5-ui)
+[![Live Demo](https://img.shields.io/badge/demo-live-blue)](https://gear5-ui.dev)
 
 **React components that work anywhere.** Any device. Any network. Any language. Any ability.
 
 110 components built for the conditions most component libraries never get tested against, and checked against ten different axes in CI rather than just claimed here.
 
-[**Try the live demo**](https://anywhere-ui.dev) | [**Browse all components**](https://anywhere-ui.dev/components) | [**View on GitHub**](https://github.com/7se7en72025/anywhere-ui)
+[**Try the live demo**](https://gear5-ui.dev) | [**Browse all components**](https://gear5-ui.dev/components) | [**View on GitHub**](https://github.com/7se7en72025/gear5-ui)
 
 ![A recording of the docs site: the wrong/right showcase, the command palette, the locale switcher, and a form surviving going offline](docs/demo.gif)
 
@@ -19,13 +19,13 @@
 ## Quick Start
 
 ```bash
-npx shadcn@latest add https://anywhere-ui.dev/r/async-boundary.json
+npx shadcn@latest add https://gear5-ui.dev/r/async-boundary.json
 ```
 
 The components get copied into your repo. There is no package to depend on, no version to upgrade, and nothing to uninstall if you change your mind.
 
 ```tsx
-import { AsyncBoundary, statusOf } from "@/components/anywhere/async-boundary";
+import { AsyncBoundary, statusOf } from "@/components/gear5/async-boundary";
 
 function Orders() {
   const { data, error, isLoading } = useOrders();
@@ -121,7 +121,7 @@ They are built on 11 shared primitives you can also take on their own: `useNetwo
 ## Usage
 
 ```tsx
-import { AsyncBoundary, statusOf } from "@/components/anywhere/async-boundary";
+import { AsyncBoundary, statusOf } from "@/components/gear5/async-boundary";
 
 function Orders() {
   const { data, error, isLoading } = useOrders();
@@ -142,7 +142,7 @@ function Orders() {
 Wrap your app once to make everything below it locale aware:
 
 ```tsx
-import { LocaleProvider } from "@/hooks/anywhere/use-locale";
+import { LocaleProvider } from "@/hooks/gear5/use-locale";
 
 <LocaleProvider locale={await resolveLocale()}>{children}</LocaleProvider>;
 ```
@@ -205,7 +205,7 @@ pnpm registry:build   # compile registry.json into public/r/*.json
 
 `next.config.ts` also runs the registry build itself at config load time, so `next dev` and `next build` regenerate `public/r/` even when something upstream skips the `pnpm registry:build` step. A hosting platform's build command override or a cached CI step will both do that, and the failure is silent: a deployed site whose own install commands 404.
 
-Components live in `registry/anywhere/`. They import each other by relative path so the repo typechecks against real modules, and `scripts/build-registry.mjs` rewrites those to `@/` aliases when it compiles the distributable registry.
+Components live in `registry/gear5/`. They import each other by relative path so the repo typechecks against real modules, and `scripts/build-registry.mjs` rewrites those to `@/` aliases when it compiles the distributable registry.
 
 ## Also in this repository
 

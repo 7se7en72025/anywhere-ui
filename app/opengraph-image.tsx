@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { components } from "@/lib/registry";
 
-export const alt = "Anywhere UI — React components that work anywhere";
+export const alt = "Gear5 UI — React components that work anywhere";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
