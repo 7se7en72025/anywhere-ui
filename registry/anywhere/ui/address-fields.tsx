@@ -25,20 +25,87 @@ const DEFAULT_LABELS: AddressFieldsLabels = {
 type FieldKey = keyof AddressFieldsLabels;
 
 /**
- * Field order by region, and whether a postal code is even asked for.
+ * Field order by country, and which fields that country actually uses.
  *
- * Address format genuinely differs: the US puts city, then state, then ZIP;
- * the UK puts the postcode last on its own line; Japan writes largest-to-
- * smallest, postal code first. And a required "State or province" field is a
- * dead end in the many countries that have no such subdivision.
+ * Address format genuinely differs, and the differences are not cosmetic:
+ *
+ * - Anglophone and most European formats run smallest-to-largest, but disagree
+ *   on where the postal code sits — the UK puts it last on its own line, most
+ *   of Europe puts it immediately before the city.
+ * - East Asian formats run largest-to-smallest, postal code first.
+ * - Many countries have no postal code at all, and a required field for one is
+ *   a dead end; `noPostal` drops it rather than asking for something that does
+ *   not exist.
+ * - "State or province" is not universal either. `noRegion` drops it for the
+ *   many countries with no such subdivision, instead of making users invent one.
+ *
+ * Coverage is by population and web traffic rather than alphabetical: the list
+ * below covers the large majority of people who will ever fill in this form,
+ * and `DEFAULT` is a reasonable smallest-to-largest fallback for the rest. It
+ * is not, and does not claim to be, all ~200 countries — a wrong entry is
+ * worse than falling back, so countries are added when someone who lives there
+ * confirms the order.
  */
-const FORMATS: Record<string, { order: FieldKey[]; postalOptional?: boolean }> = {
+const FORMATS: Record<
+  string,
+  { order: FieldKey[]; postalOptional?: boolean; noPostal?: boolean; noRegion?: boolean }
+> = {
+  // Smallest-to-largest, postal code after the region.
   US: { order: ["line1", "line2", "city", "region", "postalCode", "country"] },
-  GB: { order: ["line1", "line2", "city", "postalCode", "country"] },
-  JP: { order: ["postalCode", "region", "city", "line1", "line2", "country"] },
-  DE: { order: ["line1", "line2", "postalCode", "city", "country"] },
+  CA: { order: ["line1", "line2", "city", "region", "postalCode", "country"] },
+  AU: { order: ["line1", "line2", "city", "region", "postalCode", "country"] },
   IN: { order: ["line1", "line2", "city", "region", "postalCode", "country"] },
-  IE: { order: ["line1", "line2", "city", "region", "postalCode", "country"], postalOptional: true },
+  BR: { order: ["line1", "line2", "city", "region", "postalCode", "country"] },
+  MX: { order: ["line1", "line2", "postalCode", "city", "region", "country"] },
+  ID: { order: ["line1", "line2", "city", "region", "postalCode", "country"] },
+  MY: { order: ["line1", "line2", "postalCode", "city", "region", "country"] },
+  PH: { order: ["line1", "line2", "city", "region", "postalCode", "country"] },
+  TH: { order: ["line1", "line2", "city", "region", "postalCode", "country"] },
+  IT: { order: ["line1", "line2", "postalCode", "city", "region", "country"] },
+  ES: { order: ["line1", "line2", "postalCode", "city", "region", "country"] },
+  TR: { order: ["line1", "line2", "postalCode", "city", "region", "country"] },
+  RU: { order: ["line1", "line2", "city", "region", "postalCode", "country"] },
+  UA: { order: ["line1", "line2", "city", "region", "postalCode", "country"] },
+  ZA: { order: ["line1", "line2", "city", "region", "postalCode", "country"] },
+  EG: { order: ["line1", "line2", "city", "region", "postalCode", "country"] },
+  SA: { order: ["line1", "line2", "city", "region", "postalCode", "country"] },
+
+  // Postal code last, on its own line.
+  GB: { order: ["line1", "line2", "city", "postalCode", "country"], noRegion: true },
+  IE: {
+    order: ["line1", "line2", "city", "region", "postalCode", "country"],
+    postalOptional: true,
+  },
+
+  // Postal code before the city; no state-level subdivision in the address.
+  DE: { order: ["line1", "line2", "postalCode", "city", "country"], noRegion: true },
+  FR: { order: ["line1", "line2", "postalCode", "city", "country"], noRegion: true },
+  NL: { order: ["line1", "line2", "postalCode", "city", "country"], noRegion: true },
+  BE: { order: ["line1", "line2", "postalCode", "city", "country"], noRegion: true },
+  PL: { order: ["line1", "line2", "postalCode", "city", "country"], noRegion: true },
+  SE: { order: ["line1", "line2", "postalCode", "city", "country"], noRegion: true },
+  NO: { order: ["line1", "line2", "postalCode", "city", "country"], noRegion: true },
+  DK: { order: ["line1", "line2", "postalCode", "city", "country"], noRegion: true },
+  FI: { order: ["line1", "line2", "postalCode", "city", "country"], noRegion: true },
+  AT: { order: ["line1", "line2", "postalCode", "city", "country"], noRegion: true },
+  CH: { order: ["line1", "line2", "postalCode", "city", "country"], noRegion: true },
+  PT: { order: ["line1", "line2", "postalCode", "city", "country"], noRegion: true },
+
+  // Largest-to-smallest, postal code first.
+  JP: { order: ["postalCode", "region", "city", "line1", "line2", "country"] },
+  CN: { order: ["postalCode", "region", "city", "line1", "line2", "country"] },
+  KR: { order: ["postalCode", "region", "city", "line1", "line2", "country"] },
+  TW: { order: ["postalCode", "region", "city", "line1", "line2", "country"] },
+
+  // No postal code in use.
+  NG: { order: ["line1", "line2", "city", "region", "country"], noPostal: true },
+  KE: { order: ["line1", "line2", "city", "region", "country"], noPostal: true },
+  GH: { order: ["line1", "line2", "city", "region", "country"], noPostal: true },
+  TZ: { order: ["line1", "line2", "city", "region", "country"], noPostal: true },
+  UG: { order: ["line1", "line2", "city", "region", "country"], noPostal: true },
+  AE: { order: ["line1", "line2", "city", "region", "country"], noPostal: true },
+  HK: { order: ["line1", "line2", "city", "region", "country"], noPostal: true },
+
   DEFAULT: { order: ["line1", "line2", "city", "region", "postalCode", "country"] },
 };
 
@@ -77,17 +144,28 @@ export function AddressFields({ region, labels: labelOverrides, className }: Add
   const resolved = region ?? new Intl.Locale(locale).maximize().region ?? "DEFAULT";
   const format = FORMATS[resolved] ?? FORMATS.DEFAULT;
 
+  const omitted = new Set<FieldKey>([
+    ...(format.noPostal ? (["postalCode"] as FieldKey[]) : []),
+    ...(format.noRegion ? (["region"] as FieldKey[]) : []),
+  ]);
+
   return (
     <div className={cn("flex flex-col gap-4", className)}>
-      {format.order.map((key) => (
-        <Field
-          key={key}
-          name={key}
-          label={labels[key]}
-          autoComplete={AUTOCOMPLETE[key]}
-          required={key === "line1" || key === "city" || (key === "postalCode" && !format.postalOptional)}
-        />
-      ))}
+      {format.order
+        .filter((key) => !omitted.has(key))
+        .map((key) => (
+          <Field
+            key={key}
+            name={key}
+            label={labels[key]}
+            autoComplete={AUTOCOMPLETE[key]}
+            required={
+              key === "line1" ||
+              key === "city" ||
+              (key === "postalCode" && !format.postalOptional)
+            }
+          />
+        ))}
     </div>
   );
 }

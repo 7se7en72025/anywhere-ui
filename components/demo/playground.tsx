@@ -15,9 +15,14 @@ import { simulateNetwork, type SimulatedNetwork } from "./simulator";
 const LOCALES = [
   { tag: "en-US", name: "English" },
   { tag: "ar-EG", name: "العربية" },
-  { tag: "hi-IN", name: "हिन्दी" },
+  { tag: "he-IL", name: "עברית" },
   { tag: "fa-IR", name: "فارسی" },
+  { tag: "ur-PK", name: "اردو" },
+  { tag: "hi-IN", name: "हिन्दी" },
+  { tag: "bn-BD", name: "বাংলা" },
   { tag: "th-TH", name: "ไทย" },
+  { tag: "zh-CN", name: "中文" },
+  { tag: "ja-JP", name: "日本語" },
 ] as const;
 
 const NETWORKS: Array<{ mode: SimulatedNetwork; name: string }> = [
@@ -119,6 +124,91 @@ const STRINGS: Record<
     },
     result: "จัดส่งคำสั่งซื้อของคุณแล้ว",
   },
+  "he-IL": {
+    boundary: {
+      loading: "טוען…",
+      error: "משהו השתבש.",
+      offline: "אין חיבור. ננסה שוב כשתחזור.",
+      empty: "אין כאן עדיין כלום.",
+      retry: "נסה שוב",
+      ready: "התוכן נטען",
+    },
+    form: {
+      email: "דוא\"ל",
+      note: "הודעה",
+      submit: "שליחה",
+      hint: "כתוב משהו, עבור למצב לא מקוון ולחץ שליחה.",
+    },
+    result: "ההזמנה נשלחה",
+  },
+  "ur-PK": {
+    boundary: {
+      loading: "لوڈ ہو رہا ہے…",
+      error: "کچھ غلط ہو گیا۔",
+      offline: "آپ آف لائن ہیں۔ رابطہ بحال ہوتے ہی دوبارہ کوشش کریں گے۔",
+      empty: "یہاں ابھی کچھ نہیں ہے۔",
+      retry: "دوبارہ کوشش کریں",
+      ready: "مواد لوڈ ہو گیا",
+    },
+    form: {
+      email: "ای میل",
+      note: "پیغام",
+      submit: "بھیجیں",
+      hint: "کچھ لکھیں، پھر آف لائن پر جا کر بھیجیں دبائیں۔",
+    },
+    result: "آپ کا آرڈر بھیج دیا گیا",
+  },
+  "bn-BD": {
+    boundary: {
+      loading: "লোড হচ্ছে…",
+      error: "কিছু একটা ভুল হয়েছে।",
+      offline: "আপনি অফলাইনে আছেন। সংযোগ ফিরলে আবার চেষ্টা করব।",
+      empty: "এখানে এখনো কিছু নেই।",
+      retry: "আবার চেষ্টা করুন",
+      ready: "কনটেন্ট লোড হয়েছে",
+    },
+    form: {
+      email: "ইমেইল",
+      note: "বার্তা",
+      submit: "পাঠান",
+      hint: "কিছু লিখুন, তারপর অফলাইনে গিয়ে পাঠান চাপুন।",
+    },
+    result: "আপনার অর্ডার পাঠানো হয়েছে",
+  },
+  "zh-CN": {
+    boundary: {
+      loading: "加载中…",
+      error: "出了点问题。",
+      offline: "您已离线。恢复连接后我们会重试。",
+      empty: "这里还没有内容。",
+      retry: "重试",
+      ready: "内容已加载",
+    },
+    form: {
+      email: "电子邮件",
+      note: "留言",
+      submit: "发送",
+      hint: "输入一些内容，然后切换到离线并点击发送。",
+    },
+    result: "您的订单已发货",
+  },
+  "ja-JP": {
+    boundary: {
+      loading: "読み込み中…",
+      error: "問題が発生しました。",
+      offline: "オフラインです。接続が戻り次第、再試行します。",
+      empty: "ここにはまだ何もありません。",
+      retry: "再試行",
+      ready: "コンテンツを読み込みました",
+    },
+    form: {
+      email: "メールアドレス",
+      note: "メッセージ",
+      submit: "送信",
+      hint: "何か入力し、オフラインに切り替えて送信を押してください。",
+    },
+    result: "ご注文を発送しました",
+  },
 };
 
 /** Fixed once per page load so rendering stays pure and the demo stays stable. */
@@ -140,7 +230,9 @@ export function Playground() {
   const [status, setStatus] = useState<AsyncStatus>("ready");
   const [submitted, setSubmitted] = useState<string | null>(null);
 
-  const strings = STRINGS[locale];
+  // Falls back rather than throwing: a locale added to the switcher without
+  // a translation should show English copy, not a blank page.
+  const strings = STRINGS[locale] ?? STRINGS["en-US"];
 
   function changeNetwork(mode: SimulatedNetwork) {
     setNetwork(mode);

@@ -5,10 +5,37 @@ import { fixtures } from "@/components/demos";
 import { overlayPreviews } from "./overlay-previews";
 import { LocaleProvider } from "@/registry/anywhere/lib/use-locale";
 
+/**
+ * A deliberately wide spread rather than a token few: right-to-left scripts,
+ * non-Gregorian calendars, non-Latin digits, ten-thousand and lakh grouping,
+ * and CJK line breaking are each represented, because those are the things
+ * that actually break a component.
+ *
+ * The components themselves are not limited to this list — everything here
+ * goes through `Intl`, so any BCP 47 tag the runtime knows works. This is the
+ * set worth being able to check by hand.
+ */
 const LOCALES = [
   { tag: "en-US", name: "English" },
+  { tag: "es-ES", name: "Español" },
+  { tag: "pt-BR", name: "Português" },
+  { tag: "fr-FR", name: "Français" },
+  { tag: "de-DE", name: "Deutsch" },
+  { tag: "ru-RU", name: "Русский" },
+  { tag: "tr-TR", name: "Türkçe" },
   { tag: "ar-EG", name: "العربية" },
+  { tag: "he-IL", name: "עברית" },
+  { tag: "fa-IR", name: "فارسی" },
+  { tag: "ur-PK", name: "اردو" },
   { tag: "hi-IN", name: "हिन्दी" },
+  { tag: "bn-BD", name: "বাংলা" },
+  { tag: "ta-IN", name: "தமிழ்" },
+  { tag: "th-TH", name: "ไทย" },
+  { tag: "vi-VN", name: "Tiếng Việt" },
+  { tag: "zh-CN", name: "中文" },
+  { tag: "ja-JP", name: "日本語" },
+  { tag: "ko-KR", name: "한국어" },
+  { tag: "sw-KE", name: "Kiswahili" },
 ] as const;
 
 export interface PreviewProps {

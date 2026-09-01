@@ -98,7 +98,7 @@ Resolve the locale on the server. Reading `navigator.language` during render cau
 
 **Accessibility.** Every component is asserted against axe in each of its states, plus what axe cannot check: focus moves to new errors, live regions are mounted before they are filled, required state is exposed to assistive tech and not only as a red asterisk, and focus outlines are never removed.
 
-**Internationalisation.** Every user-facing string is a prop with an English default. Layout uses CSS logical properties, so right-to-left is a data change rather than a rewrite. Dates go through the locale's own calendar — `buddhist` for `th-TH`, `islamic-umalqura` for `ar-SA`, `persian` for `fa-IR`.
+**Internationalisation.** Anything that goes through `Intl` — numbers, dates, ranges, collation, plurals, units — works for every locale the runtime knows, which is hundreds; the docs let you check 20 of them by hand. Where a behaviour is cultural convention that no API exposes, it is a hand-maintained table instead: address field order covers 43 countries, name order covers the languages that write the family name first. Every user-facing string is a prop with an English default. Layout uses CSS logical properties, so right-to-left is a data change rather than a rewrite. Dates go through the locale's own calendar — `buddhist` for `th-TH`, `islamic-umalqura` for `ar-SA`, `persian` for `fa-IR`.
 
 **Privacy.** A static scan across every source file forbids `fetch`, `XMLHttpRequest`, `sendBeacon`, `WebSocket`, and fingerprinting-adjacent APIs (`navigator.geolocation`, `getBattery`, `hardwareConcurrency`). A copy-paste UI library has no legitimate reason to talk to a network on its own.
 
@@ -127,7 +127,9 @@ pnpm verify   # typecheck, lint, and the full test suite (633 tests)
 - `tests/ssr.test.tsx` — SSR safety: every fixture through `react-dom/server`.
 - `tests/static-scan.test.ts` — privacy, security, and sensory safety: source-level scans plus `sanitizeHref` unit tests.
 - `tests/resilience.test.tsx` — resilience: `ErrorBoundary` containment, announcement, and recovery.
-- `tests/locale.test.ts`, `tests/components.test.tsx`, `tests/draft-storage.test.ts` — internationalisation and offline behaviour, including that passwords, payment fields, and one-time codes are never written to disk.
+- `tests/locale.test.ts` — internationalisation: direction, calendar, week start, and a formatting smoke test across all 20 locales the docs offer, spanning RTL scripts, non-Gregorian calendars, non-Latin digits, and lakh and ten-thousand grouping.
+- `tests/locale-forms.test.tsx` — the two components whose correctness lives in a hand-maintained table rather than in `Intl`: `AddressFields` (43 countries) and `NameFields` (name order).
+- `tests/components.test.tsx`, `tests/draft-storage.test.ts` — component behaviour and offline handling, including that passwords, payment fields, and one-time codes are never written to disk.
 
 `components/demos.tsx` is what makes this scale: one minimal render per component feeds every generic check above, so adding a component costs one fixture entry, not a bespoke test file per axis.
 

@@ -15,11 +15,36 @@ const DEFAULT_LABELS: NameFieldsLabels = {
 };
 
 /**
- * Locales that write the family name first. Not an exhaustive list of every
- * such language, but the ones with enough web traffic that getting them
- * backwards is a visible, repeated insult rather than an edge case.
+ * Languages that write the family name first.
+ *
+ * Covers the East Asian languages that do so as a rule (Japanese, Korean,
+ * Chinese and its major varieties, Vietnamese), the European exceptions
+ * (Hungarian), and the South Indian and other traditions where the family or
+ * house name conventionally precedes the given name.
+ *
+ * Deliberately a list of languages rather than an attempt at a rule: naming
+ * order is a cultural convention, not something derivable from a locale tag,
+ * and a wrong guess here reorders a person's own name in front of them.
  */
-const FAMILY_FIRST = new Set(["ja", "ko", "zh", "hu", "vi", "yue"]);
+const FAMILY_FIRST = new Set([
+  "ja",
+  "ko",
+  "zh",
+  "yue",
+  "wuu",
+  "hak",
+  "nan",
+  "vi",
+  "hu",
+  "km",
+  "mn",
+  "bo",
+  "ii",
+  "ta",
+  "te",
+  "kn",
+  "ml",
+]);
 
 export interface NameFieldsProps {
   labels?: Partial<NameFieldsLabels>;
