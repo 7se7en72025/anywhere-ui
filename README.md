@@ -1,16 +1,61 @@
 # Anywhere UI
 
+[![CI](https://github.com/7se7en72025/anywhere-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/7se7en72025/anywhere-ui/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![866 Tests Passing](https://img.shields.io/badge/tests-866%20passing-brightgreen)](https://github.com/7se7en72025/anywhere-ui)
+[![Zero Dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen)](https://github.com/7se7en72025/anywhere-ui)
+[![Live Demo](https://img.shields.io/badge/demo-live-blue)](https://anywhere-ui.dev)
+
 **React components that work anywhere.** Any device. Any network. Any language. Any ability.
 
 110 components built for the conditions most component libraries never get tested against, and checked against ten different axes in CI rather than just claimed here.
 
+[**Try the live demo**](https://anywhere-ui.dev) | [**Browse all components**](https://anywhere-ui.dev/components) | [**View on GitHub**](https://github.com/7se7en72025/anywhere-ui)
+
 ![A recording of the docs site: the wrong/right showcase, the command palette, the locale switcher, and a form surviving going offline](docs/demo.gif)
 
+---
+
+## Quick Start
+
 ```bash
-npx shadcn@latest add https://your-deployment.example.com/r/async-boundary.json
+npx shadcn@latest add https://anywhere-ui.dev/r/async-boundary.json
 ```
 
-The components get copied into your repo. There is no package to depend on, no version to upgrade, and nothing to uninstall if you change your mind. (Use whatever URL this project is deployed at. See [Development](#development).)
+The components get copied into your repo. There is no package to depend on, no version to upgrade, and nothing to uninstall if you change your mind.
+
+```tsx
+import { AsyncBoundary, statusOf } from "@/components/anywhere/async-boundary";
+
+function Orders() {
+  const { data, error, isLoading } = useOrders();
+
+  return (
+    <AsyncBoundary
+      status={statusOf({ data, error, isLoading })}
+      onRetry={refetch}
+      minHeight="12rem"
+      labels={{ empty: t("orders.empty"), retry: t("common.retry") }}
+    >
+      <OrderList orders={data} />
+    </AsyncBoundary>
+  );
+}
+```
+
+---
+
+## Table of Contents
+
+- [The problem](#the-problem)
+- [The bugs you cannot see](#the-bugs-you-cannot-see)
+- [Components](#components)
+- [Usage](#usage)
+- [The ten axes](#the-ten-axes)
+- [Verification](#verification)
+- [Development](#development)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 

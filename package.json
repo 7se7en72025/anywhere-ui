@@ -4,6 +4,32 @@
   "private": true,
   "description": "React components that work anywhere: any device, any network, any language, any ability.",
   "license": "MIT",
+  "author": "Anywhere UI Contributors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/7se7en72025/anywhere-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/7se7en72025/anywhere-ui/issues"
+  },
+  "homepage": "https://anywhere-ui.dev",
+  "keywords": [
+    "react",
+    "components",
+    "accessibility",
+    "i18n",
+    "internationalization",
+    "a11y",
+    "offline",
+    "resilient",
+    "rtl",
+    "localization",
+    "tailwind",
+    "shadcn"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "pnpm registry:build && next build",

@@ -13,7 +13,7 @@ import { RelativeTime } from "@/registry/anywhere/ui/relative-time";
 import { TruncateText } from "@/registry/anywhere/ui/truncate-text";
 
 /*
-  Every `naive` below is a real implementation of what is genuinely shipped —
+  Every `naive` below is a real implementation of what is genuinely shipped,
   the K/M/B ladder, `parseFloat` on a formatted string, `.length` on a string
   with an emoji in it. None of them are strawmen, and none of the outputs are
   hardcoded: both sides compute at render time so a sceptical reader can check
@@ -34,7 +34,7 @@ function naiveCompact(n: number): string {
   return String(n);
 }
 
-/** The st/nd/rd/th rule everyone writes, including its 11–13 bug. */
+/** The st/nd/rd/th rule everyone writes, including its 11-13 bug. */
 function naiveOrdinal(n: number): string {
   const last = n % 10;
   if (last === 1) return `${n}st`;
@@ -64,7 +64,7 @@ export const COMPARISONS: Comparison[] = [
     name: "bidi-text",
     title: "BidiText",
     problem:
-      "A right-to-left name next to a number pulls the number to the wrong side of it. Here the naive version renders the reply count before the name instead of after — the sentence reads backwards, and only for users with RTL names.",
+      "A right-to-left name next to a number pulls the number to the wrong side of it. Here the naive version renders the reply count before the name instead of after. The sentence reads backwards, and only for users with RTL names.",
     naiveCode: "<span>{name} - {n} replies</span>",
     locale: "ar-EG",
     localeName: "العربية",
@@ -129,7 +129,7 @@ export const COMPARISONS: Comparison[] = [
     name: "ordinal-text",
     title: "OrdinalText",
     problem:
-      "The st/nd/rd/th rule breaks at 11, 12 and 13 — and does not apply at all in languages that do not build ordinals from suffixes.",
+      "The st/nd/rd/th rule breaks at 11, 12 and 13, and does not apply at all in languages that do not build ordinals from suffixes.",
     naiveCode: "n % 10 === 1 ? `${n}st` : …",
     locale: "en-US",
     localeName: "English",

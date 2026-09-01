@@ -32,21 +32,16 @@ const FOOTER_COLUMNS = [
 
 export function SiteHeader() {
   return (
-    // Backdrop blur with a hairline base border, per the reference. The border
-    // is always present rather than scroll-revealed: doing that properly needs
-    // a scroll listener on every page, and a listener that exists only to fade
-    // a 1px line is not worth the main-thread work on the devices this library
-    // is built for.
     <header className="sticky top-0 z-40 border-b border-hairline bg-canvas/80 backdrop-blur-xl">
       <nav
         aria-label="Main"
         className="mx-auto flex max-w-[1200px] items-center gap-8 px-6 py-4 text-body"
       >
-        <Link href="/" className="tracking-[0.16em] text-cream uppercase">
+        <Link href="/" className="tracking-[0.16em] text-cream uppercase transition-opacity hover:opacity-80">
           {siteConfig.name}
         </Link>
 
-        <Link href="/components" className="text-cream underline-offset-4 hover:underline">
+        <Link href="/components" className="text-cream underline-offset-4 transition-colors hover:text-coral">
           Components
         </Link>
 
@@ -62,21 +57,11 @@ export function SiteHeader() {
 
         <a
           href={siteConfig.repo}
-          className="text-cream underline-offset-4 hover:underline"
+          className="text-cream underline-offset-4 transition-colors hover:text-coral"
         >
           GitHub
         </a>
 
-        {/*
-          The library's own ThemeToggle, running the site it documents.
-
-          Not only dogfooding: ThemeToggle's job is to own `.dark` on the
-          document, so the /components page — which previews all 87 components,
-          this one among them — would otherwise have its theme set by a preview
-          while every other page ignored it. Mounting the real toggle in the
-          chrome makes the whole site follow one coherent theme, and makes the
-          preview on that page genuinely the control that drives it.
-        */}
         <ThemeToggle defaultTheme="dark" />
       </nav>
     </header>
@@ -85,8 +70,6 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    // Surfaces step by colour rather than by shadow, so the footer is the
-    // elevated anvil tone above the canvas with a hairline to separate them.
     <footer className="mt-24 border-t border-hairline bg-anvil text-cream">
       <div className="mx-auto flex max-w-[1200px] flex-col gap-12 px-6 py-16">
         <div className="grid gap-10 sm:grid-cols-3">
@@ -110,9 +93,22 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="flex flex-col gap-1 border-t border-hairline pt-8 text-body-sm text-smoke">
-          <p>{siteConfig.name} — MIT licensed.</p>
-          <p>This site ships no web fonts, no analytics, and no third-party requests.</p>
+        <div className="flex flex-col gap-3 border-t border-hairline pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-1 text-body-sm text-smoke">
+            <p>{siteConfig.name} is MIT licensed.</p>
+            <p>This site ships no web fonts, no analytics, and no third-party requests.</p>
+          </div>
+          <div className="flex items-center gap-4 text-smoke">
+            <a
+              href={siteConfig.repo}
+              className="transition-colors hover:text-cream"
+              aria-label="GitHub"
+            >
+              <svg className="size-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </footer>

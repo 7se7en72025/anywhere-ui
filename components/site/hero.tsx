@@ -15,10 +15,6 @@ const SAMPLE_LOCALES = [
 const RANGE_START = new Date("2026-01-01T00:00:00Z");
 const RANGE_END = new Date("2026-01-05T00:00:00Z");
 
-/**
- * One row of the floating card: the same value, rendered by the same
- * component, in a different locale.
- */
 function LocaleRow({ tag, name }: { tag: string; name: string }) {
   return (
     <LocaleProvider locale={tag}>
@@ -41,32 +37,17 @@ function LocaleRow({ tag, name }: { tag: string; name: string }) {
 export function Hero() {
   return (
     <section className="relative isolate overflow-hidden">
-      {/* Full-bleed artwork. `priority` because this is the LCP element — the
-          one image on the site that should never be deferred. */}
       <AdaptiveImage
         src="/demo/voyage.svg"
         alt=""
         width={1200}
         height={675}
         priority
-        className="absolute inset-0 -z-10 size-full max-w-none rounded-none object-cover"
+        className="absolute inset-0 -z-10 size-full max-w-none rounded-none object-cover animate-fade-in"
       />
 
-      {/*
-        The dusk wash — the one gradient in the system — laid over the artwork
-        so the two read as a single atmospheric field rather than a picture
-        with a filter on it. Multiply keeps the illustration's own light
-        visible through it instead of flattening it to a colour.
-      */}
       <div aria-hidden="true" className="dusk-wash absolute inset-0 -z-10 mix-blend-multiply" />
 
-      {/*
-        Two scrims rather than one flat wash. The headline sits on the start
-        side, so that side is covered enough to guarantee contrast regardless
-        of what the artwork is doing underneath; the end side stays clear so
-        the illustration is actually visible. A short fade at the bottom hands
-        off to the canvas so the section ends without a seam.
-      */}
       <div
         aria-hidden="true"
         className="absolute inset-0 -z-10 bg-gradient-to-r from-canvas via-canvas/80 to-canvas/20"
@@ -78,47 +59,51 @@ export function Hero() {
 
       <div className="mx-auto flex max-w-[1200px] flex-col gap-12 px-6 pt-20 pb-24 lg:flex-row lg:items-center">
         <div className="flex max-w-2xl flex-col gap-6">
-          <p className="text-caption tracking-[0.16em] text-smoke uppercase">
+          <p className="animate-fade-in-up text-caption tracking-[0.16em] text-smoke uppercase">
             Open source · MIT · zero dependencies
           </p>
 
-          <h1 className="text-heading text-balance text-cream sm:text-heading-lg">
+          <h1 className="animate-fade-in-up text-heading text-balance text-cream sm:text-heading-lg" style={{ animationDelay: "100ms" }}>
             React components that work{" "}
             <span className="font-editorial italic text-coral">anywhere</span>.
           </h1>
 
-          <p className="max-w-xl text-body-lg text-pretty text-smoke">
-            Any device. Any network. Any language. Any ability. Engineered for the conditions most
-            component libraries are never tested against — and verified against all ten of them, in
+          <p className="animate-fade-in-up max-w-xl text-body-lg text-pretty text-smoke" style={{ animationDelay: "200ms" }}>
+            Any device. Any network. Any language. Any ability. Built for the conditions most
+            component libraries are never tested against, and verified against all ten of them, in
             CI.
           </p>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="animate-fade-in-up flex flex-wrap items-center gap-3" style={{ animationDelay: "300ms" }}>
             <Link
               href="/components"
-              className="rounded-md bg-coral px-5 py-2.5 text-body-sm font-medium text-on-accent transition-opacity hover:opacity-90"
+              className="rounded-md bg-coral px-5 py-2.5 text-body-sm font-medium text-on-accent transition-all hover:opacity-90 hover:shadow-lg hover:shadow-coral/20"
             >
               Browse components
             </Link>
 
             <a
               href="https://github.com/7se7en72025/anywhere-ui"
-              className="rounded-md border border-hairline px-5 py-2.5 text-body-sm text-cream transition-colors hover:bg-cream/10"
+              className="rounded-md border border-hairline px-5 py-2.5 text-body-sm text-cream transition-all hover:bg-cream/10 hover:border-cream/30"
             >
               Source on GitHub
             </a>
           </div>
+
+          <div className="animate-fade-in-up mt-4 flex items-center gap-4 text-caption text-smoke" style={{ animationDelay: "400ms" }}>
+            <span className="flex items-center gap-1.5">
+              <span className="size-2 rounded-full bg-green-500" aria-hidden="true" />
+              866 tests passing
+            </span>
+            <span aria-hidden="true" className="text-smoke/30">·</span>
+            <span>87 components</span>
+            <span aria-hidden="true" className="text-smoke/30">·</span>
+            <span>Zero dependencies</span>
+          </div>
         </div>
 
-        {/*
-          The signature compositional move from the reference: a translucent
-          product card floating over the artwork. Its content is not a mockup —
-          these are the real CompactNumber and DateRangeText components, each
-          rendering the identical value under a different locale. The card is
-          the argument.
-        */}
-        <div className="lg:ms-auto lg:w-[26rem]">
-          <div className="rounded-lg border border-hairline bg-anvil/80 p-4 shadow-xl backdrop-blur-md">
+        <div className="animate-slide-in-right lg:ms-auto lg:w-[26rem]" style={{ animationDelay: "300ms" }}>
+          <div className="rounded-lg border border-hairline bg-anvil/80 p-4 shadow-xl backdrop-blur-md animate-pulse-glow">
             <p className="mb-3 text-caption tracking-[0.16em] text-smoke uppercase">
               One value, three locales
             </p>

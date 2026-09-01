@@ -41,7 +41,7 @@ const STRINGS: Record<
 > = {
   "en-US": {
     boundary: {
-      loading: "Loading…",
+      loading: "Loading...",
       error: "Something went wrong.",
       offline: "You're offline. We'll retry when you're back.",
       empty: "Nothing here yet.",
@@ -58,7 +58,7 @@ const STRINGS: Record<
   },
   "ar-EG": {
     boundary: {
-      loading: "جارٍ التحميل…",
+      loading: "جارٍ التحميل...",
       error: "حدث خطأ ما.",
       offline: "أنت غير متصل. سنعيد المحاولة عند عودتك.",
       empty: "لا يوجد شيء هنا بعد.",
@@ -75,7 +75,7 @@ const STRINGS: Record<
   },
   "hi-IN": {
     boundary: {
-      loading: "लोड हो रहा है…",
+      loading: "लोड हो रहा है...",
       error: "कुछ गड़बड़ हो गई।",
       offline: "आप ऑफ़लाइन हैं। कनेक्शन आते ही दोबारा कोशिश करेंगे।",
       empty: "अभी यहाँ कुछ नहीं है।",
@@ -92,7 +92,7 @@ const STRINGS: Record<
   },
   "fa-IR": {
     boundary: {
-      loading: "در حال بارگذاری…",
+      loading: "در حال بارگذاری...",
       error: "مشکلی پیش آمد.",
       offline: "آفلاین هستید. پس از اتصال دوباره تلاش می‌کنیم.",
       empty: "هنوز چیزی اینجا نیست.",
@@ -109,7 +109,7 @@ const STRINGS: Record<
   },
   "th-TH": {
     boundary: {
-      loading: "กำลังโหลด…",
+      loading: "กำลังโหลด...",
       error: "เกิดข้อผิดพลาด",
       offline: "คุณออฟไลน์อยู่ เราจะลองใหม่เมื่อกลับมาออนไลน์",
       empty: "ยังไม่มีอะไรที่นี่",
@@ -126,7 +126,7 @@ const STRINGS: Record<
   },
   "he-IL": {
     boundary: {
-      loading: "טוען…",
+      loading: "טוען...",
       error: "משהו השתבש.",
       offline: "אין חיבור. ננסה שוב כשתחזור.",
       empty: "אין כאן עדיין כלום.",
@@ -143,7 +143,7 @@ const STRINGS: Record<
   },
   "ur-PK": {
     boundary: {
-      loading: "لوڈ ہو رہا ہے…",
+      loading: "لوڈ ہو رہا ہے...",
       error: "کچھ غلط ہو گیا۔",
       offline: "آپ آف لائن ہیں۔ رابطہ بحال ہوتے ہی دوبارہ کوشش کریں گے۔",
       empty: "یہاں ابھی کچھ نہیں ہے۔",
@@ -160,7 +160,7 @@ const STRINGS: Record<
   },
   "bn-BD": {
     boundary: {
-      loading: "লোড হচ্ছে…",
+      loading: "লোড হচ্ছে...",
       error: "কিছু একটা ভুল হয়েছে।",
       offline: "আপনি অফলাইনে আছেন। সংযোগ ফিরলে আবার চেষ্টা করব।",
       empty: "এখানে এখনো কিছু নেই।",
@@ -177,7 +177,7 @@ const STRINGS: Record<
   },
   "zh-CN": {
     boundary: {
-      loading: "加载中…",
+      loading: "加载中...",
       error: "出了点问题。",
       offline: "您已离线。恢复连接后我们会重试。",
       empty: "这里还没有内容。",
@@ -194,7 +194,7 @@ const STRINGS: Record<
   },
   "ja-JP": {
     boundary: {
-      loading: "読み込み中…",
+      loading: "読み込み中...",
       error: "問題が発生しました。",
       offline: "オフラインです。接続が戻り次第、再試行します。",
       empty: "ここにはまだ何もありません。",
@@ -211,14 +211,13 @@ const STRINGS: Record<
   },
 };
 
-/** Fixed once per page load so rendering stays pure and the demo stays stable. */
 const sample = new Date(Date.now() - 3 * 24 * 60 * 60 * 1000);
 
 function Panel({ title, note, children }: { title: string; note: string; children: React.ReactNode }) {
   return (
-    <section className="rounded-xl border border-neutral-200 p-5 dark:border-neutral-800">
+    <section className="rounded-xl border border-neutral-200 bg-white p-5 transition-all hover:shadow-md dark:border-neutral-800 dark:bg-neutral-950">
       <h3 className="text-sm font-semibold">{title}</h3>
-      <p className="mt-1 mb-4 text-sm text-neutral-600 dark:text-neutral-400">{note}</p>
+      <p className="mt-1 mb-4 text-sm text-neutral-500 dark:text-neutral-400">{note}</p>
       {children}
     </section>
   );
@@ -230,8 +229,6 @@ export function Playground() {
   const [status, setStatus] = useState<AsyncStatus>("ready");
   const [submitted, setSubmitted] = useState<string | null>(null);
 
-  // Falls back rather than throwing: a locale added to the switcher without
-  // a translation should show English copy, not a blank page.
   const strings = STRINGS[locale] ?? STRINGS["en-US"];
 
   function changeNetwork(mode: SimulatedNetwork) {
@@ -241,7 +238,7 @@ export function Playground() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-4 rounded-xl border border-neutral-200 bg-neutral-50 p-5 dark:border-neutral-800 dark:bg-neutral-950">
+      <div className="flex flex-col gap-4 rounded-xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-950">
         <fieldset className="flex flex-wrap items-center gap-2">
           <legend className="sr-only">Simulated network</legend>
           <span className="me-2 text-sm font-medium">Network</span>
@@ -253,8 +250,8 @@ export function Playground() {
               aria-pressed={network === mode}
               className={
                 network === mode
-                  ? "rounded-full bg-neutral-900 px-3 py-1.5 text-sm text-white dark:bg-neutral-100 dark:text-neutral-900"
-                  : "rounded-full border border-neutral-300 px-3 py-1.5 text-sm dark:border-neutral-700"
+                  ? "rounded-full bg-neutral-900 px-3 py-1.5 text-sm font-medium text-white transition-colors dark:bg-neutral-100 dark:text-neutral-900"
+                  : "rounded-full border border-neutral-300 px-3 py-1.5 text-sm transition-colors hover:border-neutral-400 dark:border-neutral-700 dark:hover:border-neutral-600"
               }
             >
               {name}
@@ -274,8 +271,8 @@ export function Playground() {
               lang={tag}
               className={
                 locale === tag
-                  ? "rounded-full bg-neutral-900 px-3 py-1.5 text-sm text-white dark:bg-neutral-100 dark:text-neutral-900"
-                  : "rounded-full border border-neutral-300 px-3 py-1.5 text-sm dark:border-neutral-700"
+                  ? "rounded-full bg-neutral-900 px-3 py-1.5 text-sm font-medium text-white transition-colors dark:bg-neutral-100 dark:text-neutral-900"
+                  : "rounded-full border border-neutral-300 px-3 py-1.5 text-sm transition-colors hover:border-neutral-400 dark:border-neutral-700 dark:hover:border-neutral-600"
               }
             >
               {name}
@@ -283,8 +280,8 @@ export function Playground() {
           ))}
         </fieldset>
 
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          Nothing below is re-rendered by the switcher with different code paths — these are the
+        <p className="text-sm text-neutral-500 dark:text-neutral-400">
+          Nothing below is re-rendered by the switcher with different code paths. These are the
           same components reading the same APIs your users&apos; browsers report.
         </p>
       </div>
@@ -377,7 +374,7 @@ export function Playground() {
 
           <Panel
             title="Locale facts"
-            note="Direction, calendar, digits, and week start — resolved from the tag, not hardcoded."
+            note="Direction, calendar, digits, and week start, all resolved from the tag, not hardcoded."
           >
             <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
               <dt className="text-neutral-600 dark:text-neutral-400">Direction</dt>

@@ -49,6 +49,25 @@ Components live in `registry/anywhere/ui/`, shared primitives in `registry/anywh
 4. Add it to the playground in `components/demo/playground.tsx` if it's a flagship worth demonstrating live — not required for every component.
 5. Run `pnpm verify` and fix whatever the generic suite flags.
 
+## Finding issues to work on
+
+Look for issues labeled **`good first issue`** — these are tasks that are well-scoped, documented, and suitable for new contributors. They typically involve:
+
+- Adding a new component that follows existing patterns
+- Improving documentation or examples
+- Adding test coverage for edge cases
+- Fixing accessibility issues
+
+If you are unsure where to start, open an issue describing what you want to work on and ask for guidance. We are happy to help you find the right scope.
+
+## Review process
+
+1. Open a PR with a clear description of what changed and why.
+2. CI must pass (typecheck, lint, tests).
+3. A maintainer will review within 48 hours. If it takes longer, ping the PR.
+4. We may request changes. This is normal and not a rejection.
+5. Once approved, a maintainer will merge the PR.
+
 ## Reporting a bug
 
 The most useful bug reports for this project name the **condition**, not just the symptom: which locale, which connection, which assistive technology, which device class. "Broken on mobile" is hard to act on. "The error summary is not announced by TalkBack on Android 11 in `ar-EG`" is a fix.

@@ -14,7 +14,7 @@ export interface PaletteItem {
 /**
  * The library's own CommandPalette, driving the site that documents it.
  *
- * With 110 components, a search field on one page is not navigation — this is.
+ * With 110 components, a search field on one page is not navigation. This is.
  * It is also the honest test of the component: if a keyboard-first launcher
  * cannot survive being the primary way around its own documentation, it is not
  * finished.
@@ -39,7 +39,7 @@ export function SiteCommandPalette({ items }: { items: PaletteItem[] }) {
     () =>
       items.map((item) => ({
         id: item.name,
-        // Category in the label so it is searchable too — typing "overlay"
+        // Category in the label so it is searchable too. Typing "overlay"
         // should find Dialog even though the word is not in its name.
         label: `${item.title} — ${item.category}`,
         onRun: () => {
@@ -67,7 +67,7 @@ export function SiteCommandPalette({ items }: { items: PaletteItem[] }) {
         onClose={() => setOpen(false)}
         commands={commands}
         label="Search components"
-        placeholder="Search 110 components…"
+        placeholder="Search 110 components..."
       />
     </>
   );

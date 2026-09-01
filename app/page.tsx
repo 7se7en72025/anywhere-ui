@@ -9,7 +9,7 @@ import { components, componentsByCategory, primitives } from "@/lib/registry";
 const AXES = [
   {
     title: "Performance",
-    body: "Every item is bundled, minified, and gzipped with React external, and fails against its declared tier budget.",
+    body: "Every item is bundled, minified, and gzipped with React external. It fails against its declared tier budget if it exceeds it.",
   },
   {
     title: "Accessibility",
@@ -21,11 +21,11 @@ const AXES = [
   },
   {
     title: "Privacy",
-    body: "A source scan forbids fetch, XHR, sendBeacon, and fingerprinting-adjacent APIs across the whole registry. Nothing here phones home.",
+    body: "A source scan forbids fetch, XHR, sendBeacon, and fingerprinting APIs across the whole registry. Nothing here phones home.",
   },
   {
     title: "Security",
-    body: "dangerouslySetInnerHTML, eval, and innerHTML assignment are forbidden registry-wide; sanitizeHref strips executable URL schemes.",
+    body: "dangerouslySetInnerHTML, eval, and innerHTML assignment are forbidden registry-wide. sanitizeHref strips executable URL schemes.",
   },
   {
     title: "Resilience",
@@ -37,7 +37,7 @@ const AXES = [
   },
   {
     title: "SSR safety",
-    body: "Every component renders through react-dom/server in CI — no reaching for window, document, or navigator during render.",
+    body: "Every component renders through react-dom/server in CI. No reaching for window, document, or navigator during render.",
   },
   {
     title: "Sensory safety",
@@ -53,7 +53,7 @@ const PROBLEMS = [
   {
     stat: "~2.6 billion",
     label: "are offline or intermittently connected",
-    body: "Requests do not fail loudly on a bad connection — they hang. The spinner spins forever, the user taps again, and now there are two orders.",
+    body: "Requests do not fail loudly on a bad connection. They hang. The spinner spins forever, the user taps again, and now there are two orders.",
   },
   {
     stat: "~1.3 billion",
@@ -75,17 +75,12 @@ export default function Home() {
     <main id="main">
       <Hero />
 
-      {/*
-        The lede, directly under the hero: eleven bugs that are almost certainly
-        in the reader's own codebase right now, each shown as the code they
-        wrote next to what it actually produces. Both sides compute live.
-      */}
       <section className="mx-auto max-w-[1200px] px-6 py-20">
-        <div className="flex max-w-3xl flex-col gap-3">
+        <div className="animate-fade-in-up flex max-w-3xl flex-col gap-3">
           <h2 className="text-heading-sm text-cream">The bugs you cannot see</h2>
           <p className="text-body text-smoke">
             Every example below is real code running in your browser right now. The left column is
-            what most applications ship — not a strawman, the actual line people write. The right
+            what most applications ship, not a strawman, the actual line people write. The right
             column is this library. If you only read one section, read this one.
           </p>
         </div>
@@ -95,10 +90,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Verification band — the trust strip, carrying claims rather than logos. */}
       <section className="border-y border-hairline bg-anvil">
         <div className="mx-auto max-w-[1200px] px-6 py-16">
-          <div className="flex flex-col gap-3">
+          <div className="animate-fade-in-up flex flex-col gap-3">
             <h2 className="text-heading-sm text-cream">Ten axes, every component</h2>
             <p className="max-w-3xl text-body text-smoke">
               Each one is a real assertion in the test suite, not a claim in this paragraph. The
@@ -107,7 +101,7 @@ export default function Home() {
             </p>
           </div>
 
-          <ul className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-5">
+          <ul className="stagger-children mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-5">
             {AXES.map((axis) => (
               <li key={axis.title} className="flex flex-col gap-2">
                 <h3 className="text-body font-medium text-cream">{axis.title}</h3>
@@ -118,26 +112,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Install. */}
       <section className="mx-auto max-w-[1200px] px-6 py-20">
-        <div className="flex flex-col gap-4">
+        <div className="animate-fade-in-up flex flex-col gap-4">
           <h2 className="text-heading-sm text-cream">Install one, or all of them</h2>
           <p className="max-w-3xl text-body text-smoke">
             Components are copied into your repo by the shadcn CLI. No package to depend on, no
             version to upgrade, nothing to remove if you change your mind.
           </p>
 
-          <code className="mt-2 w-fit max-w-full overflow-x-auto rounded-lg border border-hairline bg-anvil px-5 py-3 font-mono text-body-sm text-cream">
+          <code className="mt-2 w-fit max-w-full overflow-x-auto rounded-lg border border-hairline bg-anvil px-5 py-3 font-mono text-body-sm text-cream transition-colors hover:border-coral/50">
             npx shadcn@latest add {siteUrl}/r/async-boundary.json
           </code>
         </div>
 
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="stagger-children mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {categories.map((group) => (
             <li key={group.category}>
               <Link
                 href="/components"
-                className="flex h-full flex-col gap-1 rounded-lg border border-hairline bg-anvil p-5 transition-colors hover:border-coral/50"
+                className="hover-lift flex h-full flex-col gap-1 rounded-lg border border-hairline bg-anvil p-5 transition-colors hover:border-coral/50"
               >
                 <span className="text-body font-medium text-cream">{group.category}</span>
                 <span className="text-body-sm text-smoke">
@@ -149,19 +142,13 @@ export default function Home() {
         </ul>
       </section>
 
-      {/*
-        The one dark surface in the system, per the reference: a single
-        full-bleed band that breaks the scroll's rhythm. It carries the
-        argument for why the library exists, which is the part that should
-        stop a reader.
-      */}
       <section className="dusk-wash text-white">
         <div className="mx-auto max-w-[1200px] px-6 py-24">
-          <h2 className="max-w-3xl text-heading-lg text-balance">
+          <h2 className="animate-fade-in-up max-w-3xl text-heading-lg text-balance">
             Most component libraries are tested on the laptop they were written on.
           </h2>
 
-          <div className="mt-14 grid gap-10 sm:grid-cols-3">
+          <div className="stagger-children mt-14 grid gap-10 sm:grid-cols-3">
             {PROBLEMS.map((problem) => (
               <div key={problem.label} className="flex flex-col gap-3">
                 <p className="text-heading-sm">{problem.stat}</p>
@@ -172,19 +159,18 @@ export default function Home() {
           </div>
 
           <p className="mt-14 max-w-3xl text-body opacity-75">
-            None of this is unknown. It is just never the default — so every team rebuilds the same
+            None of this is unknown. It is just never the default, so every team rebuilds the same
             handling badly, under deadline, and ships the version that worked where it was written.
           </p>
         </div>
       </section>
 
-      {/* Live playground. */}
       <section className="mx-auto max-w-[1200px] px-6 py-20">
-        <div className="flex flex-col gap-3">
+        <div className="animate-fade-in-up flex flex-col gap-3">
           <h2 className="text-heading-sm text-cream">Try it</h2>
           <p className="max-w-3xl text-body text-smoke">
             Switch the network to <strong className="font-medium text-cream">Offline</strong> and submit the
-            form — your answers are kept and sent when the connection returns. Switch the language
+            form. Your answers are kept and sent when the connection returns. Switch the language
             to <span lang="ar">العربية</span> and the whole thing mirrors, including the calendar
             and the digits.
           </p>
@@ -194,13 +180,19 @@ export default function Home() {
           <Playground />
         </div>
 
-        <div className="mt-12">
+        <div className="mt-12 flex flex-wrap items-center gap-4">
           <Link
             href="/components"
-            className="inline-block rounded-md bg-coral px-5 py-2.5 text-body-sm font-medium text-on-accent transition-opacity hover:opacity-90"
+            className="inline-block rounded-md bg-coral px-5 py-2.5 text-body-sm font-medium text-on-accent transition-all hover:opacity-90 hover:shadow-lg hover:shadow-coral/20"
           >
             Browse all {components.length} components
           </Link>
+          <a
+            href="https://github.com/7se7en72025/anywhere-ui"
+            className="inline-block rounded-md border border-hairline px-5 py-2.5 text-body-sm text-cream transition-all hover:bg-cream/10 hover:border-cream/30"
+          >
+            View on GitHub
+          </a>
         </div>
       </section>
 
