@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { cn } from "../lib/cn";
+import { useLocale } from "../lib/use-locale";
 
 export type CalendarViewMode = "month" | "week" | "day";
 
@@ -37,18 +38,13 @@ function isSameDay(a: Date, b: Date): boolean {
   return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 }
 
-function formatMonthYear(date: Date): string {
-  return new Intl.DateTimeFormat(undefined, { month: "long", year: "numeric" }).format(date);
+function formatMonthYear(date: Date, locale: string): string {
+  return new Intl.DateTimeFormat(locale, { month: "long", year: "numeric" }).format(date);
 }
 
-function formatDay(date: Date): string {
-  return new Intl.DateTimeFormat(undefined, { weekday: "short", month: "short", day: "numeric" }).format(date);
+function formatDay(date: Date, locale: string): string {
+  return new Intl.DateTimeFormat(locale, { weekday: "short", month: "short", day: "numeric" }).format(date);
 }
-
-const WEEKDAY_LABELS = Array.from({ length: 7 }, (_, i) => {
-  const d = new Date(2024, 0, 7 + i);
-  return new Intl.DateTimeFormat(undefined, { weekday: "short" }).format(d);
-});
 
 /**
  * Calendar with month/week/day views and keyboard navigation. The month grid
@@ -56,9 +52,16 @@ const WEEKDAY_LABELS = Array.from({ length: 7 }, (_, i) => {
  * Enter/Space selects.
  */
 export function CalendarView({ events = [], className }: CalendarViewProps) {
+  const { locale } = useLocale();
   const [mode, setMode] = useState<CalendarViewMode>("month");
   const [cursor, setCursor] = useState(new Date());
   const [selected, setSelected] = useState<Date | null>(null);
+
+  const weekdayLabels = useMemo(() =>
+    Array.from({ length: 7 }, (_, i) => {
+      const d = new Date(2024, 0, 7 + i);
+      return new Intl.DateTimeFormat(locale, { weekday: "short" }).format(d);
+    }), [locale]);
 
   const monthDays = useMemo(() => {
     const start = startOfMonth(cursor);
@@ -112,7 +115,7 @@ export function CalendarView({ events = [], className }: CalendarViewProps) {
     }
   }
 
-  const headerLabel = mode === "month" ? formatMonthYear(cursor) : mode === "week" ? formatMonthYear(cursor) : formatDay(cursor);
+  const headerLabel = mode === "month" ? formatMonthYear(cursor, locale) : mode === "week" ? formatMonthYear(cursor, locale) : formatDay(cursor, locale);
 
   return (
     <div className={cn("w-80 text-start", className)}>
@@ -157,9 +160,9 @@ export function CalendarView({ events = [], className }: CalendarViewProps) {
       </div>
 
       {mode === "month" && (
-        <div role="grid" aria-label={formatMonthYear(cursor)} className="grid grid-cols-7 gap-0.5 text-center text-xs">
+        <div role="grid" aria-label={formatMonthYear(cursor, locale)} className="grid grid-cols-7 gap-0.5 text-center text-xs">
           <div role="row" className="contents">
-            {WEEKDAY_LABELS.map((label) => (
+            {weekdayLabels.map((label) => (
               <div role="columnheader" key={label} className="p-1 font-medium text-neutral-500">
                 {label}
               </div>
@@ -205,7 +208,7 @@ export function CalendarView({ events = [], className }: CalendarViewProps) {
               <button
                 key={day.toISOString()}
                 type="button"
-                aria-label={formatDay(day)}
+                aria-label={formatDay(day, locale)}
                 onClick={() => {
                   setSelected(day);
                   setCursor(day);

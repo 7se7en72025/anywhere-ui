@@ -2181,7 +2181,7 @@
       "type": "registry:ui",
       "title": "CountryPicker",
       "description": "Searchable country selector with flag icons and locale names.",
-      "tier": "md",
+      "tier": "lg",
       "files": [
         {
           "path": "registry/gear5/ui/country-picker.tsx",

@@ -1,7 +1,8 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId, useMemo, useState } from "react";
 import { cn } from "../lib/cn";
+import { useLocale } from "../lib/use-locale";
 
 export interface PhoneNumberFieldProps {
   value: string;
@@ -28,7 +29,17 @@ export function PhoneNumberField({ value, onChange, label, description, classNam
   const id = useId();
   const descId = `${id}-desc`;
   const hintId = `${id}-hint`;
+  const { locale } = useLocale();
   const [country, setCountry] = useState(COUNTRIES[0]);
+
+  const formatHint = useMemo(() => {
+    try {
+      const example = new Intl.DisplayNames([locale], { type: "region" }).of(country.name);
+      return `${country.code} (${example ?? country.name})`;
+    } catch {
+      return `${country.code} (XXX) XXX-XXXX`;
+    }
+  }, [locale, country]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value.replace(/[^\d]/g, "");
@@ -77,7 +88,7 @@ export function PhoneNumberField({ value, onChange, label, description, classNam
         />
       </div>
       <p id={hintId} className="text-xs text-neutral-500 dark:text-neutral-400">
-        Format: {country.code} (XXX) XXX-XXXX
+        Format: {formatHint}
       </p>
     </div>
   );

@@ -2,6 +2,7 @@
 
 import { useId, useMemo, useState } from "react";
 import { cn } from "../lib/cn";
+import { useLocale } from "../lib/use-locale";
 
 export interface DateRange {
   start: Date | null;
@@ -31,13 +32,23 @@ function isBetween(date: Date, start: Date | null, end: Date | null): boolean {
   return date > start && date < end;
 }
 
-const WEEKDAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
-const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
 export function DateRangePicker({ value, onChange, label, className }: DateRangePickerProps) {
   const id = useId();
+  const { locale } = useLocale();
   const [leftMonth, setLeftMonth] = useState(() => new Date());
   const [selecting, setSelecting] = useState<"start" | "end">("start");
+
+  const weekdays = useMemo(() =>
+    Array.from({ length: 7 }, (_, i) => {
+      const d = new Date(2024, 0, 7 + i);
+      return new Intl.DateTimeFormat(locale, { weekday: "short" }).format(d);
+    }), [locale]);
+
+  const months = useMemo(() =>
+    Array.from({ length: 12 }, (_, i) => {
+      const d = new Date(2024, i, 1);
+      return new Intl.DateTimeFormat(locale, { month: "long" }).format(d);
+    }), [locale]);
 
   const rightMonth = useMemo(() => new Date(leftMonth.getFullYear(), leftMonth.getMonth() + 1, 1), [leftMonth]);
 
@@ -63,10 +74,10 @@ export function DateRangePicker({ value, onChange, label, className }: DateRange
     return (
       <div className="w-64">
         <div className="mb-2 text-center text-sm font-medium">
-          {MONTHS[month.getMonth()]} {month.getFullYear()}
+          {months[month.getMonth()]} {month.getFullYear()}
         </div>
         <div className="grid grid-cols-7 gap-0.5 text-center text-xs">
-          {WEEKDAYS.map((d) => (
+          {weekdays.map((d) => (
             <div key={d} className="pb-1 text-neutral-500 dark:text-neutral-400">{d}</div>
           ))}
           {paddedDays.map((day, i) => {
@@ -79,7 +90,7 @@ export function DateRangePicker({ value, onChange, label, className }: DateRange
               <button
                 key={day.toISOString()}
                 type="button"
-                aria-label={`${MONTHS[day.getMonth()]} ${day.getDate()}, ${day.getFullYear()}`}
+                aria-label={`${months[day.getMonth()]} ${day.getDate()}, ${day.getFullYear()}`}
                 aria-current={isStart || isEnd ? "date" : undefined}
                 onClick={() => selectDate(day)}
                 className={cn(
@@ -99,9 +110,9 @@ export function DateRangePicker({ value, onChange, label, className }: DateRange
   };
 
   const rangeText = value.start && value.end
-    ? `${value.start.toLocaleDateString()} – ${value.end.toLocaleDateString()}`
+    ? `${value.start.toLocaleDateString(locale)} – ${value.end.toLocaleDateString(locale)}`
     : value.start
-      ? `${value.start.toLocaleDateString()} – Select end date`
+      ? `${value.start.toLocaleDateString(locale)} – Select end date`
       : "Select a date range";
 
   return (

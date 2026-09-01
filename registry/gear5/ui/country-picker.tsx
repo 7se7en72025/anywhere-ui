@@ -2,6 +2,7 @@
 
 import { useId, useMemo, useRef, useState } from "react";
 import { cn } from "../lib/cn";
+import { useLocale } from "../lib/use-locale";
 
 export interface CountryPickerProps {
   value: string;
@@ -31,20 +32,31 @@ const COUNTRIES = [
 export function CountryPicker({ value, onChange, label, className }: CountryPickerProps) {
   const id = useId();
   const listId = useId();
+  const { locale } = useLocale();
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const displayNames = useMemo(() => new Intl.DisplayNames([locale], { type: "region" }), [locale]);
+
   const selected = COUNTRIES.find((c) => c.code === value);
+
+  const getCountryName = (code: string) => {
+    try {
+      return displayNames.of(code) ?? code;
+    } catch {
+      return code;
+    }
+  };
 
   const filtered = useMemo(() => {
     if (!query) return COUNTRIES;
-    const needle = query.toLocaleLowerCase();
+    const needle = query.toLocaleLowerCase(locale);
     return COUNTRIES.filter(
-      (c) => c.name.toLocaleLowerCase().includes(needle) || c.code.toLocaleLowerCase().includes(needle) || c.dial.includes(query),
+      (c) => getCountryName(c.code).toLocaleLowerCase(locale).includes(needle) || c.code.toLocaleLowerCase().includes(needle) || c.dial.includes(query),
     );
-  }, [query]);
+  }, [query, locale, displayNames]);
 
   const select = (code: string) => {
     onChange(code);
@@ -64,7 +76,7 @@ export function CountryPicker({ value, onChange, label, className }: CountryPick
         aria-expanded={open}
         aria-controls={`${listId}-list`}
         aria-activedescendant={open && filtered[activeIndex] ? `${listId}-${filtered[activeIndex].code}` : undefined}
-        value={open ? query : (selected ? `${selected.flag} ${selected.name} (${selected.dial})` : "")}
+        value={open ? query : (selected ? `${selected.flag} ${getCountryName(selected.code)} (${selected.dial})` : "")}
         onFocus={() => setOpen(true)}
         onChange={(e) => {
           setQuery(e.target.value);
@@ -104,7 +116,7 @@ export function CountryPicker({ value, onChange, label, className }: CountryPick
                 index === activeIndex ? "bg-blue-600 text-white" : "hover:bg-neutral-100 dark:hover:bg-neutral-800",
               )}
             >
-              {country.flag} {country.name} ({country.dial})
+              {country.flag} {getCountryName(country.code)} ({country.dial})
             </li>
           ))}
           {filtered.length === 0 && (

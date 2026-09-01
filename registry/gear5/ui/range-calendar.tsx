@@ -2,6 +2,7 @@
 
 import { useId, useMemo, useState } from "react";
 import { cn } from "../lib/cn";
+import { useLocale } from "../lib/use-locale";
 
 export interface DateRange2 {
   start: Date | null;
@@ -15,9 +16,6 @@ export interface RangeCalendarProps {
   className?: string;
 }
 
-const WEEKDAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
-const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
 function isSameDay(a: Date | null, b: Date | null): boolean {
   if (!a || !b) return false;
   return a.toDateString() === b.toDateString();
@@ -30,8 +28,21 @@ function isBetween(date: Date, start: Date | null, end: Date | null): boolean {
 
 export function RangeCalendar({ value, onChange, label, className }: RangeCalendarProps) {
   const id = useId();
+  const { locale } = useLocale();
   const [cursor, setCursor] = useState(new Date());
   const [selecting, setSelecting] = useState<"start" | "end">("start");
+
+  const weekdays = useMemo(() =>
+    Array.from({ length: 7 }, (_, i) => {
+      const d = new Date(2024, 0, 7 + i);
+      return new Intl.DateTimeFormat(locale, { weekday: "short" }).format(d);
+    }), [locale]);
+
+  const months = useMemo(() =>
+    Array.from({ length: 12 }, (_, i) => {
+      const d = new Date(2024, i, 1);
+      return new Intl.DateTimeFormat(locale, { month: "long" }).format(d);
+    }), [locale]);
 
   const days = useMemo(() => {
     const first = new Date(cursor.getFullYear(), cursor.getMonth(), 1);
@@ -84,9 +95,9 @@ export function RangeCalendar({ value, onChange, label, className }: RangeCalend
   };
 
   const rangeText = value.start && value.end
-    ? `${value.start.toLocaleDateString()} – ${value.end.toLocaleDateString()}`
+    ? `${value.start.toLocaleDateString(locale)} – ${value.end.toLocaleDateString(locale)}`
     : value.start
-      ? `${value.start.toLocaleDateString()} – Select end date`
+      ? `${value.start.toLocaleDateString(locale)} – Select end date`
       : "Select a date range";
 
   return (
@@ -105,7 +116,7 @@ export function RangeCalendar({ value, onChange, label, className }: RangeCalend
         >
           ‹
         </button>
-        <span className="text-sm font-medium">{MONTHS[cursor.getMonth()]} {cursor.getFullYear()}</span>
+        <span className="text-sm font-medium">{months[cursor.getMonth()]} {cursor.getFullYear()}</span>
         <button
           type="button"
           aria-label="Next month"
@@ -118,7 +129,7 @@ export function RangeCalendar({ value, onChange, label, className }: RangeCalend
 
       <div role="grid" aria-labelledby={id} className="grid grid-cols-7 gap-0.5 text-center text-sm">
         <div role="row" className="contents">
-          {WEEKDAYS.map((d) => (
+          {weekdays.map((d) => (
             <div key={d} role="columnheader" className="pb-1 text-xs text-neutral-500 dark:text-neutral-400">{d}</div>
           ))}
         </div>

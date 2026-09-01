@@ -2,6 +2,7 @@
 
 import { useId, useMemo, useState } from "react";
 import { cn } from "../lib/cn";
+import { useLocale } from "../lib/use-locale";
 
 export interface CurrencyInputProps {
   value: number | null;
@@ -30,8 +31,10 @@ function parseLocaleNumber(input: string, locale: string): number | null {
   return Number.isFinite(parsed) ? parsed : null;
 }
 
-export function CurrencyInput({ value, onChange, label, currency = "USD", locale = "en-US", className }: CurrencyInputProps) {
+export function CurrencyInput({ value, onChange, label, currency = "USD", locale: localeProp, className }: CurrencyInputProps) {
   const id = useId();
+  const { locale: ctxLocale } = useLocale();
+  const locale = localeProp || ctxLocale;
   const [draft, setDraft] = useState<string | null>(null);
 
   const formatted = useMemo(() => {
