@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Playground } from "@/components/demo/playground";
+import { ComparisonGrid } from "@/components/site/comparison";
+import { COMPARISONS } from "@/components/site/comparisons";
 import { Hero } from "@/components/site/hero";
 import { getSiteUrl, siteConfig } from "@/lib/site";
 import { components, componentsByCategory, primitives } from "@/lib/registry";
@@ -72,6 +74,26 @@ export default function Home() {
   return (
     <main id="main">
       <Hero />
+
+      {/*
+        The lede, directly under the hero: eleven bugs that are almost certainly
+        in the reader's own codebase right now, each shown as the code they
+        wrote next to what it actually produces. Both sides compute live.
+      */}
+      <section className="mx-auto max-w-[1200px] px-6 py-20">
+        <div className="flex max-w-3xl flex-col gap-3">
+          <h2 className="text-heading-sm text-cream">The bugs you cannot see</h2>
+          <p className="text-body text-smoke">
+            Every example below is real code running in your browser right now. The left column is
+            what most applications ship — not a strawman, the actual line people write. The right
+            column is this library. If you only read one section, read this one.
+          </p>
+        </div>
+
+        <div className="mt-10">
+          <ComparisonGrid comparisons={COMPARISONS} />
+        </div>
+      </section>
 
       {/* Verification band — the trust strip, carrying claims rather than logos. */}
       <section className="border-y border-hairline bg-anvil">
