@@ -46,13 +46,15 @@ export function StackLayout({
       };
 
   const Tag = as;
+  const isList = as === "ul" || as === "ol";
+  const ItemTag = isList ? "li" : "div";
 
   return (
-    <Tag className={className} style={containerStyle} role="list">
+    <Tag className={className} style={containerStyle} role={isList ? "list" : undefined}>
       {childArray.map((child, index) => (
-        <li key={index} style={{ ...itemStyle, display: "block" }} role="listitem">
+        <ItemTag key={index} style={{ ...itemStyle, display: "block" }} role={isList ? "listitem" : undefined}>
           {child}
-        </li>
+        </ItemTag>
       ))}
     </Tag>
   );
